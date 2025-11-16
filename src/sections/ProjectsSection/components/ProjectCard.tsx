@@ -33,17 +33,21 @@ export const ProjectCard = (props: ProjectCardProps) => {
           />
         </div>
         <div
-          className={`absolute bg-red-600 box-border caret-transparent flex flex-col transition-all duration-500 ease-in-out px-5 py-4 inset-x-[0%] md:p-[30px] ${
+          className={`absolute box-border caret-transparent flex flex-col transition-all duration-500 ease-in-out px-5 py-4 inset-x-[0%] md:p-[30px] ${
             isExpanded
-              ? 'bottom-[0%] h-[50%]'
-              : 'bottom-[0%] h-auto'
+              ? 'bg-red-600 bottom-[0%] h-[50%]'
+              : 'bg-gray-100 bottom-[0%] h-auto translate-y-[30px]'
           }`}
         >
           <div className="box-border caret-transparent">
-            <div className="text-sm text-white box-border caret-transparent leading-[21px]">
+            <div className={`text-sm box-border caret-transparent leading-[21px] transition-colors duration-500 ${
+              isExpanded ? 'text-white' : 'text-zinc-800'
+            }`}>
               {props.location}
             </div>
-            <h4 className="text-white text-lg box-border caret-transparent leading-[27px] mt-0.5 md:text-[22px] md:leading-[33px]">
+            <h4 className={`text-lg box-border caret-transparent leading-[27px] mt-0.5 md:text-[22px] md:leading-[33px] transition-colors duration-500 ${
+              isExpanded ? 'text-white' : 'text-black'
+            }`}>
               {props.title}
             </h4>
           </div>
