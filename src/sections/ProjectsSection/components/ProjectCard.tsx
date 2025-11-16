@@ -33,10 +33,10 @@ export const ProjectCard = (props: ProjectCardProps) => {
           />
         </div>
         <div
-          className={`absolute box-border caret-transparent flex flex-col transition-all duration-500 ease-in-out px-5 py-4 inset-x-[0%] md:p-[30px] ${
+          className={`absolute box-border caret-transparent flex flex-col justify-center transition-all duration-500 ease-in-out px-5 py-4 inset-x-[0%] md:p-[30px] ${
             isExpanded
               ? 'bg-red-600 bottom-[0%] h-[50%]'
-              : 'bg-gray-100 bottom-[0%] h-auto translate-y-[30px]'
+              : 'bg-white bottom-[0%] h-auto'
           }`}
         >
           <div className="box-border caret-transparent">
