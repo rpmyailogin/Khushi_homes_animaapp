@@ -10,7 +10,7 @@ export const HeroContent = () => {
         <div className="items-center box-border caret-transparent flex flex-col justify-between gap-y-10 mt-3 md:items-end md:flex-row md:gap-y-[normal] md:mt-1.5">
           <div className="items-center box-border caret-transparent flex flex-col justify-start max-w-none text-center w-full pl-0 md:items-start md:max-w-[65%] md:text-start md:pl-[168px]">
             <p className="text-sm box-border caret-transparent leading-[21px] text-center mb-[30px] md:text-base md:leading-[27.2px] md:text-start">
-              From custom new builds to complete renovations and interior transformations—bringing quality craftsmanship and modern design to every project
+              From custom new builds to complete renovations and interior transformations—bringing quality craftsmanship and modern design to every project. We turn blueprints into breathtaking realities. Discover spaces designed to inspire and built to last.
             </p>
             <a
               href="/projects"
