@@ -1,6 +1,13 @@
 import { Navbar } from "@/sections/Navbar";
 import { Hero } from "@/sections/Hero";
 import { ProjectsSection } from "@/sections/ProjectsSection";
+import { AboutSection } from "@/sections/AboutSection";
+import { ServicesSection } from "@/sections/ServicesSection";
+import { WhyChooseSection } from "@/sections/WhyChooseSection";
+import { StatsSection } from "@/sections/StatsSection";
+import { BlogSection } from "@/sections/BlogSection";
+import { TestimonialsSection } from "@/sections/TestimonialsSection";
+import { ContactSection } from "@/sections/ContactSection";
 import { Footer } from "@/sections/Footer";
 import { ScrollToTop } from "@/components/ScrollToTop";
 
@@ -10,6 +17,13 @@ export const App = () => {
       <Navbar />
       <Hero />
       <ProjectsSection />
+      <AboutSection />
+      <ServicesSection />
+      <WhyChooseSection />
+      <StatsSection />
+      <BlogSection />
+      <TestimonialsSection />
+      <ContactSection />
       <Footer />
       <ScrollToTop />
       <div className="fixed box-border caret-transparent contents z-[2147483647] left-0 top-0">
