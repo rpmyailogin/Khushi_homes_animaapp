@@ -7,25 +7,25 @@ export const ServiceGrid = () => {
       className="box-border caret-transparent grid auto-cols-[1fr] grid-cols-[1fr] grid-rows-[auto] gap-y-10 md:grid-cols-[1fr_1fr_1fr]"
     >
       <ServiceCard
-        title="Structural Engineering"
+        title="New Home Construction"
         iconUrl="https://cdn.prod.website-files.com/679b74f316932fb3b1e01c07/679dba1be9049fbc8805b173_ic-structural.svg"
-        description="We provide expert engineering services to ensure your project’s integrity and safety, from the foundation to the roof."
+        description="Transform your vision into reality with custom-designed homes built to Australian standards. Our experienced team manages every phase from design through to final handover."
         serviceImageUrl="https://cdn.prod.website-files.com/679b74f316932fb3b1e01c07/679dba1d3d27868b02647dfb_services-thumb-05.jpg"
-        href="https://drill-template.webflow.io/services/structural-engineering"
+        href="/services"
       />
       <ServiceCard
-        title="General Contracting"
+        title="Home Rebuilds & Renovations"
         iconUrl="https://cdn.prod.website-files.com/679b74f316932fb3b1e01c07/679dba41441cc64868b978bd_ic-foundation.svg"
-        description="Drill provides seamless project management by overseeing procurement, subcontractors, and site coordination."
+        description="Breathe new life into your existing property with comprehensive rebuild services. We deliver seamless renovations that enhance both function and value."
         serviceImageUrl="https://cdn.prod.website-files.com/679b74f316932fb3b1e01c07/679dba46477f30fd79c4ca4a_services-thumb-06.jpg"
-        href="https://drill-template.webflow.io/services/general-contracting"
+        href="/services"
       />
       <ServiceCard
-        title="Commercial Construction"
+        title="Interior Design & Styling"
         iconUrl="https://cdn.prod.website-files.com/679b74f316932fb3b1e01c07/679db879eb37a230407186f4_ic-commercial.svg"
-        description="We specialize in building office spaces, retail shops, and multi-use commercial properties that meet modern business needs."
+        description="Create beautiful, functional living spaces with our expert interior design services. From selecting premium finishes to optimizing room layouts."
         serviceImageUrl="https://cdn.prod.website-files.com/679b74f316932fb3b1e01c07/679db87dce7fe13ceb2a6e80_services-thumb-04.jpg"
-        href="https://drill-template.webflow.io/services/commercial-construction"
+        href="/services"
       />
     </div>
   );

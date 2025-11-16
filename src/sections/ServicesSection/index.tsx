@@ -12,7 +12,7 @@ export const ServicesSection = () => {
         </div>
         <ViewAllButton
           text="View All Services"
-          href="https://drill-template.webflow.io/services"
+          href="/"
         />
       </div>
     </section>

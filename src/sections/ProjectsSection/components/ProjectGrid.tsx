@@ -7,7 +7,7 @@ export const ProjectGrid = () => {
       className="box-border caret-transparent gap-x-0 grid auto-cols-[1fr] grid-cols-[1fr] grid-rows-[auto] gap-y-10 md:gap-x-6 md:grid-cols-[1fr_1fr_1fr] md:gap-y-[30px]"
     >
       <ProjectCard
-        href="https://drill-template.webflow.io/projects/aurora-business-park"
+        href="/"
         imageUrl="https://cdn.prod.website-files.com/679b74f316932fb3b1e01c07/67a04795c6255244602f2723_project-thumb-07.jpg"
         imageAlt="Project Image"
         location="California, USA"
@@ -18,7 +18,7 @@ export const ProjectGrid = () => {
         arrowIconAlt="Arrow"
       />
       <ProjectCard
-        href="https://drill-template.webflow.io/projects/riverbend-eco-park"
+        href="/"
         imageUrl="https://cdn.prod.website-files.com/679b74f316932fb3b1e01c07/67a0476b96cf1a8864a59421_project-thumb-06.jpg"
         imageAlt="Project Image"
         location="New York, USA"
@@ -30,7 +30,7 @@ export const ProjectGrid = () => {
         descriptionContainerWidth="w-[356px]"
       />
       <ProjectCard
-        href="https://drill-template.webflow.io/projects/econest-apartments"
+        href="/"
         imageUrl="https://cdn.prod.website-files.com/679b74f316932fb3b1e01c07/67a04742a2d0f48bd0a20ed4_project-thumb-05.jpg"
         imageAlt="Project Image"
         location="New Jersey, USA"

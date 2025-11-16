@@ -10,7 +10,7 @@ export const BlogSection = () => {
         <BlogGrid />
         <ViewAllButton
           text="View All Blogs"
-          href="https://drill-template.webflow.io/blogs"
+          href="/"
         />
       </div>
     </section>

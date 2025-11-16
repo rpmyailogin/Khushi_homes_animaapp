@@ -2,13 +2,10 @@ export const AboutContent = () => {
   return (
     <div className="items-start box-border caret-transparent flex flex-col justify-start">
       <p className="text-white text-lg box-border caret-transparent leading-[27px] mb-[30px] md:text-[28px] md:leading-[42px] md:mb-10">
-        Drill is not just a construction company we are builders of dreams. With
-        over 25 years of expertise, we’ve become leaders in delivering
-        high-quality, sustainable construction solutions that push the
-        boundaries of modern architecture.
+        Khushi Homes specializes in delivering premium construction services throughout Australia, combining traditional craftsmanship with innovative building techniques. Our commitment to quality, transparency, and customer satisfaction has established us as a trusted partner for homeowners seeking exceptional results.
       </p>
       <a
-        href="https://drill-template.webflow.io/about-us"
+        href="/"
         className="text-white text-sm items-center box-border caret-transparent gap-x-2.5 flex justify-center leading-[16.8px] max-w-full border px-[22px] py-3 border-solid border-white"
       >
         <div className="relative box-border caret-transparent overflow-hidden">

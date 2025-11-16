@@ -6,7 +6,7 @@ export const FooterCTA = () => {
           Contact us today to discuss your next project
         </h2>
         <a
-          href="https://drill-template.webflow.io/contact-us"
+          href="/"
           className="text-white text-sm items-center bg-red-600 box-border caret-transparent gap-x-2.5 flex justify-center leading-[16.8px] max-w-full px-[22px] py-3"
         >
           <div className="relative box-border caret-transparent overflow-hidden">
@@ -26,7 +26,7 @@ export const FooterCTA = () => {
       </div>
       <div className="items-center box-border caret-transparent gap-x-[22px] flex flex-wrap justify-start gap-y-[22px] md:flex-nowrap md:gap-y-[normal]">
         <a
-          href="https://drill-template.webflow.io/about-us"
+          href="/"
           className="text-white text-sm items-center box-border caret-transparent gap-x-1.5 flex justify-start leading-[21px] max-w-full"
         >
           <img
@@ -37,7 +37,7 @@ export const FooterCTA = () => {
           <div className="box-border caret-transparent">About us</div>
         </a>
         <a
-          href="https://drill-template.webflow.io/projects"
+          href="/"
           className="text-white text-sm items-center box-border caret-transparent gap-x-1.5 flex justify-start leading-[21px] max-w-full"
         >
           <img
@@ -48,7 +48,7 @@ export const FooterCTA = () => {
           <div className="box-border caret-transparent">Projects</div>
         </a>
         <a
-          href="https://drill-template.webflow.io/services"
+          href="/"
           className="text-white text-sm items-center box-border caret-transparent gap-x-1.5 flex justify-start leading-[21px] max-w-full"
         >
           <img
@@ -59,7 +59,7 @@ export const FooterCTA = () => {
           <div className="box-border caret-transparent">Services</div>
         </a>
         <a
-          href="https://drill-template.webflow.io/blogs"
+          href="/"
           className="text-white text-sm items-center box-border caret-transparent gap-x-1.5 flex justify-start leading-[21px] max-w-full"
         >
           <img
@@ -70,7 +70,7 @@ export const FooterCTA = () => {
           <div className="box-border caret-transparent">Blogs</div>
         </a>
         <a
-          href="https://drill-template.webflow.io/reviews"
+          href="/"
           className="text-white text-sm items-center box-border caret-transparent gap-x-1.5 flex justify-start leading-[21px] max-w-full"
         >
           <img
@@ -81,7 +81,7 @@ export const FooterCTA = () => {
           <div className="box-border caret-transparent">Reviews</div>
         </a>
         <a
-          href="https://drill-template.webflow.io/faq"
+          href="/"
           className="text-white text-sm items-center box-border caret-transparent gap-x-1.5 flex justify-start leading-[21px] max-w-full"
         >
           <img

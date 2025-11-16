@@ -5,7 +5,7 @@ export const FeaturedBlogCard = () => {
         <div role="list" className="box-border caret-transparent">
           <div role="listitem" className="box-border caret-transparent flex">
             <a
-              href="https://drill-template.webflow.io/blog-posts/building-smart-how-technology-is-transforming-construction"
+              href="/"
               className="box-border caret-transparent block max-w-full w-full"
             >
               <div className="bg-gray-100 box-border caret-transparent overflow-hidden">

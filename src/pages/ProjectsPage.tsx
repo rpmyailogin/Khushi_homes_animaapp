@@ -4,69 +4,69 @@ export const ProjectsPage = () => {
   const projects = [
     {
       id: 1,
-      title: "Downtown Corporate Tower",
-      category: "Commercial",
-      location: "New York, NY",
-      value: "$45M",
-      image: "https://images.pexels.com/photos/3862632/pexels-photo-3862632.jpeg?auto=compress&cs=tinysrgb&w=800",
-      description: "A 40-story state-of-the-art office building featuring sustainable design and modern amenities.",
+      title: "Modern Family Home - Melbourne",
+      category: "New Build",
+      location: "Melbourne, VIC",
+      value: "$850,000",
+      image: "https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=800",
+      description: "A stunning four-bedroom family home on a sloped block, featuring open-plan living, sustainable materials, and energy-efficient systems.",
       year: "2024",
-      duration: "24 months"
+      duration: "8 months"
     },
     {
       id: 2,
-      title: "Riverside Residential Complex",
-      category: "Residential",
-      location: "Seattle, WA",
-      value: "$32M",
-      image: "https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=800",
-      description: "Luxury apartment complex with 200 units, featuring panoramic water views and premium finishes.",
-      year: "2023",
-      duration: "18 months"
+      title: "Heritage Home Renovation - Sydney",
+      category: "Renovation",
+      location: "Sydney, NSW",
+      value: "$620,000",
+      image: "https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&cs=tinysrgb&w=800",
+      description: "Complete interior transformation of a 1920s terrace home, preserving heritage features while integrating modern living spaces.",
+      year: "2024",
+      duration: "10 months"
     },
     {
       id: 3,
-      title: "Metro Infrastructure Project",
-      category: "Infrastructure",
-      location: "Boston, MA",
-      value: "$120M",
-      image: "https://images.pexels.com/photos/290275/pexels-photo-290275.jpeg?auto=compress&cs=tinysrgb&w=800",
-      description: "Comprehensive metro station renovation including accessibility upgrades and modern facilities.",
-      year: "2024",
-      duration: "36 months"
+      title: "Coastal Rebuild - Gold Coast",
+      category: "Rebuild",
+      location: "Gold Coast, QLD",
+      value: "$1.2M",
+      image: "https://images.pexels.com/photos/2581922/pexels-photo-2581922.jpeg?auto=compress&cs=tinysrgb&w=800",
+      description: "Complete rebuild with elevated foundation, impact-resistant materials, and stunning indoor-outdoor flow maximizing beachfront location.",
+      year: "2023",
+      duration: "12 months"
     },
     {
       id: 4,
-      title: "Skyline Shopping Center",
-      category: "Retail",
-      location: "Los Angeles, CA",
-      value: "$28M",
-      image: "https://images.pexels.com/photos/380768/pexels-photo-380768.jpeg?auto=compress&cs=tinysrgb&w=800",
-      description: "Modern retail space spanning 150,000 sq ft with innovative architectural design.",
-      year: "2023",
-      duration: "16 months"
+      title: "Contemporary Townhouse - Brisbane",
+      category: "New Build",
+      location: "Brisbane, QLD",
+      value: "$680,000",
+      image: "https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=800",
+      description: "Sleek three-bedroom townhouse with modern finishes, private courtyard, and designer kitchen perfect for urban living.",
+      year: "2024",
+      duration: "7 months"
     },
     {
       id: 5,
-      title: "University Science Building",
-      category: "Education",
-      location: "Austin, TX",
-      value: "$52M",
-      image: "https://images.pexels.com/photos/256490/pexels-photo-256490.jpeg?auto=compress&cs=tinysrgb&w=800",
-      description: "Advanced research facility with cutting-edge laboratories and collaborative learning spaces.",
-      year: "2024",
-      duration: "28 months"
+      title: "Hamptons Style Estate - Perth",
+      category: "New Build",
+      location: "Perth, WA",
+      value: "$1.5M",
+      image: "https://images.pexels.com/photos/1029599/pexels-photo-1029599.jpeg?auto=compress&cs=tinysrgb&w=800",
+      description: "Luxurious five-bedroom Hamptons-inspired home featuring high ceilings, premium finishes, and resort-style outdoor entertaining area.",
+      year: "2023",
+      duration: "14 months"
     },
     {
       id: 6,
-      title: "Greenfield Hospital Wing",
-      category: "Healthcare",
-      location: "Chicago, IL",
-      value: "$68M",
-      image: "https://images.pexels.com/photos/668300/pexels-photo-668300.jpeg?auto=compress&cs=tinysrgb&w=800",
-      description: "State-of-the-art medical facility expansion with advanced patient care technology.",
-      year: "2023",
-      duration: "30 months"
+      title: "Mountain Retreat - Adelaide Hills",
+      category: "New Build",
+      location: "Adelaide, SA",
+      value: "$920,000",
+      image: "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=800",
+      description: "Architectural masterpiece nestled in the hills, featuring floor-to-ceiling windows, natural materials, and breathtaking valley views.",
+      year: "2024",
+      duration: "11 months"
     }
   ];
 
@@ -76,7 +76,7 @@ export const ProjectsPage = () => {
         <div className="box-border caret-transparent max-w-full w-full mx-auto px-5 md:max-w-[1336px]">
           <SectionHeader subtitle="Portfolio" title="Our Projects" />
           <p className="box-border caret-transparent max-w-3xl mb-10">
-            Explore our diverse portfolio of completed projects spanning commercial, residential, infrastructure, and institutional developments. Each project showcases our commitment to quality, innovation, and client satisfaction.
+            Explore our portfolio of beautifully crafted homes across Australia. From custom new builds to complete renovations, each project showcases our commitment to quality craftsmanship and modern design.
           </p>
         </div>
       </section>
@@ -136,10 +136,10 @@ export const ProjectsPage = () => {
               Ready to Start Your Project?
             </h3>
             <p className="text-neutral-400 box-border caret-transparent mb-8">
-              Let's discuss how we can bring your vision to life with our expertise and commitment to excellence.
+              Let's discuss how we can bring your dream home to life with our expertise and commitment to excellence.
             </p>
             <a
-              href="/contact"
+              href="/"
               className="text-white text-sm items-center box-border caret-transparent gap-x-2.5 inline-flex justify-center leading-[16.8px] border px-[22px] py-3 border-solid border-white hover:bg-white hover:text-black transition-colors"
             >
               <div className="box-border caret-transparent">Contact Us</div>

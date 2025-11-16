@@ -9,9 +9,7 @@ export const WhyChooseContent = () => {
           Expert Craftsmanship for Unmatched Construction Projects
         </h2>
         <p className="box-border caret-transparent">
-          Choosing Drill means working with a team that values quality,
-          efficiency, &amp; client satisfaction. From residential to commercial
-          projects, we deliver results that last, on time &amp; within budget.
+          Choosing Khushi Homes means working with a team that values quality craftsmanship and client satisfaction. We deliver beautiful homes that last, on time and within budget.
         </p>
       </div>
       <div className="box-border caret-transparent">
@@ -20,12 +18,10 @@ export const WhyChooseContent = () => {
           <FeatureImage />
           <div className="items-start box-border caret-transparent flex flex-col justify-start max-w-none gap-y-[30px] w-full md:max-w-[65%] md:gap-y-[60px]">
             <p className="box-border caret-transparent">
-              Your vision is our priority. At Drill, we deliver tailored
-              solutions that align with your unique goals &amp; exceed
-              expectations.
+              Your vision is our priority. At Khushi Homes, we deliver tailored home solutions that align with your unique lifestyle and exceed expectations.
             </p>
             <a
-              href="https://drill-template.webflow.io/contact-us"
+              href="/"
               className="text-black text-sm items-center box-border caret-transparent gap-x-2.5 flex justify-center leading-[16.8px] max-w-full border px-[22px] py-3 border-solid"
             >
               <div className="relative box-border caret-transparent overflow-hidden">

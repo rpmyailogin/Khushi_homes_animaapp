@@ -19,19 +19,19 @@ export const FooterLinks = () => {
           title="Resources"
           links={[
             {
-              href: "https://drill-template.webflow.io/template-info/style-guide",
+              href: "/",
               text: "Style Guide",
             },
             {
-              href: "https://drill-template.webflow.io/privacy-policy",
+              href: "/",
               text: "Privacy Policy",
             },
             {
-              href: "https://drill-template.webflow.io/terms-conditions",
+              href: "/",
               text: "Terms & Conditions",
             },
             {
-              href: "https://drill-template.webflow.io/template-info/licensing",
+              href: "/",
               text: "License",
             },
           ]}

@@ -4,51 +4,35 @@ export const ServicesPage = () => {
   const services = [
     {
       id: 1,
-      title: "Structural Engineering",
+      title: "New Home Construction",
       icon: "https://cdn.prod.website-files.com/679b74f316932fb3b1e01c07/679dba1be9049fbc8805b173_ic-structural.svg",
-      image: "https://images.pexels.com/photos/159306/construction-site-build-construction-work-159306.jpeg?auto=compress&cs=tinysrgb&w=800",
-      description: "Expert engineering services ensuring structural integrity, safety, and compliance from foundation to completion.",
-      features: ["Foundation Design", "Load Analysis", "Seismic Engineering", "Material Testing"]
+      image: "https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=800",
+      description: "Transform your vision into reality with custom-designed homes built to Australian standards. Our experienced team manages every phase from initial design consultation through to final handover, ensuring your new home reflects your lifestyle and exceeds expectations.",
+      features: ["Custom Design Consultation", "Australian Standards Compliance", "Full Project Management", "Quality Craftsmanship"]
     },
     {
       id: 2,
-      title: "General Contracting",
+      title: "Home Rebuilds & Renovations",
       icon: "https://cdn.prod.website-files.com/679b74f316932fb3b1e01c07/679dba41441cc64868b978bd_ic-foundation.svg",
-      image: "https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=800",
-      description: "Comprehensive project management overseeing all aspects of construction from procurement to final delivery.",
-      features: ["Project Coordination", "Subcontractor Management", "Quality Control", "Timeline Management"]
+      image: "https://images.pexels.com/photos/1669754/pexels-photo-1669754.jpeg?auto=compress&cs=tinysrgb&w=800",
+      description: "Breathe new life into your existing property with comprehensive rebuild services. Whether you're expanding your space, modernizing outdated features, or completely reimagining your home's layout, we deliver seamless renovations that enhance both function and value.",
+      features: ["Complete Rebuilds", "Kitchen & Bathroom Renovations", "Extensions & Additions", "Heritage Restoration"]
     },
     {
       id: 3,
-      title: "Commercial Construction",
+      title: "Interior Design & Styling",
       icon: "https://cdn.prod.website-files.com/679b74f316932fb3b1e01c07/679db879eb37a230407186f4_ic-commercial.svg",
-      image: "https://images.pexels.com/photos/380768/pexels-photo-380768.jpeg?auto=compress&cs=tinysrgb&w=800",
-      description: "Building office spaces, retail centers, and multi-use commercial properties that meet modern business needs.",
-      features: ["Office Buildings", "Retail Spaces", "Mixed-Use Developments", "Tenant Improvements"]
+      image: "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=800",
+      description: "Create beautiful, functional living spaces with our expert interior design services. From selecting premium finishes and fixtures to optimizing room layouts, our design team ensures every detail aligns with your aesthetic preferences and practical needs.",
+      features: ["Space Planning", "Material Selection", "Color Consultation", "Custom Joinery Design"]
     },
     {
       id: 4,
-      title: "Residential Construction",
+      title: "Project Management & Consultation",
       icon: "https://cdn.prod.website-files.com/679b74f316932fb3b1e01c07/679dba1be9049fbc8805b173_ic-structural.svg",
-      image: "https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=800",
-      description: "Creating dream homes and residential communities with attention to detail and quality craftsmanship.",
-      features: ["Custom Homes", "Multi-Family Units", "Renovations", "Interior Design"]
-    },
-    {
-      id: 5,
-      title: "Infrastructure Development",
-      icon: "https://cdn.prod.website-files.com/679b74f316932fb3b1e01c07/679dba41441cc64868b978bd_ic-foundation.svg",
-      image: "https://images.pexels.com/photos/290275/pexels-photo-290275.jpeg?auto=compress&cs=tinysrgb&w=800",
-      description: "Large-scale infrastructure projects including roads, bridges, and public facilities that serve communities.",
-      features: ["Road Construction", "Bridge Engineering", "Public Facilities", "Utilities Installation"]
-    },
-    {
-      id: 6,
-      title: "Renovation & Remodeling",
-      icon: "https://cdn.prod.website-files.com/679b74f316932fb3b1e01c07/679db879eb37a230407186f4_ic-commercial.svg",
-      image: "https://images.pexels.com/photos/1669754/pexels-photo-1669754.jpeg?auto=compress&cs=tinysrgb&w=800",
-      description: "Transforming existing spaces with modern upgrades while preserving architectural character and value.",
-      features: ["Historic Restoration", "Modern Upgrades", "Space Optimization", "Energy Efficiency"]
+      image: "https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=800",
+      description: "Navigate your construction journey with confidence through our comprehensive project management services. We coordinate all trades, handle permits and compliance, maintain transparent communication, and deliver projects on time and within budget.",
+      features: ["Trade Coordination", "Permit Management", "Budget Control", "Timeline Management"]
     }
   ];
 
@@ -58,14 +42,14 @@ export const ServicesPage = () => {
         <div className="box-border caret-transparent max-w-full w-full mx-auto px-5 md:max-w-[1336px]">
           <SectionHeader subtitle="What We Do" title="Our Services" />
           <p className="box-border caret-transparent max-w-3xl mb-10">
-            Comprehensive construction services tailored to meet your unique needs. From concept to completion, we deliver excellence at every stage of your project.
+            Comprehensive construction services tailored to your needs. From concept to completion, we deliver excellence at every stage of your home building or renovation project.
           </p>
         </div>
       </section>
 
       <section className="box-border caret-transparent py-10 md:py-[60px]">
         <div className="box-border caret-transparent max-w-full w-full mx-auto px-5 md:max-w-[1336px]">
-          <div className="box-border caret-transparent grid auto-cols-[1fr] grid-cols-[1fr] grid-rows-[auto] gap-y-10 md:grid-cols-[1fr_1fr_1fr] md:gap-x-[30px] md:gap-y-[60px]">
+          <div className="box-border caret-transparent grid auto-cols-[1fr] grid-cols-[1fr] grid-rows-[auto] gap-y-10 md:grid-cols-[1fr_1fr] md:gap-x-[30px] md:gap-y-[60px]">
             {services.map((service) => (
               <div
                 key={service.id}
@@ -116,31 +100,31 @@ export const ServicesPage = () => {
         <div className="box-border caret-transparent max-w-full w-full mx-auto px-5 md:max-w-[1336px]">
           <div className="box-border caret-transparent max-w-4xl mx-auto text-center">
             <h3 className="text-black text-xl font-medium box-border caret-transparent leading-[30px] mb-5 md:text-2xl md:leading-[36px]">
-              Why Choose Our Services?
+              Why Choose Khushi Homes?
             </h3>
             <p className="box-border caret-transparent mb-8">
-              With over 25 years of experience, our team brings expertise, innovation, and dedication to every project. We combine cutting-edge technology with time-tested construction practices to deliver exceptional results.
+              With comprehensive experience in home construction and renovation, our team brings technical expertise and creative solutions to every project across Australia.
             </p>
             <div className="box-border caret-transparent grid auto-cols-[1fr] grid-cols-[1fr] grid-rows-[auto] gap-y-5 md:grid-cols-[1fr_1fr_1fr] md:gap-x-10">
               <div className="box-border caret-transparent">
                 <div className="text-black text-3xl font-medium box-border caret-transparent leading-[45px] mb-2">
-                  350+
+                  250+
                 </div>
                 <p className="text-sm box-border caret-transparent leading-[21px]">
-                  Projects Completed
+                  Homes Completed
                 </p>
               </div>
               <div className="box-border caret-transparent">
                 <div className="text-black text-3xl font-medium box-border caret-transparent leading-[45px] mb-2">
-                  95%
+                  98%
                 </div>
                 <p className="text-sm box-border caret-transparent leading-[21px]">
-                  On-Time Delivery
+                  Client Satisfaction
                 </p>
               </div>
               <div className="box-border caret-transparent">
                 <div className="text-black text-3xl font-medium box-border caret-transparent leading-[45px] mb-2">
-                  25+
+                  15+
                 </div>
                 <p className="text-sm box-border caret-transparent leading-[21px]">
                   Years Experience
@@ -158,10 +142,10 @@ export const ServicesPage = () => {
               Let's Discuss Your Project
             </h3>
             <p className="text-neutral-400 box-border caret-transparent mb-8">
-              Contact us today to learn how our services can help bring your construction vision to life.
+              Contact us today to learn how our services can help bring your dream home to life.
             </p>
             <a
-              href="/contact"
+              href="/"
               className="text-white text-sm items-center box-border caret-transparent gap-x-2.5 inline-flex justify-center leading-[16.8px] border px-[22px] py-3 border-solid border-white hover:bg-white hover:text-black transition-colors"
             >
               <div className="box-border caret-transparent">Get Started</div>

@@ -10,21 +10,18 @@ export const HeroContent = () => {
         <div className="items-center box-border caret-transparent flex flex-col justify-between gap-y-10 mt-5 md:items-end md:flex-row md:gap-y-[normal] md:mt-3.5">
           <div className="items-center box-border caret-transparent flex flex-col justify-start max-w-none text-center w-full pl-0 md:items-start md:max-w-[65%] md:text-start md:pl-40">
             <p className="text-sm box-border caret-transparent leading-[21px] text-center mb-[30px] md:text-base md:leading-[27.2px] md:text-start">
-              Drill empowers construction companies with innovative solutions to
-              streamline projects, enhance efficiency, and deliver excellence.
-              From groundbreaking designs to seamless execution, we’re here to
-              elevate your construction experience
+              From custom new builds to complete renovations and interior transformations—bringing quality craftsmanship and modern design to every project
             </p>
             <a
-              href="https://drill-template.webflow.io/projects"
+              href="/projects"
               className="text-white text-sm items-center bg-red-600 box-border caret-transparent gap-x-2.5 flex justify-center leading-[16.8px] max-w-full text-center px-[22px] py-3 md:text-start"
             >
               <div className="relative box-border caret-transparent text-center overflow-hidden md:text-start">
                 <div className="box-border caret-transparent gap-x-1 flex text-center md:text-start">
-                  Explore Projects
+                  Let's Build
                 </div>
                 <div className="absolute box-border caret-transparent gap-x-1 flex text-center md:text-start">
-                  Explore Projects
+                  Let's Build
                 </div>
               </div>
               <img
