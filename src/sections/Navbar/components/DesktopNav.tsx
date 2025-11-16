@@ -1,0 +1,103 @@
+export const DesktopNav = () => {
+  return (
+    <nav
+      role="navigation"
+      className="relative items-center bg-white border-l-zinc-800 border-r-zinc-800 border-t-zinc-800 box-border caret-transparent gap-x-[35px] hidden flex-col float-right justify-center min-h-0 min-w-0 p-5 border-b-black/10 border-b md:bg-transparent md:border-b-zinc-800 md:flex md:flex-row md:min-h-[auto] md:min-w-[auto] md:p-0 md:border-b-0"
+    >
+      <a
+        href="https://drill-template.webflow.io/about-us"
+        className="relative text-black text-sm items-start box-border caret-transparent flex flex-col justify-start leading-[16.8px] max-w-full min-h-0 min-w-0 uppercase overflow-hidden py-3 md:[align-items:normal] md:justify-normal md:min-h-[auto] md:min-w-[auto] md:pt-0 md:pb-0.5"
+      >
+        <div className="box-border caret-transparent min-h-0 min-w-0 md:min-h-[auto] md:min-w-[auto]">
+          About us
+        </div>
+        <div className="absolute bg-black box-border caret-transparent h-px transform-none w-full bottom-[0%] inset-x-[0%] md:translate-x-[-110.0%]"></div>
+      </a>
+      <a
+        href="https://drill-template.webflow.io/projects"
+        className="relative text-black text-sm items-start box-border caret-transparent flex flex-col justify-start leading-[16.8px] max-w-full min-h-0 min-w-0 uppercase overflow-hidden py-3 md:[align-items:normal] md:justify-normal md:min-h-[auto] md:min-w-[auto] md:pt-0 md:pb-0.5"
+      >
+        <div className="box-border caret-transparent min-h-0 min-w-0 md:min-h-[auto] md:min-w-[auto]">
+          Projects
+        </div>
+        <div className="absolute bg-black box-border caret-transparent h-px transform-none w-full bottom-[0%] inset-x-[0%] md:translate-x-[-110.0%]"></div>
+      </a>
+      <a
+        href="https://drill-template.webflow.io/services"
+        className="relative text-black text-sm items-start box-border caret-transparent flex flex-col justify-start leading-[16.8px] max-w-full min-h-0 min-w-0 uppercase overflow-hidden py-3 md:[align-items:normal] md:justify-normal md:min-h-[auto] md:min-w-[auto] md:pt-0 md:pb-0.5"
+      >
+        <div className="box-border caret-transparent min-h-0 min-w-0 md:min-h-[auto] md:min-w-[auto]">
+          Services
+        </div>
+        <div className="absolute bg-black box-border caret-transparent h-px transform-none w-full bottom-[0%] inset-x-[0%] md:translate-x-[-110.0%]"></div>
+      </a>
+      <a
+        href="https://drill-template.webflow.io/blogs"
+        className="relative text-black text-sm items-start box-border caret-transparent flex flex-col justify-start leading-[16.8px] max-w-full min-h-0 min-w-0 uppercase overflow-hidden py-3 md:[align-items:normal] md:justify-normal md:min-h-[auto] md:min-w-[auto] md:pt-0 md:pb-0.5"
+      >
+        <div className="box-border caret-transparent min-h-0 min-w-0 md:min-h-[auto] md:min-w-[auto]">
+          Blogs
+        </div>
+        <div className="absolute bg-black box-border caret-transparent h-px transform-none w-full bottom-[0%] inset-x-[0%] md:translate-x-[-110.0%]"></div>
+      </a>
+      <div className="relative items-start box-border caret-transparent flex flex-col justify-between max-w-[1336px] min-h-0 min-w-0 text-left z-[900] mx-0 py-3 md:[align-items:normal] md:block md:flex-row md:justify-normal md:min-h-[auto] md:min-w-[auto] md:mx-auto md:py-0">
+        <div
+          role="button"
+          className="relative text-black text-sm items-center box-border caret-transparent gap-x-2 flex justify-between leading-[14px] uppercase text-nowrap align-top w-full mx-0 pb-0.5 md:justify-center md:w-auto md:mx-auto"
+        >
+          <div className="box-border caret-transparent min-h-0 min-w-0 text-nowrap md:min-h-[auto] md:min-w-[auto]">
+            Pages
+          </div>
+          <img
+            src="https://cdn.prod.website-files.com/679b678d080aadecaa78b6ac/679c51f3e9ea7cdcefe7d4e4_dropdown-arrow.svg"
+            alt="Arrow"
+            className="box-border caret-transparent max-w-full min-h-0 min-w-0 text-nowrap md:min-h-[auto] md:min-w-[auto]"
+          />
+        </div>
+        <nav className="absolute bg-zinc-300 box-border caret-transparent hidden min-w-full pt-[15px] md:pt-6">
+          <div className="items-stretch bg-gray-100 box-border caret-transparent flex flex-col justify-start min-w-[200px] gap-y-5 pt-4 pb-[15px] px-4 rounded-[10px] border-b-0 border-x-0 border-black/10 md:p-5 md:rounded-none md:border-b md:border-l md:border-r">
+            <a
+              href="https://drill-template.webflow.io/faq"
+              className="text-black text-sm font-medium items-center box-border caret-transparent gap-x-2 flex justify-start leading-[14px] max-w-full"
+            >
+              <div className="bg-black box-border caret-transparent h-px w-0"></div>
+              <div className="box-border caret-transparent">FAQ</div>
+            </a>
+            <a
+              href="https://drill-template.webflow.io/template-info/style-guide"
+              className="text-black text-sm font-medium items-center box-border caret-transparent gap-x-2 flex justify-start leading-[14px] max-w-full"
+            >
+              <div className="bg-black box-border caret-transparent h-px w-0"></div>
+              <div className="box-border caret-transparent">Style Guide</div>
+            </a>
+            <a
+              href="https://drill-template.webflow.io/privacy-policy"
+              className="text-black text-sm font-medium items-center box-border caret-transparent gap-x-2 flex justify-start leading-[14px] max-w-full"
+            >
+              <div className="bg-black box-border caret-transparent h-px w-0"></div>
+              <div className="box-border caret-transparent">Privacy Policy</div>
+            </a>
+            <a
+              href="https://drill-template.webflow.io/terms-conditions"
+              className="text-black text-sm font-medium items-center box-border caret-transparent gap-x-2 flex justify-start leading-[14px] max-w-full"
+            >
+              <div className="bg-black box-border caret-transparent h-px w-0"></div>
+              <div className="box-border caret-transparent">
+                Terms &amp; Conditions
+              </div>
+            </a>
+          </div>
+        </nav>
+      </div>
+      <a
+        href="https://drill-template.webflow.io/contact-us"
+        className="relative text-black text-sm items-start box-border caret-transparent flex flex-col justify-start leading-[16.8px] max-w-full min-h-0 min-w-0 uppercase overflow-hidden py-3 md:[align-items:normal] md:justify-normal md:min-h-[auto] md:min-w-[auto] md:pt-0 md:pb-0.5"
+      >
+        <div className="box-border caret-transparent min-h-0 min-w-0 md:min-h-[auto] md:min-w-[auto]">
+          Contact
+        </div>
+        <div className="absolute bg-black box-border caret-transparent h-px transform-none w-full bottom-[0%] inset-x-[0%] md:translate-x-[-110.0%]"></div>
+      </a>
+    </nav>
+  );
+};
