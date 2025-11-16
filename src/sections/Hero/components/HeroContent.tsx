@@ -7,7 +7,7 @@ export const HeroContent = () => {
         <h1 className="text-transparent text-3xl font-semibold bg-clip-text bg-[url('https://cdn.prod.website-files.com/679b678d080aadecaa78b6ac/67a09b154683945b0cf22d92_hero-02.jpg')] bg-no-repeat bg-size-[auto_200px] box-border caret-transparent leading-6 text-center uppercase bg-bottom pl-0 pt-3 md:text-[94px] md:bg-size-[1440px] md:leading-[75.2px] md:text-start md:pl-[168px] md:pt-5">
           Homes
         </h1>
-        <div className="items-center box-border caret-transparent flex flex-col justify-between gap-y-10 mt-5 md:items-end md:flex-row md:gap-y-[normal] md:mt-3.5">
+        <div className="items-center box-border caret-transparent flex flex-col justify-between gap-y-10 mt-3 md:items-end md:flex-row md:gap-y-[normal] md:mt-1.5">
           <div className="items-center box-border caret-transparent flex flex-col justify-start max-w-none text-center w-full pl-0 md:items-start md:max-w-[65%] md:text-start md:pl-40">
             <p className="text-sm box-border caret-transparent leading-[21px] text-center mb-[30px] md:text-base md:leading-[27.2px] md:text-start">
               From custom new builds to complete renovations and interior transformations—bringing quality craftsmanship and modern design to every project
