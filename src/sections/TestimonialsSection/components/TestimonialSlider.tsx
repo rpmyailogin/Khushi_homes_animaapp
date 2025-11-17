@@ -43,10 +43,10 @@ export const TestimonialSlider = () => {
       aria-label="carousel"
       className="relative box-border caret-transparent clear-both"
     >
-      <div className="relative box-border caret-transparent overflow-hidden">
-        <div className="flex transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
+      <div className="relative box-border caret-transparent">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-[34px]">
           {testimonials.map((testimonial, index) => (
-            <div key={index} className="min-w-full flex justify-center">
+            <div key={index}>
               <TestimonialCard {...testimonial} />
             </div>
           ))}
@@ -54,7 +54,6 @@ export const TestimonialSlider = () => {
       </div>
       <SliderControls variant="previous" onClick={handlePrevious} />
       <SliderControls variant="next" onClick={handleNext} />
-      <SliderControls variant="dots" totalSlides={testimonials.length} currentSlide={currentSlide + 1} />
     </div>
   );
 };
