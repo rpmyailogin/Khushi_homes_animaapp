@@ -14,11 +14,11 @@ export const ServiceCard = (props: ServiceCardProps) => {
   return (
     <div role="listitem" className="box-border caret-transparent flex">
       <div
-        className="relative box-border caret-transparent flex flex-col max-w-full w-full border border-solid border-black/10 overflow-hidden group transition-all duration-300"
+        className="relative box-border caret-transparent flex flex-col max-w-full w-full border border-solid border-black/10 overflow-hidden group transition-all duration-300 h-full"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <div className="box-border caret-transparent flex flex-col p-5 md:p-[34px] gap-y-5 bg-white transition-colors duration-300 group-hover:bg-gray-50">
+        <div className="box-border caret-transparent flex flex-col p-5 md:p-[34px] gap-y-5 bg-white transition-colors duration-300 group-hover:bg-gray-50 flex-grow">
           <div className="items-center box-border caret-transparent gap-x-5 flex justify-between">
             <h4 className="text-black text-lg box-border caret-transparent leading-[27px] md:text-[22px] md:leading-[33px]">
               {props.title}
@@ -33,7 +33,7 @@ export const ServiceCard = (props: ServiceCardProps) => {
             {props.description}
           </p>
         </div>
-        <div className="bg-gray-100 box-border caret-transparent overflow-hidden">
+        <div className="bg-gray-100 box-border caret-transparent overflow-hidden mt-auto">
           <img
             src={props.serviceImageUrl}
             alt="Service Image"
