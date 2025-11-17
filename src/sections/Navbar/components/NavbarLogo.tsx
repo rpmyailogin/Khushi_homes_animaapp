@@ -6,8 +6,8 @@ export const NavbarLogo = () => {
       to="/"
       className="box-border caret-transparent block max-w-full no-underline hover:no-underline"
     >
-      <span className="text-black text-2xl font-semibold box-border caret-transparent">
-        Khushi Homes
+      <span className="text-black text-2xl font-bold tracking-tight box-border caret-transparent">
+        KHUSHI HOMES
       </span>
     </Link>
   );
