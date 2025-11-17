@@ -22,24 +22,24 @@ export const ContactForm = () => {
               name="Name"
               placeholder="Full Name*"
               type="text"
-              className="text-sm box-border caret-transparent block col-end-[span_1] col-start-[span_1] row-end-[span_1] row-start-[span_1] leading-[21px] align-middle w-full border px-3 py-2 border-solid border-black/10 md:col-end-[span_2] md:col-start-[span_2] md:p-[15px]"
+              className="text-sm box-border caret-transparent block col-end-[span_1] col-start-[span_1] row-end-[span_1] row-start-[span_1] leading-[21px] align-middle w-full border px-3 py-2 border-solid border-zinc-300 md:col-end-[span_2] md:col-start-[span_2] md:p-[15px]"
             />
             <input
               name="Email"
               placeholder="Email* "
               type="email"
-              className="text-sm box-border caret-transparent block leading-[21px] align-middle w-full border px-3 py-2 border-solid border-black/10 md:p-[15px]"
+              className="text-sm box-border caret-transparent block leading-[21px] align-middle w-full border px-3 py-2 border-solid border-zinc-300 md:p-[15px]"
             />
             <input
               name="Phone"
               placeholder="Phone No"
               type="tel"
-              className="text-sm box-border caret-transparent block leading-[21px] align-middle w-full border px-3 py-2 border-solid border-black/10 md:p-[15px]"
+              className="text-sm box-border caret-transparent block leading-[21px] align-middle w-full border px-3 py-2 border-solid border-zinc-300 md:p-[15px]"
             />
             <textarea
               placeholder="Write your message here* "
               name="Message"
-              className="text-sm box-border caret-transparent block col-end-[span_1] col-start-[span_1] row-end-[span_1] row-start-[span_1] leading-[21px] min-h-[180px] align-middle w-full px-3 py-2 border-black/10 md:col-end-[span_2] md:col-start-[span_2] md:p-3.5"
+              className="text-sm box-border caret-transparent block col-end-[span_1] col-start-[span_1] row-end-[span_1] row-start-[span_1] leading-[21px] min-h-[180px] align-middle w-full px-3 py-2 border border-solid border-zinc-300 md:col-end-[span_2] md:col-start-[span_2] md:p-3.5"
             ></textarea>
           </div>
           <input
