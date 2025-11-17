@@ -9,17 +9,31 @@ export type ServiceCardProps = {
 };
 
 export const ServiceCard = (props: ServiceCardProps) => {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   return (
     <div role="listitem" className="box-border caret-transparent flex">
       <div
-        className="relative items-stretch bg-gray-100 box-border caret-transparent flex flex-col justify-end max-w-full w-full overflow-hidden group cursor-pointer"
-        onMouseEnter={() => setIsExpanded(true)}
-        onMouseLeave={() => setIsExpanded(false)}
-        onClick={() => setIsExpanded(!isExpanded)}
+        className="relative box-border caret-transparent flex flex-col max-w-full w-full border border-solid border-black/10 overflow-hidden group transition-all duration-300"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
       >
-        <div className="box-border caret-transparent overflow-hidden">
+        <div className="box-border caret-transparent flex flex-col p-5 md:p-[34px] gap-y-5 bg-white transition-colors duration-300 group-hover:bg-gray-50">
+          <div className="items-center box-border caret-transparent gap-x-5 flex justify-between">
+            <h4 className="text-black text-lg box-border caret-transparent leading-[27px] md:text-[22px] md:leading-[33px]">
+              {props.title}
+            </h4>
+            <img
+              src={props.iconUrl}
+              alt="Service Icon"
+              className="box-border caret-transparent max-h-10 max-w-10 min-h-10 min-w-10"
+            />
+          </div>
+          <p className="box-border caret-transparent text-sm leading-relaxed">
+            {props.description}
+          </p>
+        </div>
+        <div className="bg-gray-100 box-border caret-transparent overflow-hidden">
           <img
             src={props.serviceImageUrl}
             alt="Service Image"
@@ -27,35 +41,14 @@ export const ServiceCard = (props: ServiceCardProps) => {
           />
         </div>
         <div
-          className={`absolute box-border caret-transparent flex flex-col justify-center transition-all duration-500 ease-in-out px-5 py-4 inset-x-[0%] md:p-[30px] ${
-            isExpanded
-              ? 'bg-red-600 bottom-[0%] h-[50%]'
-              : 'bg-white bottom-[0%] h-auto'
+          className={`absolute inset-0 bg-red-600/95 flex flex-col items-center justify-center p-5 md:p-[34px] transition-opacity duration-300 ${
+            isHovered ? 'opacity-100' : 'opacity-0 pointer-events-none'
           }`}
         >
-          <div className="box-border caret-transparent">
-            <div className="items-center box-border caret-transparent gap-x-5 flex justify-between mb-2">
-              <h4 className={`text-lg box-border caret-transparent leading-[27px] transition-colors duration-500 md:text-[22px] md:leading-[33px] ${
-                isExpanded ? 'text-white' : 'text-black'
-              }`}>
-                {props.title}
-              </h4>
-              <img
-                src={props.iconUrl}
-                alt="Service Icon"
-                className={`box-border caret-transparent max-h-10 max-w-10 min-h-10 min-w-10 transition-all duration-500 ${
-                  isExpanded ? 'brightness-0 invert' : ''
-                }`}
-              />
-            </div>
-          </div>
-          <div
-            className={`box-border caret-transparent transition-all duration-500 overflow-hidden ${
-              isExpanded
-                ? 'opacity-100 max-h-[500px] mt-4'
-                : 'opacity-0 max-h-0 mt-0'
-            }`}
-          >
+          <div className="text-center">
+            <h4 className="text-white text-lg box-border caret-transparent leading-[27px] mb-4 md:text-[22px] md:leading-[33px]">
+              {props.title}
+            </h4>
             <p className="text-white text-sm box-border caret-transparent leading-relaxed">
               {props.description}
             </p>
