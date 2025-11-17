@@ -93,7 +93,7 @@ export const ProjectsPage = () => {
                     className="box-border caret-transparent inline-block max-h-[300px] max-w-full min-h-[300px] object-cover w-full hover:scale-105 transition-transform duration-500"
                   />
                 </div>
-                <div className="box-border caret-transparent p-5 md:p-[30px] flex flex-col gap-y-4">
+                <div className="box-border caret-transparent p-5 md:p-[30px] flex flex-col gap-y-4" style={{ backgroundColor: '#e6feff' }}>
                   <div className="box-border caret-transparent flex items-center justify-between gap-x-3">
                     <div className="text-sm bg-gray-100 box-border caret-transparent leading-[14px] px-2.5 py-[5px]">
                       {project.category}
