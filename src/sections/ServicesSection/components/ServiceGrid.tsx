@@ -27,6 +27,20 @@ export const ServiceGrid = () => {
         serviceImageUrl="https://cdn.prod.website-files.com/679b74f316932fb3b1e01c07/679db87dce7fe13ceb2a6e80_services-thumb-04.jpg"
         href="/services"
       />
+      <ServiceCard
+        title="Outdoor Living Spaces"
+        iconUrl="https://cdn.prod.website-files.com/679b74f316932fb3b1e01c07/679dba1be9049fbc8805b173_ic-structural.svg"
+        description="Extend your living area with stunning outdoor entertainment zones. We design and build decks, patios, and alfresco areas perfect for Australian lifestyle."
+        serviceImageUrl="https://cdn.prod.website-files.com/679b74f316932fb3b1e01c07/679dba1d3d27868b02647dfb_services-thumb-05.jpg"
+        href="/services"
+      />
+      <ServiceCard
+        title="Project Management"
+        iconUrl="https://cdn.prod.website-files.com/679b74f316932fb3b1e01c07/679dba41441cc64868b978bd_ic-foundation.svg"
+        description="Complete oversight and coordination of your construction project. We handle scheduling, quality control, and compliance to ensure on-time delivery."
+        serviceImageUrl="https://cdn.prod.website-files.com/679b74f316932fb3b1e01c07/679dba46477f30fd79c4ca4a_services-thumb-06.jpg"
+        href="/services"
+      />
     </div>
   );
 };
