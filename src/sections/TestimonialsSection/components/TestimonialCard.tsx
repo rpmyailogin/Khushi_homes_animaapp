@@ -11,7 +11,7 @@ export const TestimonialCard = (props: TestimonialCardProps) => {
     <div
       aria-label={props.ariaLabel}
       role="group"
-      className="relative box-border caret-transparent inline-block h-full max-w-none text-left align-top w-full mr-5 md:max-w-[420px] md:mr-[34px]"
+      className="relative box-border caret-transparent text-left w-full max-w-[420px] mx-auto px-5 md:px-0"
     >
       <div className="border-b-zinc-800 border-l-zinc-800 border-t-zinc-800 box-border caret-transparent flex flex-col gap-y-5 pr-0 border-r-white/10 border-r-0 md:gap-y-[25px] md:pr-[34px] md:border-r">
         <div className="text-neutral-400 items-center box-border caret-transparent gap-x-3 flex justify-start">

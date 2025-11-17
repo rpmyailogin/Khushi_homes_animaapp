@@ -2,38 +2,39 @@ export type SliderControlsProps = {
   variant: "previous" | "next" | "dots";
   totalSlides?: number;
   currentSlide?: number;
+  onClick?: () => void;
 };
 
 export const SliderControls = (props: SliderControlsProps) => {
   if (props.variant === "previous") {
     return (
-      <div
-        role="button"
+      <button
+        onClick={props.onClick}
         aria-label="previous slide"
-        className="absolute box-border caret-transparent m-auto text-white text-[40px] items-center bottom-[-50px] flex justify-center max-h-[34px] max-w-[34px] min-h-[34px] min-w-[34px] w-20 z-[3] border overflow-hidden rounded-[50%] border-solid border-white/10 right-11 md:-bottom-20 hover:border-white"
+        className="absolute box-border caret-transparent m-auto text-white text-[40px] items-center top-1/2 -translate-y-1/2 flex justify-center max-h-[34px] max-w-[34px] min-h-[34px] min-w-[34px] w-20 z-[3] border overflow-hidden rounded-[50%] border-solid border-white/10 left-0 md:left-[-50px] hover:border-white cursor-pointer transition-all"
       >
         <img
           src="https://cdn.prod.website-files.com/679b678d080aadecaa78b6ac/679dc7d74485cc2f9b298344_ic-left-slider-arrow.svg"
           alt="Arrow"
           className="box-border caret-transparent max-w-full"
         />
-      </div>
+      </button>
     );
   }
 
   if (props.variant === "next") {
     return (
-      <div
-        role="button"
+      <button
+        onClick={props.onClick}
         aria-label="next slide"
-        className="absolute box-border caret-transparent m-auto text-white text-[40px] items-center bottom-[-50px] flex justify-center max-h-[34px] max-w-[34px] min-h-[34px] min-w-[34px] w-20 z-[4] border overflow-hidden rounded-[50%] border-solid border-white/10 right-[0%] md:-bottom-20 hover:border-white"
+        className="absolute box-border caret-transparent m-auto text-white text-[40px] items-center top-1/2 -translate-y-1/2 flex justify-center max-h-[34px] max-w-[34px] min-h-[34px] min-w-[34px] w-20 z-[4] border overflow-hidden rounded-[50%] border-solid border-white/10 right-0 md:right-[-50px] hover:border-white cursor-pointer transition-all"
       >
         <img
           src="https://cdn.prod.website-files.com/679b678d080aadecaa78b6ac/679dc7d740e2c8138247d4c2_ic-slider-arrow.svg"
           alt="Arrow"
           className="box-border caret-transparent max-w-full"
         />
-      </div>
+      </button>
     );
   }
 
