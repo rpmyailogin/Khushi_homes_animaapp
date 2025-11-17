@@ -52,22 +52,6 @@ export const FooterLinks = () => {
           ]}
         />
       </div>
-      <div className="text-neutral-400 text-sm box-border caret-transparent leading-[21px]">
-        Designed by{" "}
-        <a
-          href="https://nixar.io/"
-          className="box-border caret-transparent hover:text-white hover:border-white"
-        >
-          Nixar.
-        </a>
-        Powered by{" "}
-        <a
-          href="https://webflow.com/"
-          className="box-border caret-transparent hover:text-white hover:border-white"
-        >
-          Webflow.
-        </a>
-      </div>
     </div>
   );
 };
