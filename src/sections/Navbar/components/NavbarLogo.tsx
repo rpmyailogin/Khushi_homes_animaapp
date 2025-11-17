@@ -9,7 +9,7 @@ export const NavbarLogo = () => {
       <img
         src="/static/Gemini_Generated_Image_uvtxb2uvtxb2uvtx.png"
         alt="Khushi Homes"
-        className="h-14 w-auto"
+        className="h-10 w-auto"
       />
     </Link>
   );
