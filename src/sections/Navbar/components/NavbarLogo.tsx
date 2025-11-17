@@ -7,9 +7,9 @@ export const NavbarLogo = () => {
       className="box-border caret-transparent block max-w-full no-underline hover:no-underline"
     >
       <img
-        src="/static/Gemini_Generated_Image_4ql4vd4ql4vd4ql4.png"
+        src="/static/Gemini_Generated_Image_uvtxb2uvtxb2uvtx.png"
         alt="Khushi Homes"
-        className="h-10 w-auto"
+        className="h-14 w-auto"
       />
     </Link>
   );
