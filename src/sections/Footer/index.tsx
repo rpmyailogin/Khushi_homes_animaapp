@@ -9,11 +9,6 @@ export const Footer = () => {
           <FooterCTA />
           <FooterLinks />
         </div>
-        <img
-          src="https://cdn.prod.website-files.com/679b678d080aadecaa78b6ac/679c7a7ad25099b1cde3908a_footer-line.svg"
-          alt="Foote Tag Line"
-          className="box-border caret-transparent inline-block max-w-full"
-        />
       </div>
     </section>
   );
