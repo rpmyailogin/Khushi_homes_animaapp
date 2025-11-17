@@ -40,7 +40,7 @@ export const StatsCard = (props: StatsCardProps) => {
         {props.statValue}
       </div>
       <p
-        className={`${props.variant === "bg-black border-r-zinc-800 justify-center px-[25px] py-[30px] md:px-[34px] md:py-[60px]" ? "text-neutral-400" : ""} text-sm box-border caret-transparent leading-[21px] max-w-none w-full md:text-base md:leading-[27.2px] md:max-w-[70%]`}
+        className={`${props.variant.includes("bg-black") ? "text-white/70" : ""} text-sm box-border caret-transparent leading-[21px] max-w-none w-full md:text-base md:leading-[27.2px] md:max-w-[70%]`}
       >
         {props.statDescription}
       </p>
