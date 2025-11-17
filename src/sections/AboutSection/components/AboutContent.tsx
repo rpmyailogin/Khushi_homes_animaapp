@@ -1,7 +1,7 @@
 export const AboutContent = () => {
   return (
-    <div className="items-start box-border caret-transparent flex flex-col justify-start h-full">
-      <p className="text-white text-lg box-border caret-transparent leading-[27px] mb-8 md:text-2xl md:leading-[36px] md:mb-10">
+    <div className="items-start box-border caret-transparent flex flex-col justify-start max-w-4xl">
+      <p className="text-white text-lg box-border caret-transparent leading-[27px] mb-8 md:text-xl md:leading-[32px] md:mb-10">
         Khushi Homes specializes in delivering premium construction services throughout Australia, combining traditional craftsmanship with innovative building techniques. Our commitment to quality, transparency, and customer satisfaction has established us as a trusted partner for homeowners seeking exceptional results.
       </p>
       <a
