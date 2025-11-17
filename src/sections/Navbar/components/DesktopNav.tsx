@@ -50,11 +50,6 @@ export const DesktopNav = () => {
           <div className="box-border caret-transparent min-h-0 min-w-0 text-nowrap md:min-h-[auto] md:min-w-[auto]">
             More
           </div>
-          <img
-            src="https://cdn.prod.website-files.com/679b678d080aadecaa78b6ac/679c51f3e9ea7cdcefe7d4e4_dropdown-arrow.svg"
-            alt="Arrow"
-            className="box-border caret-transparent max-w-full min-h-0 min-w-0 text-nowrap md:min-h-[auto] md:min-w-[auto]"
-          />
         </div>
         <nav className="absolute bg-zinc-300 box-border caret-transparent hidden min-w-full pt-[15px] md:pt-6">
           <div className="items-stretch bg-gray-100 box-border caret-transparent flex flex-col justify-start min-w-[200px] gap-y-5 pt-4 pb-[15px] px-4 rounded-[10px] border-b-0 border-x-0 border-black/10 md:p-5 md:rounded-none md:border-b md:border-l md:border-r">
