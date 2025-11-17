@@ -6,9 +6,11 @@ export const NavbarLogo = () => {
       to="/"
       className="box-border caret-transparent block max-w-full no-underline hover:no-underline"
     >
-      <span className="text-black text-2xl font-bold tracking-tight box-border caret-transparent">
-        KHUSHI HOMES
-      </span>
+      <img
+        src="/static/Gemini_Generated_Image_4ql4vd4ql4vd4ql4.png"
+        alt="Khushi Homes"
+        className="h-10 w-auto"
+      />
     </Link>
   );
 };
