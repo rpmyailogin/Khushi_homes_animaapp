@@ -17,7 +17,7 @@ export const AboutSection = () => {
           <ImageGallery />
         </div>
 
-        <div className="ml-[106px]">
+        <div className="ml-[170px]">
           <AboutContent />
         </div>
       </div>
