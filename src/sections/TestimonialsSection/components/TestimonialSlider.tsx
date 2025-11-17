@@ -52,8 +52,10 @@ export const TestimonialSlider = () => {
           ))}
         </div>
       </div>
-      <SliderControls variant="previous" onClick={handlePrevious} />
-      <SliderControls variant="next" onClick={handleNext} />
+      <div className="flex items-center justify-end gap-3 mt-8 md:mt-10">
+        <SliderControls variant="previous" onClick={handlePrevious} />
+        <SliderControls variant="next" onClick={handleNext} />
+      </div>
     </div>
   );
 };
