@@ -20,7 +20,8 @@ export const ProjectCard = (props: ProjectCardProps) => {
   return (
     <div role="listitem" className="box-border caret-transparent flex">
       <div
-        className="relative items-stretch bg-gray-100 box-border caret-transparent flex flex-col justify-end max-w-full w-full overflow-hidden group cursor-pointer"
+        className="relative items-stretch box-border caret-transparent flex flex-col justify-end max-w-full w-full overflow-hidden group cursor-pointer"
+        style={{ backgroundColor: '#e6feff' }}
         onMouseEnter={() => setIsExpanded(true)}
         onMouseLeave={() => setIsExpanded(false)}
         onClick={() => setIsExpanded(!isExpanded)}
