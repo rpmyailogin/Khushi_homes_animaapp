@@ -22,7 +22,7 @@ export const StatsSection = () => {
             statDescription="Projects completed on time and within budget"
           />
           <StatsCard
-            variant="bg-black border-l-zinc-800 border-r-zinc-800 border-t-zinc-800 justify-center px-[25px] py-[30px]"
+            variant="bg-black border-l-zinc-800 border-r-zinc-800 border-t-zinc-800 justify-center px-[25px] py-[30px] md:px-[34px] md:py-[60px]"
             statValue="$200M+"
             statDescription="Successfully completed projects worth over $200M, covering residential, commercial, and infrastructure developments with top-notch quality."
           />
