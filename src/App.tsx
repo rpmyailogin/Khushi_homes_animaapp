@@ -1,7 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import { Navbar } from "@/sections/Navbar";
 import { Footer } from "@/sections/Footer";
-import { ScrollToTop } from "@/components/ScrollToTop";
 import { HomePage } from "@/pages/HomePage";
 import { ProjectsPage } from "@/pages/ProjectsPage";
 import { ServicesPage } from "@/pages/ServicesPage";
@@ -22,7 +21,6 @@ export const App = () => {
         <Route path="/recent-projects" element={<RecentProjectsPage />} />
       </Routes>
       <Footer />
-      <ScrollToTop />
       <div className="fixed box-border caret-transparent contents z-[2147483647] left-0 top-0">
         <div className="caret-transparent"></div>
       </div>
