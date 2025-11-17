@@ -18,7 +18,7 @@ export const WhyChooseContent = () => {
           <FeatureImage />
           <div className="items-start box-border caret-transparent flex flex-col justify-start max-w-none gap-y-[30px] w-full md:max-w-[65%] md:gap-y-[60px]">
             <p className="box-border caret-transparent">
-              Your vision is our priority. At Khushi Homes, we deliver tailored home solutions that align with your unique lifestyle and exceed expectations.
+              Your vision is our priority. At Khushi Homes, we deliver tailored home solutions that align with your unique lifestyle and exceed expectations. From initial consultation to final handover, our dedicated team ensures every detail reflects your aspirations. We combine innovative design with proven construction methods to create homes that stand the test of time. Experience the difference of working with builders who truly care about bringing your dream home to life.
             </p>
             <a
               href="/"
