@@ -15,10 +15,14 @@ export const AboutSection = () => {
               <div className="box-border caret-transparent">Explore</div>
             </div>
 
+            <div className="mb-8 md:mb-10 md:hidden">
+              <ImageGallery />
+            </div>
+
             <AboutContent />
           </div>
 
-          <div className="w-full md:w-80 lg:w-96 mt-8 md:mt-0">
+          <div className="w-full md:w-80 lg:w-96 mt-8 md:mt-0 hidden md:block">
             <ImageGallery />
           </div>
         </div>
