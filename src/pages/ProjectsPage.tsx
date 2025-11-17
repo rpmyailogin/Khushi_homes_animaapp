@@ -86,7 +86,7 @@ export const ProjectsPage = () => {
           <div className="box-border caret-transparent grid auto-cols-[1fr] grid-cols-[1fr] grid-rows-[auto] gap-y-10 md:grid-cols-[1fr_1fr] md:gap-x-[30px] md:gap-y-[60px]">
             {projects.map((project) => (
               <div key={project.id} className="box-border caret-transparent flex flex-col border border-solid border-black/10 hover:shadow-[rgba(0,0,0,0.06)_0px_30px_60px_0px] transition-shadow">
-                <div className="bg-gray-100 box-border caret-transparent overflow-hidden">
+                <div className="box-border caret-transparent overflow-hidden" style={{ backgroundColor: '#e6feff' }}>
                   <img
                     src={project.image}
                     alt={project.title}
