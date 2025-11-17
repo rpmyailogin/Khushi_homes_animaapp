@@ -85,7 +85,7 @@ export const ProjectsPage = () => {
         <div className="box-border caret-transparent max-w-full w-full mx-auto px-5 md:max-w-[1336px]">
           <div className="box-border caret-transparent grid auto-cols-[1fr] grid-cols-[1fr] grid-rows-[auto] gap-y-10 md:grid-cols-[1fr_1fr] md:gap-x-[30px] md:gap-y-[60px]">
             {projects.map((project) => (
-              <div key={project.id} className="box-border caret-transparent flex flex-col border border-solid border-black/10 hover:shadow-[rgba(0,0,0,0.06)_0px_30px_60px_0px] transition-shadow">
+              <div key={project.id} className="box-border caret-transparent flex flex-col border border-solid border-black/10 hover:shadow-[rgba(0,0,0,0.06)_0px_30px_60px_0px] transition-shadow" style={{ backgroundColor: '#e6feff' }}>
                 <div className="box-border caret-transparent overflow-hidden" style={{ backgroundColor: '#e6feff' }}>
                   <img
                     src={project.image}
