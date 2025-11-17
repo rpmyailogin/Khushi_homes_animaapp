@@ -3,7 +3,7 @@ import { FeatureImage } from "@/sections/WhyChooseSection/components/FeatureImag
 
 export const WhyChooseContent = () => {
   return (
-    <div className="box-border caret-transparent flex flex-col max-w-none gap-y-[15px] w-full md:max-w-[60%] md:gap-y-[60px]">
+    <div className="box-border caret-transparent flex flex-col max-w-none gap-y-[15px] w-full md:gap-y-[60px]">
       <div className="box-border caret-transparent">
         <h2 className="text-black text-xl font-medium box-border caret-transparent leading-[30px] mb-2.5 md:text-4xl md:leading-[54px]">
           Expert Craftsmanship for Unmatched Construction Projects
