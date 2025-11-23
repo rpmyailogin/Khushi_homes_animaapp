@@ -6,7 +6,6 @@ export const ContactPage = () => {
     name: '',
     email: '',
     phone: '',
-    subject: '',
     message: '',
     projectType: 'new-home'
   });
@@ -42,7 +41,6 @@ export const ContactPage = () => {
           name: '',
           email: '',
           phone: '',
-          subject: '',
           message: '',
           projectType: 'new-home'
         });
@@ -199,22 +197,6 @@ export const ContactPage = () => {
                     <option value="consultation">Consultation</option>
                     <option value="other">Other</option>
                   </select>
-                </div>
-
-                <div className="box-border caret-transparent mb-6">
-                  <label htmlFor="subject" className="text-sm font-medium box-border caret-transparent block mb-2">
-                    Subject *
-                  </label>
-                  <input
-                    type="text"
-                    id="subject"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    required
-                    className="box-border caret-transparent w-full px-4 py-3 border border-solid border-black/10 focus:outline-none focus:border-black transition-colors"
-                    placeholder="Project inquiry"
-                  />
                 </div>
 
                 <div className="box-border caret-transparent mb-6">
