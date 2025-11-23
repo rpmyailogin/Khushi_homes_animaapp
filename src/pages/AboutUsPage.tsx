@@ -1,11 +1,11 @@
 import { AboutHeroSection } from "@/sections/AboutHeroSection";
-import { AboutSection } from "@/sections/AboutSection";
+import { AboutTeamSection } from "@/sections/AboutTeamSection";
 
 export const AboutUsPage = () => {
   return (
     <>
       <AboutHeroSection />
-      <AboutSection />
+      <AboutTeamSection />
     </>
   );
 };

@@ -1,6 +1,27 @@
 export const AboutContent = () => {
   return (
     <div className="items-start box-border caret-transparent flex flex-col justify-start max-w-4xl">
+      <p className="text-white text-base leading-[27.2px] mb-8">
+        Khushi Homes brings expertise in residential construction and renovation, creating spaces where quality meets design excellence. With years of experience in the industry, we specialize in transforming visions into reality through meticulous craftsmanship and attention to detail. Our dedicated team works closely with clients to understand their unique needs and deliver homes that reflect their lifestyle and aspirations. From foundation to finish, we ensure every project meets the highest standards of quality and durability. Trust Khushi Homes to build not just houses, but the foundation of your dreams.
+      </p>
+      <a
+        href="/projects"
+        className="text-white text-sm items-center box-border caret-transparent gap-x-2.5 flex justify-center leading-[16.8px] max-w-full border px-[22px] py-3 border-solid border-white hover:bg-white hover:text-black transition-colors"
+      >
+        <div className="relative box-border caret-transparent overflow-hidden">
+          <div className="box-border caret-transparent gap-x-1 flex">
+            About us
+          </div>
+          <div className="absolute box-border caret-transparent gap-x-1 flex">
+            About us
+          </div>
+        </div>
+        <img
+          src="https://cdn.prod.website-files.com/679b678d080aadecaa78b6ac/679c559d1989cb82e96c949e_15fec19f4179bbda8c7cdc30da4795c2_button-arrow.svg"
+          alt="Arrow"
+          className="box-border caret-transparent max-w-full"
+        />
+      </a>
     </div>
   );
 };
