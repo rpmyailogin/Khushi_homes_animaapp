@@ -2,7 +2,7 @@ export const AboutContent = () => {
   return (
     <div className="items-start box-border caret-transparent flex flex-col justify-start max-w-4xl">
       <p className="text-white text-base leading-[27.2px] mb-8">
-        Khushi Homes brings expertise in residential construction and renovation, creating spaces where quality meets design excellence.
+        Khushi Homes brings expertise in residential construction and renovation, creating spaces where quality meets design excellence. With years of experience in the industry, we specialize in transforming visions into reality through meticulous craftsmanship and attention to detail. Our dedicated team works closely with clients to understand their unique needs and deliver homes that reflect their lifestyle and aspirations. From foundation to finish, we ensure every project meets the highest standards of quality and durability. Trust Khushi Homes to build not just houses, but the foundation of your dreams.
       </p>
       <a
         href="/projects"
