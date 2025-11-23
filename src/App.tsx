@@ -6,6 +6,7 @@ import { ProjectsPage } from "@/pages/ProjectsPage";
 import { ServicesPage } from "@/pages/ServicesPage";
 import { BlogsPage } from "@/pages/BlogsPage";
 import { RecentProjectsPage } from "@/pages/RecentProjectsPage";
+import { AboutUsPage } from "@/pages/AboutUsPage";
 
 export const App = () => {
   return (
@@ -14,6 +15,7 @@ export const App = () => {
       <main className="pt-[60px]">
         <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<AboutUsPage />} />
         <Route path="/projects" element={<ProjectsPage />} />
         <Route path="/services" element={<ServicesPage />} />
         <Route path="/blogs" element={<BlogsPage />} />
