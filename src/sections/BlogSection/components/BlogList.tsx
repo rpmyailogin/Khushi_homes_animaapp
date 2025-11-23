@@ -15,7 +15,7 @@ export const BlogList = () => {
             category="Materials"
             date="Feb 11, 2025"
             title="Eco-friendly construction materials you should know about"
-            linkText="Read Articles"
+            linkText="Read More"
             arrowIconUrl="https://cdn.prod.website-files.com/679b678d080aadecaa78b6ac/679c726c1827c33928d75854_ic-black-arrow.svg"
           />
           <BlogCard
@@ -25,7 +25,7 @@ export const BlogList = () => {
             category="Efficiency"
             date="Feb 11, 2025"
             title="Adopting lean construction practices for maximum efficiency"
-            linkText="Read Articles"
+            linkText="Read More"
             arrowIconUrl="https://cdn.prod.website-files.com/679b678d080aadecaa78b6ac/679c726c1827c33928d75854_ic-black-arrow.svg"
           />
         </div>
