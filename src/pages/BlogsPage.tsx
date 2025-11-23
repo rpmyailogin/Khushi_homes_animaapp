@@ -38,10 +38,10 @@ export const BlogsPage = () => {
 
   return (
     <div className="box-border caret-transparent">
-      <section className="bg-gray-100 box-border caret-transparent py-10 md:py-20">
+      <section className="bg-gray-100 box-border caret-transparent py-8 md:py-12">
         <div className="box-border caret-transparent max-w-full w-full mx-auto px-5 md:max-w-[1336px]">
           <SectionHeader subtitle="Insights & Updates" title="Our Blog" />
-          <p className="box-border caret-transparent max-w-3xl mb-10">
+          <p className="box-border caret-transparent max-w-3xl mb-6">
             Stay informed with the latest trends, insights, and best practices in construction, engineering, and project management from industry experts.
           </p>
         </div>
