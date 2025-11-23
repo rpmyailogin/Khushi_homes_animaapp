@@ -7,7 +7,7 @@ export const NavbarLogo = () => {
       className="box-border caret-transparent block max-w-full no-underline hover:no-underline"
     >
       <img
-        src="/Gemini_Generated_Image_uvtxb2uvtxb2uvtx.png"
+        src="/static/dgdhd.jpg"
         alt="Khushi Homes"
         className="h-10 w-auto"
       />
