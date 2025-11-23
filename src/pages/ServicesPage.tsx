@@ -47,7 +47,7 @@ export const ServicesPage = () => {
         </div>
       </section>
 
-      <section className="box-border caret-transparent py-10 md:py-[60px]">
+      <section className="box-border caret-transparent py-10 md:py-[60px]" style={{ backgroundColor: '#e6feff' }}>
         <div className="box-border caret-transparent max-w-full w-full mx-auto px-5 md:max-w-[1336px]">
           <div className="box-border caret-transparent grid auto-cols-[1fr] grid-cols-[1fr] grid-rows-[auto] gap-y-10 md:grid-cols-[1fr_1fr] md:gap-x-[30px] md:gap-y-[60px]">
             {services.map((service) => (
