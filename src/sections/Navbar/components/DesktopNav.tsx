@@ -15,21 +15,30 @@ export const DesktopNav = () => {
         </div>
         <div className="absolute bg-black box-border caret-transparent h-px transform-none w-full bottom-[0%] inset-x-[0%] md:translate-x-[-110.0%]"></div>
       </Link>
-      <Link
-        to="/projects"
+      <a
+        href="#about"
         className="relative text-black text-sm items-start box-border caret-transparent flex flex-col justify-start leading-[16.8px] max-w-full min-h-0 min-w-0 uppercase overflow-hidden py-3 md:[align-items:normal] md:justify-normal md:min-h-[auto] md:min-w-[auto] md:pt-0 md:pb-0.5"
       >
         <div className="box-border caret-transparent min-h-0 min-w-0 md:min-h-[auto] md:min-w-[auto]">
-          Projects
+          About us
         </div>
         <div className="absolute bg-black box-border caret-transparent h-px transform-none w-full bottom-[0%] inset-x-[0%] md:translate-x-[-110.0%]"></div>
-      </Link>
+      </a>
       <Link
         to="/services"
         className="relative text-black text-sm items-start box-border caret-transparent flex flex-col justify-start leading-[16.8px] max-w-full min-h-0 min-w-0 uppercase overflow-hidden py-3 md:[align-items:normal] md:justify-normal md:min-h-[auto] md:min-w-[auto] md:pt-0 md:pb-0.5"
       >
         <div className="box-border caret-transparent min-h-0 min-w-0 md:min-h-[auto] md:min-w-[auto]">
           Services
+        </div>
+        <div className="absolute bg-black box-border caret-transparent h-px transform-none w-full bottom-[0%] inset-x-[0%] md:translate-x-[-110.0%]"></div>
+      </Link>
+      <Link
+        to="/projects"
+        className="relative text-black text-sm items-start box-border caret-transparent flex flex-col justify-start leading-[16.8px] max-w-full min-h-0 min-w-0 uppercase overflow-hidden py-3 md:[align-items:normal] md:justify-normal md:min-h-[auto] md:min-w-[auto] md:pt-0 md:pb-0.5"
+      >
+        <div className="box-border caret-transparent min-h-0 min-w-0 md:min-h-[auto] md:min-w-[auto]">
+          Projects
         </div>
         <div className="absolute bg-black box-border caret-transparent h-px transform-none w-full bottom-[0%] inset-x-[0%] md:translate-x-[-110.0%]"></div>
       </Link>
@@ -42,15 +51,6 @@ export const DesktopNav = () => {
         </div>
         <div className="absolute bg-black box-border caret-transparent h-px transform-none w-full bottom-[0%] inset-x-[0%] md:translate-x-[-110.0%]"></div>
       </Link>
-      <a
-        href="#about"
-        className="relative text-black text-sm items-start box-border caret-transparent flex flex-col justify-start leading-[16.8px] max-w-full min-h-0 min-w-0 uppercase overflow-hidden py-3 md:[align-items:normal] md:justify-normal md:min-h-[auto] md:min-w-[auto] md:pt-0 md:pb-0.5"
-      >
-        <div className="box-border caret-transparent min-h-0 min-w-0 md:min-h-[auto] md:min-w-[auto]">
-          About us
-        </div>
-        <div className="absolute bg-black box-border caret-transparent h-px transform-none w-full bottom-[0%] inset-x-[0%] md:translate-x-[-110.0%]"></div>
-      </a>
       <a
         href="#contact"
         className="relative text-black text-sm items-start box-border caret-transparent flex flex-col justify-start leading-[16.8px] max-w-full min-h-0 min-w-0 uppercase overflow-hidden py-3 md:[align-items:normal] md:justify-normal md:min-h-[auto] md:min-w-[auto] md:pt-0 md:pb-0.5"
