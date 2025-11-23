@@ -2,31 +2,58 @@ import { TeamMember } from './TeamMember';
 
 const teamMembers = [
   {
-    name: "Sunny Katyal",
+    name: "Rajesh Kumar",
     position: "Founder & CEO",
-    description: "With over 20 years of experience in construction, Sunny founded Khushi Homes with a vision to create modern living spaces that blend innovation with traditional craftsmanship and ethical business practices.",
-    email: "sunny@khushihomes.com.au",
+    description: "With over 20 years of experience in construction, Rajesh founded Khushi Homes with a vision to create modern living spaces that blend innovation with traditional craftsmanship and ethical business practices.",
+    email: "rajesh@khushihomes.com.au",
     phone: "+61 400 000 001",
-    linkedin: "https://linkedin.com/in/sunny-katyal",
-    image: "/static/sunny-profile.jpg"
+    linkedin: "https://linkedin.com/in/rajesh-kumar",
+    image: "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=800"
   },
   {
-    name: "Samrita",
+    name: "Sarah Mitchell",
     position: "Head of Design",
-    description: "Samrita brings architectural excellence to every project, ensuring that each Khushi home reflects both aesthetic beauty and functional innovation while maintaining sustainable design principles.",
-    email: "samrita@khushihomes.com.au",
+    description: "Sarah brings architectural excellence to every project, ensuring that each Khushi home reflects both aesthetic beauty and functional innovation while maintaining sustainable design principles.",
+    email: "sarah@khushihomes.com.au",
     phone: "+61 400 000 002",
-    linkedin: "https://linkedin.com/in/samrita",
-    image: "/static/samrita-profile.jpg"
+    linkedin: "https://linkedin.com/in/sarah-mitchell",
+    image: "https://images.pexels.com/photos/3756679/pexels-photo-3756679.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    name: "David Chen",
+    position: "Construction Manager",
+    description: "David's meticulous attention to detail and commitment to quality ensures every Khushi Homes project is completed to the highest standards, on time and with unwavering integrity.",
+    email: "david@khushihomes.com.au",
+    phone: "+61 400 000 003",
+    linkedin: "https://linkedin.com/in/david-chen",
+    image: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=800"
   },
   {
     name: "Priya Sharma",
-    position: "Client Relations Manager",
+    position: "Client Relations Director",
     description: "Priya ensures transparent communication and exceptional customer service, building lasting relationships with clients based on trust, honesty, and a shared vision for their dream homes.",
     email: "priya@khushihomes.com.au",
     phone: "+61 400 000 004",
     linkedin: "https://linkedin.com/in/priya-sharma",
     image: "https://images.pexels.com/photos/3756681/pexels-photo-3756681.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    name: "Michael Thompson",
+    position: "Quality Assurance Lead",
+    description: "Michael's rigorous quality control processes guarantee that every aspect of construction meets Khushi Homes' exacting standards, ensuring homes that stand the test of time.",
+    email: "michael@khushihomes.com.au",
+    phone: "+61 400 000 005",
+    linkedin: "https://linkedin.com/in/michael-thompson",
+    image: "https://images.pexels.com/photos/2381069/pexels-photo-2381069.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    name: "Emily Rodriguez",
+    position: "Sustainability Coordinator",
+    description: "Emily champions eco-friendly building practices, integrating sustainable materials and energy-efficient solutions to create homes that are both modern and environmentally responsible.",
+    email: "emily@khushihomes.com.au",
+    phone: "+61 400 000 006",
+    linkedin: "https://linkedin.com/in/emily-rodriguez",
+    image: "https://images.pexels.com/photos/3756684/pexels-photo-3756684.jpeg?auto=compress&cs=tinysrgb&w=800"
   }
 ];
 

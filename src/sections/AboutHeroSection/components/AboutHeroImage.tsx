@@ -1,9 +1,9 @@
 export const AboutHeroImage = () => {
   return (
     <div className="relative box-border caret-transparent">
-      <div className="absolute box-border caret-transparent inset-0 flex items-center justify-center px-4">
-        <p className="text-white text-sm sm:text-base md:text-lg lg:text-xl text-center bg-black/30 px-4 py-2 sm:px-6 sm:py-3 md:px-8 md:py-4 rounded-lg backdrop-blur-sm font-medium">
-          Building Dreams with Excellence
+      <div className="absolute box-border caret-transparent inset-0 flex items-center justify-center px-5">
+        <p className="text-white text-sm md:text-lg text-center max-w-4xl bg-black/30 px-6 py-4 rounded-lg backdrop-blur-sm leading-relaxed">
+          Khushi Homes specializes in delivering premium construction services throughout Australia, combining traditional craftsmanship with innovative building techniques. Our commitment to quality, transparency, and customer satisfaction has established us as a trusted partner for homeowners seeking exceptional results. With years of experience in residential and commercial construction, we bring expertise in custom home building, renovations, and architectural design. Our dedicated team of skilled professionals ensures every project is completed to the highest standards, on time and within budget. From initial consultation to final handover, we work closely with our clients to bring their vision to life while maintaining open communication throughout the entire construction process.
         </p>
       </div>
       <div className="absolute box-border caret-transparent bottom-[0%] inset-x-[0%]">
