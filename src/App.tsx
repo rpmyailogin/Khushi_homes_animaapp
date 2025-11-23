@@ -12,7 +12,8 @@ export const App = () => {
   return (
     <div className="text-zinc-800 text-base not-italic normal-nums font-normal accent-auto bg-white box-border caret-transparent block tracking-[normal] leading-[27.2px] list-outside list-disc min-h-full pointer-events-auto text-start indent-[0px] normal-case visible border-separate font-public_sans">
       <Navbar />
-      <Routes>
+      <main className="pt-[72px]">
+        <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/projects" element={<ProjectsPage />} />
         <Route path="/services" element={<ServicesPage />} />
@@ -20,6 +21,7 @@ export const App = () => {
         <Route path="/case-studies" element={<CaseStudiesPage />} />
         <Route path="/recent-projects" element={<RecentProjectsPage />} />
       </Routes>
+      </main>
       <Footer />
       <div className="fixed box-border caret-transparent contents z-[2147483647] left-0 top-0">
         <div className="caret-transparent"></div>

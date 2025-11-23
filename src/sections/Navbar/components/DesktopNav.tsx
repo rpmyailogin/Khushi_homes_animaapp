@@ -4,7 +4,7 @@ export const DesktopNav = () => {
   return (
     <nav
       role="navigation"
-      className="relative items-center bg-white border-l-zinc-800 border-r-zinc-800 border-t-zinc-800 box-border caret-transparent gap-x-[35px] hidden flex-col float-right justify-center min-h-0 min-w-0 p-5 border-b-black/10 border-b md:bg-transparent md:border-b-zinc-800 md:flex md:flex-row md:min-h-[auto] md:min-w-[auto] md:p-0 md:border-b-0"
+      className="relative items-center backdrop-blur-md bg-white/90 border-l-zinc-800 border-r-zinc-800 border-t-zinc-800 box-border caret-transparent gap-x-[35px] hidden flex-col float-right justify-center min-h-0 min-w-0 p-5 border-b-black/10 border-b md:bg-transparent md:backdrop-blur-none md:border-b-zinc-800 md:flex md:flex-row md:min-h-[auto] md:min-w-[auto] md:p-0 md:border-b-0"
     >
       <Link
         to="/"
