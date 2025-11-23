@@ -4,97 +4,37 @@ export const BlogsPage = () => {
   const blogPosts = [
     {
       id: 1,
-      title: "Building Smart: How Technology is Transforming Construction",
+      title: "Building smart how technology is transforming construction",
       category: "Technology",
       date: "Feb 11, 2025",
       author: "John Mitchell",
-      image: "https://images.pexels.com/photos/256381/pexels-photo-256381.jpeg?auto=compress&cs=tinysrgb&w=800",
-      excerpt: "Explore the latest technological innovations revolutionizing the construction industry, from AI-powered project management to drone surveying and 3D printing.",
+      image: "https://cdn.prod.website-files.com/679b74f316932fb3b1e01c07/679cb63a5742e9506defbe20_blog-main-01.jpg",
+      excerpt: "Discover how cutting-edge technology is revolutionizing the construction industry, from smart building materials to AI-powered project management systems. Learn about the latest innovations in construction technology including Building Information Modeling (BIM), drone surveying, 3D printing, and IoT-enabled equipment that are transforming how we design, plan, and execute construction projects.",
       readTime: "5 min read"
     },
     {
       id: 2,
-      title: "Eco-Friendly Construction Materials You Should Know About",
-      category: "Sustainability",
-      date: "Feb 8, 2025",
+      title: "Eco-friendly construction materials you should know about",
+      category: "Materials",
+      date: "Feb 11, 2025",
       author: "Sarah Chen",
-      image: "https://images.pexels.com/photos/1169754/pexels-photo-1169754.jpeg?auto=compress&cs=tinysrgb&w=800",
-      excerpt: "Discover sustainable building materials that reduce environmental impact while maintaining structural integrity and aesthetic appeal.",
+      image: "https://cdn.prod.website-files.com/679b74f316932fb3b1e01c07/679cb69863b614ca6c0adaf1_blog-thumb-07.jpg",
+      excerpt: "Explore sustainable building materials that reduce environmental impact while maintaining structural integrity and aesthetic appeal. From recycled steel and bamboo to hempcrete and mycelium-based products, learn about innovative eco-friendly alternatives that are changing the construction landscape. Discover how these materials can help achieve green building certifications and reduce your project's carbon footprint.",
       readTime: "4 min read"
     },
     {
       id: 3,
-      title: "Adopting Lean Construction Practices for Maximum Efficiency",
-      category: "Management",
-      date: "Feb 5, 2025",
+      title: "Adopting lean construction practices for maximum efficiency",
+      category: "Efficiency",
+      date: "Feb 11, 2025",
       author: "David Rodriguez",
-      image: "https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=800",
-      excerpt: "Learn how lean construction methodologies can streamline your projects, reduce waste, and improve overall project delivery timelines.",
-      readTime: "6 min read"
-    },
-    {
-      id: 4,
-      title: "Safety First: Modern Construction Site Safety Protocols",
-      category: "Safety",
-      date: "Feb 2, 2025",
-      author: "Emily Watson",
-      image: "https://images.pexels.com/photos/159306/construction-site-build-construction-work-159306.jpeg?auto=compress&cs=tinysrgb&w=800",
-      excerpt: "Understanding the latest safety standards and protocols that protect workers and ensure compliance with modern construction regulations.",
-      readTime: "5 min read"
-    },
-    {
-      id: 5,
-      title: "The Future of Modular Construction",
-      category: "Innovation",
-      date: "Jan 29, 2025",
-      author: "Michael Thompson",
-      image: "https://images.pexels.com/photos/3862632/pexels-photo-3862632.jpeg?auto=compress&cs=tinysrgb&w=800",
-      excerpt: "How prefabricated and modular construction methods are changing the industry landscape with faster build times and cost efficiency.",
-      readTime: "7 min read"
-    },
-    {
-      id: 6,
-      title: "Smart Building Integration: IoT in Modern Construction",
-      category: "Technology",
-      date: "Jan 26, 2025",
-      author: "Lisa Anderson",
-      image: "https://images.pexels.com/photos/2219024/pexels-photo-2219024.jpeg?auto=compress&cs=tinysrgb&w=800",
-      excerpt: "Integrating Internet of Things devices into building infrastructure for enhanced automation, efficiency, and user experience.",
-      readTime: "6 min read"
-    },
-    {
-      id: 7,
-      title: "Navigating Construction Permits and Regulations",
-      category: "Compliance",
-      date: "Jan 23, 2025",
-      author: "Robert Kim",
-      image: "https://images.pexels.com/photos/1109541/pexels-photo-1109541.jpeg?auto=compress&cs=tinysrgb&w=800",
-      excerpt: "A comprehensive guide to understanding and efficiently managing construction permits, zoning laws, and regulatory compliance.",
-      readTime: "8 min read"
-    },
-    {
-      id: 8,
-      title: "Cost Management Strategies for Large-Scale Projects",
-      category: "Finance",
-      date: "Jan 20, 2025",
-      author: "Jennifer Lee",
-      image: "https://images.pexels.com/photos/380768/pexels-photo-380768.jpeg?auto=compress&cs=tinysrgb&w=800",
-      excerpt: "Proven strategies for keeping construction projects on budget while maintaining quality standards and meeting deadlines.",
-      readTime: "5 min read"
-    },
-    {
-      id: 9,
-      title: "Sustainable Architecture: Designing for the Future",
-      category: "Design",
-      date: "Jan 17, 2025",
-      author: "Alex Martinez",
-      image: "https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=800",
-      excerpt: "Exploring architectural trends that prioritize environmental responsibility without compromising on aesthetics or functionality.",
+      image: "https://cdn.prod.website-files.com/679b74f316932fb3b1e01c07/679cb6893d98ac6330958f1c_blog-thumb-06.jpg",
+      excerpt: "Learn how lean construction methodologies can streamline your projects, reduce waste, and improve overall project delivery timelines. Understand the principles of Just-In-Time delivery, value stream mapping, and continuous improvement. Discover practical strategies for implementing lean practices in your construction workflow, from pre-construction planning to final handover, ensuring maximum efficiency and cost savings.",
       readTime: "6 min read"
     }
   ];
 
-  const categories = ["All", "Technology", "Sustainability", "Management", "Safety", "Innovation", "Compliance", "Finance", "Design"];
+  const categories = ["All", "Technology", "Materials", "Efficiency"];
 
   return (
     <div className="box-border caret-transparent">
