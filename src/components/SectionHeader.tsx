@@ -24,11 +24,13 @@ export const SectionHeader = (props: SectionHeaderProps) => {
         </div>
         <div className="box-border caret-transparent">{props.subtitle}</div>
       </div>
-      <h2
-        className={`${textColorClass} text-xl font-medium box-border caret-transparent leading-[30px] uppercase sm:text-[28px] sm:leading-[42px] md:text-4xl md:leading-[54px]`}
-      >
-        {props.title}
-      </h2>
+      {props.title && (
+        <h2
+          className={`${textColorClass} text-xl font-medium box-border caret-transparent leading-[30px] uppercase sm:text-[28px] sm:leading-[42px] md:text-4xl md:leading-[54px]`}
+        >
+          {props.title}
+        </h2>
+      )}
     </div>
   );
 };
