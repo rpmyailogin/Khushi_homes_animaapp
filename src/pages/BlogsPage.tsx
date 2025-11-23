@@ -1,5 +1,4 @@
 import { SectionHeader } from "@/components/SectionHeader";
-import { NewsletterForm } from "@/components/NewsletterForm";
 
 export const BlogsPage = () => {
   const blogPosts = [
@@ -50,15 +49,10 @@ export const BlogsPage = () => {
 
       <section className="box-border caret-transparent py-10 md:py-[60px]">
         <div className="box-border caret-transparent max-w-full w-full mx-auto px-5 md:max-w-[1336px]">
-          <div className="box-border caret-transparent grid auto-cols-[1fr] grid-cols-[1fr] grid-rows-[auto] gap-10 md:grid-cols-[2fr_1fr] md:gap-x-[60px] mb-10">
-            <div className="box-border caret-transparent">
-              <h3 className="text-black text-xl font-medium box-border caret-transparent leading-[30px] mb-6">
-                Latest Articles
-              </h3>
-            </div>
-            <div className="box-border caret-transparent">
-              <NewsletterForm />
-            </div>
+          <div className="box-border caret-transparent mb-10">
+            <h3 className="text-black text-xl font-medium box-border caret-transparent leading-[30px] mb-6">
+              Latest Articles
+            </h3>
           </div>
 
           <div className="box-border caret-transparent flex flex-wrap items-center gap-x-3 gap-y-3 mb-10">
