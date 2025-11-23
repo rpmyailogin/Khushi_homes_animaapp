@@ -1,6 +1,9 @@
 export const AboutContent = () => {
   return (
     <div className="items-start box-border caret-transparent flex flex-col justify-start max-w-4xl">
+      <p className="text-white text-base leading-[27.2px] mb-8">
+        Khushi Homes brings expertise in residential construction and renovation, creating spaces where quality meets design excellence.
+      </p>
       <a
         href="/projects"
         className="text-white text-sm items-center box-border caret-transparent gap-x-2.5 flex justify-center leading-[16.8px] max-w-full border px-[22px] py-3 border-solid border-white hover:bg-white hover:text-black transition-colors"
