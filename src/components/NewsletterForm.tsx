@@ -48,12 +48,12 @@ export const NewsletterForm = () => {
   };
 
   return (
-    <div className="bg-white box-border caret-transparent p-8 border border-solid border-black/10">
+    <div className="box-border caret-transparent">
       <div className="box-border caret-transparent mb-6">
-        <h3 className="text-black text-xl font-medium box-border caret-transparent leading-[30px] mb-3">
+        <h3 className="text-white text-xl font-medium box-border caret-transparent leading-[30px] mb-3">
           Subscribe to Our Newsletter
         </h3>
-        <p className="box-border caret-transparent text-sm leading-relaxed">
+        <p className="box-border caret-transparent text-sm leading-relaxed text-white/80">
           Get the latest blog updates, construction tips, and exclusive offers delivered to your inbox.
         </p>
       </div>
@@ -61,7 +61,7 @@ export const NewsletterForm = () => {
       <form onSubmit={handleSubmit} className="box-border caret-transparent">
         <div className="box-border caret-transparent grid auto-cols-[1fr] grid-cols-[1fr] grid-rows-[auto] gap-4 mb-4 md:grid-cols-[1fr_1fr]">
           <div className="box-border caret-transparent">
-            <label htmlFor="newsletter-name" className="text-sm font-medium box-border caret-transparent block mb-2">
+            <label htmlFor="newsletter-name" className="text-sm font-medium box-border caret-transparent block mb-2 text-white">
               Name (Optional)
             </label>
             <input
@@ -69,13 +69,13 @@ export const NewsletterForm = () => {
               id="newsletter-name"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="box-border caret-transparent w-full px-4 py-3 border border-solid border-black/10 focus:outline-none focus:border-black transition-colors"
+              className="box-border caret-transparent w-full px-4 py-3 border border-solid border-white/20 focus:outline-none focus:border-white transition-colors bg-white"
               placeholder="Your name"
             />
           </div>
 
           <div className="box-border caret-transparent">
-            <label htmlFor="newsletter-email" className="text-sm font-medium box-border caret-transparent block mb-2">
+            <label htmlFor="newsletter-email" className="text-sm font-medium box-border caret-transparent block mb-2 text-white">
               Email Address *
             </label>
             <input
@@ -84,14 +84,14 @@ export const NewsletterForm = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="box-border caret-transparent w-full px-4 py-3 border border-solid border-black/10 focus:outline-none focus:border-black transition-colors"
+              className="box-border caret-transparent w-full px-4 py-3 border border-solid border-white/20 focus:outline-none focus:border-white transition-colors bg-white"
               placeholder="your@email.com"
             />
           </div>
         </div>
 
         {message && (
-          <div className={`box-border caret-transparent mb-4 p-3 text-sm ${message.includes('Error') || message.includes('wrong') ? 'bg-red-50 text-red-800' : 'bg-green-50 text-green-800'}`}>
+          <div className={`box-border caret-transparent mb-4 p-3 text-sm ${message.includes('Error') || message.includes('wrong') ? 'bg-red-100 text-red-800' : 'bg-green-100 text-green-800'}`}>
             {message}
           </div>
         )}
@@ -99,12 +99,12 @@ export const NewsletterForm = () => {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="text-white text-sm items-center box-border caret-transparent gap-x-2.5 inline-flex justify-center leading-[16.8px] bg-black px-6 py-3 hover:bg-red-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed w-full"
+          className="text-white text-sm items-center box-border caret-transparent gap-x-2.5 inline-flex justify-center leading-[16.8px] bg-red-600 px-6 py-3 hover:bg-red-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed w-full"
         >
           {isSubmitting ? 'Subscribing...' : 'Subscribe Now'}
         </button>
 
-        <p className="box-border caret-transparent text-xs mt-3 text-center text-gray-500">
+        <p className="box-border caret-transparent text-xs mt-3 text-center text-white/60">
           We respect your privacy. Unsubscribe at any time.
         </p>
       </form>
