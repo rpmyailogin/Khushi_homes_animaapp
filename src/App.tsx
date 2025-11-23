@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import { Navbar } from "@/sections/Navbar";
 import { Footer } from "@/sections/Footer";
+import { ScrollToTop } from "@/components/ScrollToTop";
 import { HomePage } from "@/pages/HomePage";
 import { ProjectsPage } from "@/pages/ProjectsPage";
 import { ServicesPage } from "@/pages/ServicesPage";
@@ -12,6 +13,7 @@ import { ContactPage } from "@/pages/ContactPage";
 export const App = () => {
   return (
     <div className="text-zinc-800 text-base not-italic normal-nums font-normal accent-auto bg-white box-border caret-transparent block tracking-[normal] leading-[27.2px] list-outside list-disc min-h-full pointer-events-auto text-start indent-[0px] normal-case visible border-separate font-public_sans">
+      <ScrollToTop />
       <Navbar />
       <main className="pt-[60px]">
         <Routes>
