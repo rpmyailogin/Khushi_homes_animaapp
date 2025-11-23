@@ -2,22 +2,22 @@ import { TeamMember } from './TeamMember';
 
 const teamMembers = [
   {
-    name: "Rajesh Kumar",
+    name: "Sunny Katyal",
     position: "Founder & CEO",
-    description: "With over 20 years of experience in construction, Rajesh founded Khushi Homes with a vision to create modern living spaces that blend innovation with traditional craftsmanship and ethical business practices.",
-    email: "rajesh@khushihomes.com.au",
+    description: "With over 20 years of experience in construction, Sunny founded Khushi Homes with a vision to create modern living spaces that blend innovation with traditional craftsmanship and ethical business practices.",
+    email: "sunny@khushihomes.com.au",
     phone: "+61 400 000 001",
-    linkedin: "https://linkedin.com/in/rajesh-kumar",
-    image: "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=800"
+    linkedin: "https://linkedin.com/in/sunny-katyal",
+    image: "/static/sunny-profile.jpg"
   },
   {
-    name: "Sarah Mitchell",
+    name: "Samrita",
     position: "Head of Design",
-    description: "Sarah brings architectural excellence to every project, ensuring that each Khushi home reflects both aesthetic beauty and functional innovation while maintaining sustainable design principles.",
-    email: "sarah@khushihomes.com.au",
+    description: "Samrita brings architectural excellence to every project, ensuring that each Khushi home reflects both aesthetic beauty and functional innovation while maintaining sustainable design principles.",
+    email: "samrita@khushihomes.com.au",
     phone: "+61 400 000 002",
-    linkedin: "https://linkedin.com/in/sarah-mitchell",
-    image: "https://images.pexels.com/photos/3756679/pexels-photo-3756679.jpeg?auto=compress&cs=tinysrgb&w=800"
+    linkedin: "https://linkedin.com/in/samrita",
+    image: "/static/samrita-profile.jpg"
   },
   {
     name: "Priya Sharma",
