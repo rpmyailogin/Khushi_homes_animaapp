@@ -24,7 +24,7 @@ export const AboutHeroImage = () => {
       </div>
 
       <div className="box-border caret-transparent max-w-full w-full mx-auto px-5 md:hidden">
-        <h2 className="text-5xl font-semibold leading-tight text-start uppercase mb-6 mt-4 pl-0">
+        <h2 className="text-3xl font-semibold leading-tight text-start uppercase mb-6 mt-1 pl-0">
           Construction
         </h2>
         <p className="text-sm leading-relaxed text-center mb-4">
