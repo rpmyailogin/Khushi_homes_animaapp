@@ -5,7 +5,6 @@ import { HomePage } from "@/pages/HomePage";
 import { ProjectsPage } from "@/pages/ProjectsPage";
 import { ServicesPage } from "@/pages/ServicesPage";
 import { BlogsPage } from "@/pages/BlogsPage";
-import { CaseStudiesPage } from "@/pages/CaseStudiesPage";
 import { RecentProjectsPage } from "@/pages/RecentProjectsPage";
 
 export const App = () => {
@@ -18,7 +17,7 @@ export const App = () => {
         <Route path="/projects" element={<ProjectsPage />} />
         <Route path="/services" element={<ServicesPage />} />
         <Route path="/blogs" element={<BlogsPage />} />
-        <Route path="/case-studies" element={<CaseStudiesPage />} />
+        <Route path="/case-studies" element={<ProjectsPage />} />
         <Route path="/recent-projects" element={<RecentProjectsPage />} />
       </Routes>
       </main>

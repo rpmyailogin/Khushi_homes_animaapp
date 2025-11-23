@@ -26,7 +26,7 @@ export const FooterCTA = () => {
       </div>
       <div className="items-center box-border caret-transparent gap-x-[22px] flex flex-wrap justify-start gap-y-[22px] md:flex-nowrap md:gap-y-[normal]">
         <a
-          href="/case-studies"
+          href="/projects"
           className="text-white text-sm items-center box-border caret-transparent gap-x-1.5 flex justify-start leading-[21px] max-w-full"
         >
           <img

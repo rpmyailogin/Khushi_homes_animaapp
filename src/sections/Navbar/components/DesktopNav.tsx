@@ -54,13 +54,6 @@ export const DesktopNav = () => {
         <nav className="absolute bg-zinc-300 box-border caret-transparent hidden min-w-full pt-[15px] md:pt-6">
           <div className="items-stretch bg-gray-100 box-border caret-transparent flex flex-col justify-start min-w-[200px] gap-y-5 pt-4 pb-[15px] px-4 rounded-[10px] border-b-0 border-x-0 border-black/10 md:p-5 md:rounded-none md:border-b md:border-l md:border-r">
             <Link
-              to="/case-studies"
-              className="text-black text-sm font-medium items-center box-border caret-transparent gap-x-2 flex justify-start leading-[14px] max-w-full"
-            >
-              <div className="bg-black box-border caret-transparent h-px w-0"></div>
-              <div className="box-border caret-transparent">Case Studies</div>
-            </Link>
-            <Link
               to="/recent-projects"
               className="text-black text-sm font-medium items-center box-border caret-transparent gap-x-2 flex justify-start leading-[14px] max-w-full"
             >
