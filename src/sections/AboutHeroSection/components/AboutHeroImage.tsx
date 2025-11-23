@@ -23,11 +23,14 @@ export const AboutHeroImage = () => {
         />
       </div>
 
-      <div className="box-border caret-transparent max-w-full w-full mx-auto px-5 mt-6 mb-8 md:hidden">
+      <div className="box-border caret-transparent max-w-full w-full mx-auto px-5 md:hidden">
+        <h2 className="text-5xl font-semibold leading-tight text-start uppercase mb-6 mt-4 pl-0">
+          Construction
+        </h2>
         <p className="text-sm leading-relaxed text-center mb-4">
           Khushi Homes delivers premium construction services throughout Australia, combining craftsmanship with innovation.
         </p>
-        <p className="text-sm leading-relaxed text-center">
+        <p className="text-sm leading-relaxed text-center mb-8">
           With years of experience, we bring expertise in custom home building, renovations, and architectural design.
         </p>
       </div>
