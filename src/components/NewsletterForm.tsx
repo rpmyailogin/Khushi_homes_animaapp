@@ -59,33 +59,35 @@ export const NewsletterForm = () => {
       </div>
 
       <form onSubmit={handleSubmit} className="box-border caret-transparent">
-        <div className="box-border caret-transparent mb-4">
-          <label htmlFor="newsletter-name" className="text-sm font-medium box-border caret-transparent block mb-2">
-            Name (Optional)
-          </label>
-          <input
-            type="text"
-            id="newsletter-name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className="box-border caret-transparent w-full px-4 py-3 border border-solid border-black/10 focus:outline-none focus:border-black transition-colors"
-            placeholder="Your name"
-          />
-        </div>
+        <div className="box-border caret-transparent grid auto-cols-[1fr] grid-cols-[1fr] grid-rows-[auto] gap-4 mb-4 md:grid-cols-[1fr_1fr]">
+          <div className="box-border caret-transparent">
+            <label htmlFor="newsletter-name" className="text-sm font-medium box-border caret-transparent block mb-2">
+              Name (Optional)
+            </label>
+            <input
+              type="text"
+              id="newsletter-name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="box-border caret-transparent w-full px-4 py-3 border border-solid border-black/10 focus:outline-none focus:border-black transition-colors"
+              placeholder="Your name"
+            />
+          </div>
 
-        <div className="box-border caret-transparent mb-4">
-          <label htmlFor="newsletter-email" className="text-sm font-medium box-border caret-transparent block mb-2">
-            Email Address *
-          </label>
-          <input
-            type="email"
-            id="newsletter-email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            className="box-border caret-transparent w-full px-4 py-3 border border-solid border-black/10 focus:outline-none focus:border-black transition-colors"
-            placeholder="your@email.com"
-          />
+          <div className="box-border caret-transparent">
+            <label htmlFor="newsletter-email" className="text-sm font-medium box-border caret-transparent block mb-2">
+              Email Address *
+            </label>
+            <input
+              type="email"
+              id="newsletter-email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              className="box-border caret-transparent w-full px-4 py-3 border border-solid border-black/10 focus:outline-none focus:border-black transition-colors"
+              placeholder="your@email.com"
+            />
+          </div>
         </div>
 
         {message && (
