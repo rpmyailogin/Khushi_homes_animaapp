@@ -1,5 +1,6 @@
 import { AboutContent } from "@/sections/AboutSection/components/AboutContent";
 import { ImageGallery } from "@/sections/AboutSection/components/ImageGallery";
+import { TeamSection } from "@/sections/AboutSection/components/TeamSection";
 
 export const AboutSection = () => {
   return (
@@ -20,6 +21,8 @@ export const AboutSection = () => {
         <div className="ml-0 md:ml-[170px]">
           <AboutContent />
         </div>
+
+        <TeamSection />
       </div>
     </section>
   );
