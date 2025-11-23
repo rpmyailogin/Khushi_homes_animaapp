@@ -51,14 +51,14 @@ export const FooterCTA = () => {
 
   return (
     <>
-      <div className="items-start border-l-zinc-800 border-r-zinc-800 border-t-zinc-800 box-border caret-transparent flex flex-col justify-between gap-y-10 pb-10 border-b-white/20 border-b md:items-start md:flex-row md:gap-x-10 md:gap-y-[normal] md:pb-[50px]">
+      <div className="items-start border-l-zinc-800 border-r-zinc-800 border-t-zinc-800 box-border caret-transparent flex flex-col justify-between gap-y-8 pb-8 border-b-white/20 border-b sm:gap-y-10 sm:pb-10 md:items-start md:flex-row md:gap-x-10 md:gap-y-[normal] md:pb-[50px]">
         <div className="items-start box-border caret-transparent flex flex-col justify-start max-w-none w-full md:max-w-[42%]">
-          <h2 className="text-white text-[26px] box-border caret-transparent leading-[33.8px] mb-[30px] md:text-[40px] md:leading-[52px]">
+          <h2 className="text-white text-xl box-border caret-transparent leading-[28px] mb-6 sm:text-[26px] sm:leading-[33.8px] sm:mb-[30px] md:text-[40px] md:leading-[52px]">
             Contact us today to discuss your next project
           </h2>
           <button
             onClick={() => setIsModalOpen(true)}
-            className="text-white text-sm items-center bg-red-600 box-border caret-transparent gap-x-2.5 flex justify-center leading-[16.8px] max-w-full px-[22px] py-3 hover:bg-red-700 transition-colors touch-manipulation min-h-[44px]"
+            className="text-white text-sm items-center bg-red-600 box-border caret-transparent gap-x-2.5 flex justify-center leading-[16.8px] max-w-full px-5 py-2.5 sm:px-[22px] sm:py-3 hover:bg-red-700 transition-colors touch-manipulation min-h-[44px]"
           >
             <div className="relative box-border caret-transparent overflow-hidden">
               <div className="box-border caret-transparent gap-x-1 flex">
@@ -76,8 +76,8 @@ export const FooterCTA = () => {
           </button>
         </div>
 
-        <div className="box-border caret-transparent flex flex-col gap-y-8 w-full md:max-w-[50%]">
-          <div className="items-center box-border caret-transparent gap-x-[22px] flex flex-wrap justify-start gap-y-[22px] md:flex-nowrap md:gap-y-[normal]">
+        <div className="box-border caret-transparent flex flex-col gap-y-6 w-full sm:gap-y-8 md:max-w-[50%]">
+          <div className="items-center box-border caret-transparent gap-x-4 flex flex-wrap justify-start gap-y-4 sm:gap-x-[22px] sm:gap-y-[22px] md:flex-nowrap md:gap-y-[normal]">
             <a
               href="/projects"
               className="text-white text-sm items-center box-border caret-transparent gap-x-1.5 flex justify-start leading-[21px] max-w-full py-2 touch-manipulation"
@@ -147,11 +147,11 @@ export const FooterCTA = () => {
           </div>
 
           <div className="box-border caret-transparent w-full">
-            <h3 className="text-white text-base font-medium box-border caret-transparent leading-[24px] mb-4">
+            <h3 className="text-white text-sm font-medium box-border caret-transparent leading-[21px] mb-3 sm:text-base sm:leading-[24px] sm:mb-4">
               Subscribe for latest updates and offers
             </h3>
             <form onSubmit={handleSubmit} className="box-border caret-transparent">
-              <div className="box-border caret-transparent grid auto-cols-[1fr] grid-cols-[1fr] grid-rows-[auto] gap-3 mb-3 md:grid-cols-[1fr_1fr]">
+              <div className="box-border caret-transparent grid grid-cols-1 gap-3 mb-3 sm:grid-cols-2">
                 <input
                   type="text"
                   id="newsletter-name"

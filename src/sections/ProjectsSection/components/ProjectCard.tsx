@@ -34,11 +34,11 @@ export const ProjectCard = (props: ProjectCardProps) => {
           <img
             src={props.imageUrl}
             alt={props.imageAlt}
-            className="aspect-[auto_416_/_570] box-border caret-transparent inline-block h-[570px] max-h-[400px] max-w-full min-h-[400px] object-cover w-full transition-transform duration-500 group-hover:scale-105 md:max-h-[570px] md:min-h-[570px]"
+            className="aspect-[auto_416_/_570] box-border caret-transparent inline-block h-auto max-h-[300px] max-w-full min-h-[300px] object-cover w-full transition-transform duration-500 group-hover:scale-105 sm:max-h-[400px] sm:min-h-[400px] md:max-h-[570px] md:min-h-[570px] md:h-[570px]"
           />
         </div>
         <div
-          className={`absolute box-border caret-transparent flex flex-col justify-center transition-all duration-500 ease-in-out px-5 py-4 inset-x-[0%] md:p-[30px] ${
+          className={`absolute box-border caret-transparent flex flex-col justify-center transition-all duration-500 ease-in-out px-4 py-3 inset-x-[0%] sm:px-5 sm:py-4 md:p-[30px] ${
             isExpanded
               ? 'bg-red-600 bottom-[0%] h-[50%]'
               : 'bottom-[0%] h-auto'
@@ -46,12 +46,12 @@ export const ProjectCard = (props: ProjectCardProps) => {
           style={!isExpanded ? { backgroundColor: '#e6feff' } : {}}
         >
           <div className="box-border caret-transparent">
-            <div className={`text-sm box-border caret-transparent leading-[21px] transition-colors duration-500 ${
+            <div className={`text-xs box-border caret-transparent leading-[18px] sm:text-sm sm:leading-[21px] transition-colors duration-500 ${
               isExpanded ? 'text-white' : 'text-zinc-800'
             }`}>
               {props.location}
             </div>
-            <h4 className={`text-lg box-border caret-transparent leading-[27px] mt-0.5 md:text-[22px] md:leading-[33px] transition-colors duration-500 ${
+            <h4 className={`text-base box-border caret-transparent leading-[24px] mt-0.5 sm:text-lg sm:leading-[27px] md:text-[22px] md:leading-[33px] transition-colors duration-500 ${
               isExpanded ? 'text-white' : 'text-black'
             }`}>
               {props.title}
@@ -64,10 +64,10 @@ export const ProjectCard = (props: ProjectCardProps) => {
                 : 'opacity-0 max-h-0 mt-0'
             }`}
           >
-            <p className="text-white text-sm box-border caret-transparent mb-3 leading-relaxed">
+            <p className="text-white text-xs box-border caret-transparent mb-2 leading-relaxed sm:text-sm sm:mb-3">
               {props.description}
             </p>
-            <p className="text-white text-sm box-border caret-transparent leading-relaxed">
+            <p className="text-white text-xs box-border caret-transparent leading-relaxed sm:text-sm">
               {props.details}
             </p>
           </div>

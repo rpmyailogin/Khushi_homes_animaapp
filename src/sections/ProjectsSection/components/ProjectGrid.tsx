@@ -4,7 +4,7 @@ export const ProjectGrid = () => {
   return (
     <div
       role="list"
-      className="box-border caret-transparent gap-x-0 grid auto-cols-[1fr] grid-cols-[1fr] grid-rows-[auto] gap-y-10 md:gap-x-6 md:grid-cols-[1fr_1fr_1fr] md:gap-y-[30px]"
+      className="box-border caret-transparent grid grid-cols-1 gap-y-8 sm:gap-y-10 md:grid-cols-2 md:gap-x-6 md:gap-y-[30px] lg:grid-cols-3"
     >
       <ProjectCard
         href="/projects"

@@ -2,8 +2,8 @@ import { FooterColumn } from "@/sections/Footer/components/FooterColumn";
 
 export const FooterLinks = () => {
   return (
-    <div className="items-start box-border caret-transparent flex flex-col justify-between gap-y-10 mt-10 md:flex-row md:gap-y-[normal] md:w-full">
-      <div className="items-start box-border caret-transparent gap-x-[55px] grid auto-cols-[1fr] grid-cols-[1fr_1fr] grid-rows-[auto_auto] justify-between gap-y-[30px] md:gap-x-[140px] md:flex md:auto-cols-auto md:grid-cols-none md:grid-rows-none md:justify-between md:gap-y-[normal] md:w-full">
+    <div className="items-start box-border caret-transparent flex flex-col justify-between gap-y-8 mt-8 sm:gap-y-10 sm:mt-10 md:flex-row md:gap-y-[normal] md:w-full">
+      <div className="items-start box-border caret-transparent grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8 sm:gap-y-8 md:gap-x-[140px] md:flex md:justify-between md:gap-y-[normal] md:w-full">
         <FooterColumn
           title="Follow us"
           links={[

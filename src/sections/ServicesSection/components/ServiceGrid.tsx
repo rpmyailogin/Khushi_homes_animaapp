@@ -4,7 +4,7 @@ export const ServiceGrid = () => {
   return (
     <div
       role="list"
-      className="box-border caret-transparent grid auto-cols-[1fr] grid-cols-[1fr] grid-rows-[auto] gap-y-10 md:grid-cols-[1fr_1fr] md:gap-x-0"
+      className="box-border caret-transparent grid grid-cols-1 gap-y-8 sm:gap-y-10 md:grid-cols-2 md:gap-x-0"
     >
       <ServiceCard
         title="New Home Construction"
