@@ -20,40 +20,13 @@ const teamMembers = [
     image: "https://images.pexels.com/photos/3756679/pexels-photo-3756679.jpeg?auto=compress&cs=tinysrgb&w=800"
   },
   {
-    name: "David Chen",
-    position: "Construction Manager",
-    description: "David's meticulous attention to detail and commitment to quality ensures every Khushi Homes project is completed to the highest standards, on time and with unwavering integrity.",
-    email: "david@khushihomes.com.au",
-    phone: "+61 400 000 003",
-    linkedin: "https://linkedin.com/in/david-chen",
-    image: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=800"
-  },
-  {
     name: "Priya Sharma",
-    position: "Client Relations Director",
+    position: "Client Relations Manager",
     description: "Priya ensures transparent communication and exceptional customer service, building lasting relationships with clients based on trust, honesty, and a shared vision for their dream homes.",
     email: "priya@khushihomes.com.au",
     phone: "+61 400 000 004",
     linkedin: "https://linkedin.com/in/priya-sharma",
     image: "https://images.pexels.com/photos/3756681/pexels-photo-3756681.jpeg?auto=compress&cs=tinysrgb&w=800"
-  },
-  {
-    name: "Michael Thompson",
-    position: "Quality Assurance Lead",
-    description: "Michael's rigorous quality control processes guarantee that every aspect of construction meets Khushi Homes' exacting standards, ensuring homes that stand the test of time.",
-    email: "michael@khushihomes.com.au",
-    phone: "+61 400 000 005",
-    linkedin: "https://linkedin.com/in/michael-thompson",
-    image: "https://images.pexels.com/photos/2381069/pexels-photo-2381069.jpeg?auto=compress&cs=tinysrgb&w=800"
-  },
-  {
-    name: "Emily Rodriguez",
-    position: "Sustainability Coordinator",
-    description: "Emily champions eco-friendly building practices, integrating sustainable materials and energy-efficient solutions to create homes that are both modern and environmentally responsible.",
-    email: "emily@khushihomes.com.au",
-    phone: "+61 400 000 006",
-    linkedin: "https://linkedin.com/in/emily-rodriguez",
-    image: "https://images.pexels.com/photos/3756684/pexels-photo-3756684.jpeg?auto=compress&cs=tinysrgb&w=800"
   }
 ];
 
