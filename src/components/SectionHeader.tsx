@@ -12,7 +12,7 @@ export const SectionHeader = (props: SectionHeaderProps) => {
   return (
     <div className="box-border caret-transparent mb-5">
       <div
-        className={`${isWhiteVariant ? "text-white" : ""} text-sm items-center box-border caret-transparent gap-x-2 flex justify-start leading-[16.8px] uppercase mb-[5px]`}
+        className={`${isWhiteVariant ? "text-white" : ""} text-lg items-center box-border caret-transparent gap-x-2 flex justify-start leading-[21.6px] uppercase mb-[5px]`}
       >
         <div className="box-border caret-transparent gap-x-1 flex">
           <div
