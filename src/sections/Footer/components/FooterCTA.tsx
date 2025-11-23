@@ -1,13 +1,18 @@
+import { useState } from 'react';
+import { ContactModal } from '@/components/ContactModal';
+
 export const FooterCTA = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <div className="items-start border-l-zinc-800 border-r-zinc-800 border-t-zinc-800 box-border caret-transparent flex flex-col justify-between gap-y-10 pb-10 border-b-white/20 border-b md:items-center md:flex-row md:gap-y-[normal] md:pb-[50px]">
       <div className="items-start box-border caret-transparent flex flex-col justify-start max-w-none w-full md:max-w-[42%]">
         <h2 className="text-white text-[26px] box-border caret-transparent leading-[33.8px] mb-[30px] md:text-[40px] md:leading-[52px]">
           Contact us today to discuss your next project
         </h2>
-        <a
-          href="/#contact"
-          className="text-white text-sm items-center bg-red-600 box-border caret-transparent gap-x-2.5 flex justify-center leading-[16.8px] max-w-full px-[22px] py-3"
+        <button
+          onClick={() => setIsModalOpen(true)}
+          className="text-white text-sm items-center bg-red-600 box-border caret-transparent gap-x-2.5 flex justify-center leading-[16.8px] max-w-full px-[22px] py-3 hover:bg-red-700 transition-colors"
         >
           <div className="relative box-border caret-transparent overflow-hidden">
             <div className="box-border caret-transparent gap-x-1 flex">
@@ -22,7 +27,7 @@ export const FooterCTA = () => {
             alt="Arrow"
             className="box-border caret-transparent max-w-full"
           />
-        </a>
+        </button>
       </div>
       <div className="items-center box-border caret-transparent gap-x-[22px] flex flex-wrap justify-start gap-y-[22px] md:flex-nowrap md:gap-y-[normal]">
         <a
@@ -92,6 +97,7 @@ export const FooterCTA = () => {
           <div className="box-border caret-transparent">FAQ</div>
         </a>
       </div>
+      <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>
   );
 };

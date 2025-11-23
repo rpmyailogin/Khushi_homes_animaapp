@@ -1,6 +1,9 @@
+import { useState } from 'react';
 import { SectionHeader } from "@/components/SectionHeader";
+import { ContactModal } from '@/components/ContactModal';
 
 export const ProjectsPage = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const projects = [
     {
       id: 1,
@@ -138,8 +141,8 @@ export const ProjectsPage = () => {
             <p className="text-neutral-400 box-border caret-transparent mb-8">
               Let's discuss how we can bring your dream home to life with our expertise and commitment to excellence.
             </p>
-            <a
-              href="/"
+            <button
+              onClick={() => setIsModalOpen(true)}
               className="text-white text-sm items-center box-border caret-transparent gap-x-2.5 inline-flex justify-center leading-[16.8px] border px-[22px] py-3 border-solid border-white hover:bg-white hover:text-black transition-colors"
             >
               <div className="box-border caret-transparent">Contact Us</div>
@@ -148,10 +151,11 @@ export const ProjectsPage = () => {
                 alt="Arrow"
                 className="box-border caret-transparent max-w-full"
               />
-            </a>
+            </button>
           </div>
         </div>
       </section>
+      <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>
   );
 };

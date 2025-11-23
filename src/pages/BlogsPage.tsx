@@ -1,4 +1,5 @@
 import { SectionHeader } from "@/components/SectionHeader";
+import { NewsletterForm } from "@/components/NewsletterForm";
 
 export const BlogsPage = () => {
   const blogPosts = [
@@ -49,6 +50,17 @@ export const BlogsPage = () => {
 
       <section className="box-border caret-transparent py-10 md:py-[60px]">
         <div className="box-border caret-transparent max-w-full w-full mx-auto px-5 md:max-w-[1336px]">
+          <div className="box-border caret-transparent grid auto-cols-[1fr] grid-cols-[1fr] grid-rows-[auto] gap-10 md:grid-cols-[2fr_1fr] md:gap-x-[60px] mb-10">
+            <div className="box-border caret-transparent">
+              <h3 className="text-black text-xl font-medium box-border caret-transparent leading-[30px] mb-6">
+                Latest Articles
+              </h3>
+            </div>
+            <div className="box-border caret-transparent">
+              <NewsletterForm />
+            </div>
+          </div>
+
           <div className="box-border caret-transparent flex flex-wrap items-center gap-x-3 gap-y-3 mb-10">
             {categories.map((category) => (
               <button
@@ -104,25 +116,15 @@ export const BlogsPage = () => {
         </div>
       </section>
 
-      <section className="bg-black box-border caret-transparent py-10 md:py-[60px]">
+      <section className="bg-gray-100 box-border caret-transparent py-10 md:py-[60px]">
         <div className="box-border caret-transparent max-w-full w-full mx-auto px-5 md:max-w-[1336px]">
           <div className="box-border caret-transparent text-center max-w-3xl mx-auto">
-            <h3 className="text-white text-xl font-medium box-border caret-transparent leading-[30px] mb-5 md:text-2xl md:leading-[36px]">
-              Subscribe to Our Newsletter
+            <h3 className="text-black text-xl font-medium box-border caret-transparent leading-[30px] mb-5 md:text-2xl md:leading-[36px]">
+              Join Our Community
             </h3>
-            <p className="text-neutral-400 box-border caret-transparent mb-8">
-              Get the latest construction insights, industry trends, and project updates delivered directly to your inbox.
+            <p className="box-border caret-transparent mb-8">
+              Connect with us to stay updated on the latest construction trends, expert tips, and exclusive insights from industry professionals.
             </p>
-            <div className="box-border caret-transparent flex flex-col gap-y-4 max-w-xl mx-auto md:flex-row md:gap-x-4 md:gap-y-0">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="text-sm box-border caret-transparent flex-1 leading-[21px] px-4 py-3 border border-solid border-white/10 bg-white/5 text-white placeholder:text-neutral-400"
-              />
-              <button className="text-white text-sm items-center bg-white/10 box-border caret-transparent gap-x-2.5 flex justify-center leading-[16.8px] border px-[22px] py-3 border-solid border-white hover:bg-white hover:text-black transition-colors">
-                Subscribe
-              </button>
-            </div>
           </div>
         </div>
       </section>
