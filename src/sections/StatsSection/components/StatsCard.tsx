@@ -11,7 +11,7 @@ export const StatsCard = (props: StatsCardProps) => {
   if (props.variant === "header") {
     return (
       <div className="items-start border-l-zinc-800 border-t-zinc-800 box-border caret-transparent flex flex-col border-b-black/10 border-b text-sm justify-between leading-[21px] gap-y-[30px] p-[25px] border-r-black/10 border-r md:text-base md:leading-[27.2px] md:gap-y-10 md:p-[34px]">
-        <div className="box-border caret-transparent text-sm items-center gap-x-2 flex justify-start leading-[16.8px] uppercase mb-[5px]">
+        <div className="box-border caret-transparent text-base items-center gap-x-2 flex justify-start leading-[24px] uppercase mb-[5px] md:text-lg md:leading-[27px]">
           <div className="box-border caret-transparent gap-x-1 flex">
             <div className="bg-black/10 box-border caret-transparent max-h-1.5 max-w-1.5 min-h-1.5 min-w-1.5"></div>
             <div className="bg-black/10 box-border caret-transparent max-h-1.5 max-w-1.5 min-h-1.5 min-w-1.5"></div>
