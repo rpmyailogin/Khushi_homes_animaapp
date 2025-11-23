@@ -7,7 +7,7 @@ export const ProjectGrid = () => {
       className="box-border caret-transparent gap-x-0 grid auto-cols-[1fr] grid-cols-[1fr] grid-rows-[auto] gap-y-10 md:gap-x-6 md:grid-cols-[1fr_1fr_1fr] md:gap-y-[30px]"
     >
       <ProjectCard
-        href="/"
+        href="/projects"
         imageUrl="https://cdn.prod.website-files.com/679b74f316932fb3b1e01c07/67a04795c6255244602f2723_project-thumb-07.jpg"
         imageAlt="Project Image"
         location="42 Collins Street, Melbourne VIC 3000"
@@ -19,7 +19,7 @@ export const ProjectGrid = () => {
         arrowIconAlt="Arrow"
       />
       <ProjectCard
-        href="/"
+        href="/projects"
         imageUrl="https://cdn.prod.website-files.com/679b74f316932fb3b1e01c07/67a0476b96cf1a8864a59421_project-thumb-06.jpg"
         imageAlt="Project Image"
         location="156 George Street, Sydney NSW 2000"
@@ -32,7 +32,7 @@ export const ProjectGrid = () => {
         descriptionContainerWidth="w-[356px]"
       />
       <ProjectCard
-        href="/"
+        href="/projects"
         imageUrl="https://cdn.prod.website-files.com/679b74f316932fb3b1e01c07/67a04742a2d0f48bd0a20ed4_project-thumb-05.jpg"
         imageAlt="Project Image"
         location="88 Wickham Terrace, Brisbane QLD 4000"

@@ -12,7 +12,7 @@ export const ProjectsSection = () => {
         </div>
         <ViewAllButton
           text="View All Projects"
-          href="/"
+          href="/projects"
         />
       </div>
     </section>

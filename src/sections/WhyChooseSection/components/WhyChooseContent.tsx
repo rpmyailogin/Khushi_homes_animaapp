@@ -21,7 +21,7 @@ export const WhyChooseContent = () => {
               Your vision is our priority. At Khushi Homes, we deliver tailored home solutions that align with your unique lifestyle and exceed expectations. From initial consultation to final handover, our dedicated team ensures every detail reflects your aspirations. We combine innovative design with proven construction methods to create homes that stand the test of time. Experience the difference of working with builders who truly care about bringing your dream home to life.
             </p>
             <a
-              href="/"
+              href="/#contact"
               className="text-black text-sm items-center box-border caret-transparent gap-x-2.5 flex justify-center leading-[16.8px] max-w-full border px-[22px] py-3 border-solid"
             >
               <div className="relative box-border caret-transparent overflow-hidden">
