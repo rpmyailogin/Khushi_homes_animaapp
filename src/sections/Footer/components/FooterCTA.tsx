@@ -58,7 +58,7 @@ export const FooterCTA = () => {
           </h2>
           <button
             onClick={() => setIsModalOpen(true)}
-            className="text-white text-sm items-center bg-red-600 box-border caret-transparent gap-x-2.5 flex justify-center leading-[16.8px] max-w-full px-[22px] py-3 hover:bg-red-700 transition-colors"
+            className="text-white text-sm items-center bg-red-600 box-border caret-transparent gap-x-2.5 flex justify-center leading-[16.8px] max-w-full px-[22px] py-3 hover:bg-red-700 transition-colors touch-manipulation min-h-[44px]"
           >
             <div className="relative box-border caret-transparent overflow-hidden">
               <div className="box-border caret-transparent gap-x-1 flex">
@@ -80,7 +80,7 @@ export const FooterCTA = () => {
           <div className="items-center box-border caret-transparent gap-x-[22px] flex flex-wrap justify-start gap-y-[22px] md:flex-nowrap md:gap-y-[normal]">
             <a
               href="/projects"
-              className="text-white text-sm items-center box-border caret-transparent gap-x-1.5 flex justify-start leading-[21px] max-w-full"
+              className="text-white text-sm items-center box-border caret-transparent gap-x-1.5 flex justify-start leading-[21px] max-w-full py-2 touch-manipulation"
             >
               <img
                 src="https://cdn.prod.website-files.com/679b678d080aadecaa78b6ac/679c772f28d0cf7e15328a4c_ic-about.svg"
@@ -91,7 +91,7 @@ export const FooterCTA = () => {
             </a>
             <a
               href="/projects"
-              className="text-white text-sm items-center box-border caret-transparent gap-x-1.5 flex justify-start leading-[21px] max-w-full"
+              className="text-white text-sm items-center box-border caret-transparent gap-x-1.5 flex justify-start leading-[21px] max-w-full py-2 touch-manipulation"
             >
               <img
                 src="https://cdn.prod.website-files.com/679b678d080aadecaa78b6ac/679c772f48e62cb358912407_ic-projects.svg"
@@ -102,7 +102,7 @@ export const FooterCTA = () => {
             </a>
             <a
               href="/services"
-              className="text-white text-sm items-center box-border caret-transparent gap-x-1.5 flex justify-start leading-[21px] max-w-full"
+              className="text-white text-sm items-center box-border caret-transparent gap-x-1.5 flex justify-start leading-[21px] max-w-full py-2 touch-manipulation"
             >
               <img
                 src="https://cdn.prod.website-files.com/679b678d080aadecaa78b6ac/679c772fbd9d9a04eda41714_ic-basic.svg"
@@ -113,7 +113,7 @@ export const FooterCTA = () => {
             </a>
             <a
               href="/blogs"
-              className="text-white text-sm items-center box-border caret-transparent gap-x-1.5 flex justify-start leading-[21px] max-w-full"
+              className="text-white text-sm items-center box-border caret-transparent gap-x-1.5 flex justify-start leading-[21px] max-w-full py-2 touch-manipulation"
             >
               <img
                 src="https://cdn.prod.website-files.com/679b678d080aadecaa78b6ac/679c772f4e9c2e629fc2ab34_ic-articles.svg"
@@ -124,7 +124,7 @@ export const FooterCTA = () => {
             </a>
             <a
               href="/#testimonials"
-              className="text-white text-sm items-center box-border caret-transparent gap-x-1.5 flex justify-start leading-[21px] max-w-full"
+              className="text-white text-sm items-center box-border caret-transparent gap-x-1.5 flex justify-start leading-[21px] max-w-full py-2 touch-manipulation"
             >
               <img
                 src="https://cdn.prod.website-files.com/679b678d080aadecaa78b6ac/679c772fcfa7a1910d8d983f_ic-review.svg"
@@ -135,7 +135,7 @@ export const FooterCTA = () => {
             </a>
             <a
               href="/#contact"
-              className="text-white text-sm items-center box-border caret-transparent gap-x-1.5 flex justify-start leading-[21px] max-w-full"
+              className="text-white text-sm items-center box-border caret-transparent gap-x-1.5 flex justify-start leading-[21px] max-w-full py-2 touch-manipulation"
             >
               <img
                 src="https://cdn.prod.website-files.com/679b678d080aadecaa78b6ac/679c772f3b1c191a1b6b7914_ic-faq.svg"
@@ -181,7 +181,7 @@ export const FooterCTA = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="text-white text-sm items-center box-border caret-transparent gap-x-2.5 inline-flex justify-center leading-[16.8px] bg-red-600 px-6 py-2.5 hover:bg-red-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed w-full mb-2"
+                className="text-white text-sm items-center box-border caret-transparent gap-x-2.5 inline-flex justify-center leading-[16.8px] bg-red-600 px-6 py-2.5 hover:bg-red-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed w-full mb-2 touch-manipulation min-h-[44px]"
               >
                 {isSubmitting ? 'Subscribing...' : 'Subscribe Now'}
               </button>

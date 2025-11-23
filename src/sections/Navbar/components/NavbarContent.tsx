@@ -1,5 +1,6 @@
 import { NavbarLogo } from "@/sections/Navbar/components/NavbarLogo";
 import { DesktopNav } from "@/sections/Navbar/components/DesktopNav";
+import { MobileNav } from "@/sections/Navbar/components/MobileNav";
 import { SocialLinks } from "@/components/SocialLinks";
 
 export const NavbarContent = () => {
@@ -8,7 +9,10 @@ export const NavbarContent = () => {
       <div className="items-center box-border caret-transparent flex justify-between">
         <NavbarLogo />
         <DesktopNav />
-        <SocialLinks />
+        <div className="flex items-center gap-x-4">
+          <SocialLinks />
+          <MobileNav />
+        </div>
       </div>
     </div>
   );

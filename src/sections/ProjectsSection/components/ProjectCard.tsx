@@ -17,14 +17,18 @@ export type ProjectCardProps = {
 export const ProjectCard = (props: ProjectCardProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
+  const handleInteraction = () => {
+    setIsExpanded(!isExpanded);
+  };
+
   return (
     <div role="listitem" className="box-border caret-transparent flex">
       <div
-        className="relative items-stretch box-border caret-transparent flex flex-col justify-end max-w-full w-full overflow-hidden group cursor-pointer"
+        className="relative items-stretch box-border caret-transparent flex flex-col justify-end max-w-full w-full overflow-hidden group cursor-pointer touch-manipulation"
         style={{ backgroundColor: '#e6feff' }}
-        onMouseEnter={() => setIsExpanded(true)}
-        onMouseLeave={() => setIsExpanded(false)}
-        onClick={() => setIsExpanded(!isExpanded)}
+        onMouseEnter={() => !window.matchMedia('(hover: none)').matches && setIsExpanded(true)}
+        onMouseLeave={() => !window.matchMedia('(hover: none)').matches && setIsExpanded(false)}
+        onClick={handleInteraction}
       >
         <div className="box-border caret-transparent overflow-hidden">
           <img

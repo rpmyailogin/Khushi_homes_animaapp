@@ -11,13 +11,21 @@ export type ServiceCardProps = {
 export const ServiceCard = (props: ServiceCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
 
+  const handleInteraction = () => {
+    if (window.matchMedia('(hover: none)').matches) {
+      setIsHovered(!isHovered);
+    }
+  };
+
   return (
     <div role="listitem" className="box-border caret-transparent flex">
       <div
-        className="relative box-border caret-transparent flex flex-col max-w-full w-full border border-solid border-black/10 overflow-hidden group transition-all duration-300 h-full"
+        className="relative box-border caret-transparent flex flex-col max-w-full w-full border border-solid border-black/10 overflow-hidden group transition-all duration-300 h-full touch-manipulation"
         style={{ backgroundColor: '#e6feff' }}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
+        onClick={handleInteraction}
+        onTouchStart={handleInteraction}
       >
         <div className="box-border caret-transparent flex flex-col p-5 md:p-[34px] gap-y-5 transition-colors duration-300 flex-grow" style={{ backgroundColor: '#e6feff' }}>
           <div className="items-center box-border caret-transparent gap-x-5 flex justify-between">
