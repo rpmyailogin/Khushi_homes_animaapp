@@ -67,7 +67,7 @@ export const ContactPage = () => {
 
       <section className="box-border caret-transparent py-10 md:py-20">
         <div className="box-border caret-transparent max-w-full w-full mx-auto px-5 md:max-w-[1336px]">
-          <div className="box-border caret-transparent grid auto-cols-[1fr] grid-cols-[1fr] grid-rows-[auto] gap-10 md:grid-cols-[1fr_1fr] md:gap-x-[60px]">
+          <div className="box-border caret-transparent grid auto-cols-[1fr] grid-cols-[1fr] grid-rows-[auto] gap-10 sm:grid-cols-1 md:grid-cols-[1fr_1fr] md:gap-x-[60px]">
             <div className="box-border caret-transparent">
               <h3 className="text-black text-xl font-medium box-border caret-transparent leading-[30px] mb-6 md:text-2xl md:leading-[36px]">
                 Let's Build Something Great Together

@@ -44,7 +44,7 @@ export const TestimonialSlider = () => {
       className="relative box-border caret-transparent clear-both"
     >
       <div className="relative box-border caret-transparent">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-[34px]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-[34px]">
           {testimonials.map((testimonial, index) => (
             <div key={index}>
               <TestimonialCard {...testimonial} />

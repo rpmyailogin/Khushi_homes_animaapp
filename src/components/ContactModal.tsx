@@ -65,10 +65,10 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm" onClick={onClose}>
-      <div className="bg-white box-border caret-transparent max-w-2xl w-full max-h-[90vh] overflow-y-auto relative" onClick={(e) => e.stopPropagation()}>
-        <div className="sticky top-0 bg-white border-b border-solid border-black/10 px-8 py-6 flex items-center justify-between z-10">
-          <h2 className="text-black text-xl font-medium box-border caret-transparent leading-[30px]">
+    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 bg-black/50 backdrop-blur-sm" onClick={onClose}>
+      <div className="bg-white box-border caret-transparent max-w-2xl w-full max-h-[95vh] sm:max-h-[90vh] overflow-y-auto relative rounded-t-lg sm:rounded-lg" onClick={(e) => e.stopPropagation()}>
+        <div className="sticky top-0 bg-white border-b border-solid border-black/10 px-4 py-4 sm:px-8 sm:py-6 flex items-center justify-between z-10">
+          <h2 className="text-black text-lg sm:text-xl font-medium box-border caret-transparent leading-[28px] sm:leading-[30px]">
             Get Started with Your Project
           </h2>
           <button
@@ -76,13 +76,13 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
             className="text-black hover:text-red-600 transition-colors"
             aria-label="Close modal"
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
         </div>
 
-        <form onSubmit={handleSubmit} className="p-8">
+        <form onSubmit={handleSubmit} className="p-4 sm:p-6 md:p-8">
           <div className="box-border caret-transparent mb-6">
             <label htmlFor="modal-name" className="text-sm font-medium box-border caret-transparent block mb-2">
               Full Name *

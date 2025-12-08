@@ -104,22 +104,22 @@ export const AdminBlogsPage = () => {
             <table className="w-full">
               <thead className="bg-zinc-50 border-b border-zinc-200">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-zinc-600 uppercase tracking-wider">
+                  <th className="px-2 py-2 sm:px-4 sm:py-3 md:px-6 text-left text-xs font-medium text-zinc-600 uppercase tracking-wider">
                     Title
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-zinc-600 uppercase tracking-wider">
+                  <th className="px-2 py-2 sm:px-4 sm:py-3 md:px-6 hidden sm:table-cell text-left text-xs font-medium text-zinc-600 uppercase tracking-wider">
                     Category
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-zinc-600 uppercase tracking-wider">
+                  <th className="px-2 py-2 sm:px-4 sm:py-3 md:px-6 text-left text-xs font-medium text-zinc-600 uppercase tracking-wider">
                     Status
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-zinc-600 uppercase tracking-wider">
+                  <th className="px-2 py-2 sm:px-4 sm:py-3 md:px-6 hidden md:table-cell text-left text-xs font-medium text-zinc-600 uppercase tracking-wider">
                     Featured
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-zinc-600 uppercase tracking-wider">
+                  <th className="px-2 py-2 sm:px-4 sm:py-3 md:px-6 hidden md:table-cell text-left text-xs font-medium text-zinc-600 uppercase tracking-wider">
                     Created
                   </th>
-                  <th className="px-6 py-3 text-right text-xs font-medium text-zinc-600 uppercase tracking-wider">
+                  <th className="px-2 py-2 sm:px-4 sm:py-3 md:px-6 text-right text-xs font-medium text-zinc-600 uppercase tracking-wider">
                     Actions
                   </th>
                 </tr>
@@ -127,23 +127,23 @@ export const AdminBlogsPage = () => {
               <tbody className="divide-y divide-zinc-200">
                 {blogs.map((blog) => (
                   <tr key={blog.id} className="hover:bg-zinc-50">
-                    <td className="px-6 py-4">
-                      <div className="flex items-center gap-3">
+                    <td className="px-2 py-3 sm:px-4 sm:py-4 md:px-6">
+                      <div className="flex items-center gap-2 sm:gap-3">
                         {blog.featured_image && (
                           <img
                             src={blog.featured_image}
                             alt={blog.title}
-                            className="w-16 h-10 object-cover"
+                            className="w-12 h-8 sm:w-16 sm:h-10 object-cover hidden sm:block"
                           />
                         )}
                         <div>
-                          <div className="font-medium text-black">{blog.title}</div>
-                          <div className="text-sm text-zinc-500">/{blog.slug}</div>
+                          <div className="font-medium text-black text-sm sm:text-base line-clamp-2">{blog.title}</div>
+                          <div className="text-xs sm:text-sm text-zinc-500 hidden md:block">/{blog.slug}</div>
                         </div>
                       </div>
                     </td>
-                    <td className="px-6 py-4 text-sm text-zinc-600">{blog.category}</td>
-                    <td className="px-6 py-4">
+                    <td className="px-2 py-3 sm:px-4 sm:py-4 md:px-6 hidden sm:table-cell text-xs sm:text-sm text-zinc-600">{blog.category}</td>
+                    <td className="px-2 py-3 sm:px-4 sm:py-4 md:px-6">
                       <button
                         onClick={() => togglePublish(blog.id, blog.is_published)}
                         className={`px-3 py-1 text-xs font-medium ${
@@ -155,26 +155,26 @@ export const AdminBlogsPage = () => {
                         {blog.is_published ? 'Published' : 'Draft'}
                       </button>
                     </td>
-                    <td className="px-6 py-4 text-sm text-zinc-600">
+                    <td className="px-2 py-3 sm:px-4 sm:py-4 md:px-6 hidden md:table-cell text-xs sm:text-sm text-zinc-600">
                       {blog.is_featured ? '⭐ Yes' : 'No'}
                     </td>
-                    <td className="px-6 py-4 text-sm text-zinc-600">
+                    <td className="px-2 py-3 sm:px-4 sm:py-4 md:px-6 hidden md:table-cell text-xs sm:text-sm text-zinc-600">
                       {new Date(blog.created_at).toLocaleDateString()}
                     </td>
-                    <td className="px-6 py-4 text-right">
-                      <div className="flex items-center justify-end gap-2">
+                    <td className="px-2 py-3 sm:px-4 sm:py-4 md:px-6 text-right">
+                      <div className="flex items-center justify-end gap-1 sm:gap-2">
                         <Link
                           to={`/admin/blogs/edit/${blog.id}`}
-                          className="px-3 py-1 text-sm text-blue-600 hover:bg-blue-50 border border-blue-200"
+                          className="px-2 py-1 text-xs sm:text-sm text-blue-600 hover:bg-blue-50 border border-blue-200"
                         >
                           Edit
                         </Link>
                         <button
                           onClick={() => handleDelete(blog.id)}
                           disabled={deleting === blog.id}
-                          className="px-3 py-1 text-sm text-red-600 hover:bg-red-50 border border-red-200 disabled:opacity-50"
+                          className="px-2 py-1 text-xs sm:text-sm text-red-600 hover:bg-red-50 border border-red-200 disabled:opacity-50"
                         >
-                          {deleting === blog.id ? 'Deleting...' : 'Delete'}
+                          {deleting === blog.id ? 'Del...' : 'Delete'}
                         </button>
                       </div>
                     </td>

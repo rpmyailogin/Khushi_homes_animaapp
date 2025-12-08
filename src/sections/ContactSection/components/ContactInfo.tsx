@@ -5,7 +5,7 @@ export const ContactInfo = () => {
         <img
           src="https://cdn.prod.website-files.com/679b678d080aadecaa78b6ac/679c9ebbb5ca924fedd34a68_contact.jpg"
           alt="Contact Image"
-          className="box-border caret-transparent inline-block max-h-none max-w-full min-h-0 object-cover w-full md:max-h-[254px] md:min-h-[254px]"
+          className="box-border caret-transparent inline-block max-h-[180px] sm:max-h-[220px] max-w-full min-h-[180px] sm:min-h-[220px] object-cover w-full md:max-h-[254px] md:min-h-[254px]"
         />
       </div>
       <div className="box-border caret-transparent flex flex-col gap-y-[15px] md:gap-y-[22px]">
