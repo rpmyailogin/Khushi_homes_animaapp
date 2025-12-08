@@ -41,13 +41,18 @@ export const FooterLinks = () => {
           contactItems={[
             {
               label: "Send us an email",
-              value: "info@example.com",
-              href: "mailto://info@example.com",
+              value: "info@khushihomes.com.au",
+              href: "mailto:info@khushihomes.com.au",
             },
             {
               label: "Give us a call",
-              value: "+(406) 555-0120",
-              href: "tel://+(406)555-0120",
+              value: "+61 0406 996 223",
+              href: "tel:+61406996223",
+            },
+            {
+              label: "",
+              value: "+61 0424238507",
+              href: "tel:+61424238507",
             },
           ]}
         />

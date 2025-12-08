@@ -14,10 +14,10 @@ export const ContactInfo = () => {
             Send us an email
           </div>
           <a
-            href="mailto://info@example.com"
+            href="mailto:info@khushihomes.com.au"
             className="text-black text-base box-border caret-transparent block leading-6 mt-0.5 md:text-xl md:leading-[30px] hover:underline"
           >
-            info@example.com
+            info@khushihomes.com.au
           </a>
         </div>
         <div className="items-start border-l-zinc-800 border-r-zinc-800 border-t-zinc-800 box-border caret-transparent flex flex-col justify-start pb-[15px] border-b-black/10 border-b md:pb-[22px]">
@@ -25,10 +25,16 @@ export const ContactInfo = () => {
             Give us a call
           </div>
           <a
-            href="tel://+(406)555-0120"
+            href="tel:+61406996223"
             className="text-black text-base box-border caret-transparent block leading-6 mt-0.5 md:text-xl md:leading-[30px] hover:underline"
           >
-            +(406) 555-0120
+            +61 0406 996 223
+          </a>
+          <a
+            href="tel:+61424238507"
+            className="text-black text-base box-border caret-transparent block leading-6 mt-0.5 md:text-xl md:leading-[30px] hover:underline"
+          >
+            +61 0424238507
           </a>
         </div>
         <div className="items-start box-border caret-transparent flex flex-col justify-start">
@@ -36,7 +42,7 @@ export const ContactInfo = () => {
             Address
           </div>
           <div className="text-black text-base box-border caret-transparent leading-6 md:text-xl md:leading-[30px]">
-            4517 Washington Ave. Manchester, Kentucky 39495
+            440 Docklands Drive Docklands 3008
           </div>
         </div>
       </div>
