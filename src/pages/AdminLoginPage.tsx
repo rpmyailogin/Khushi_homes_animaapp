@@ -96,7 +96,7 @@ export const AdminLoginPage = () => {
       <div className="max-w-md w-full bg-white shadow-lg border border-zinc-200 p-8">
         <div className="mb-8 text-center">
           <img
-            src="/static/Khushi_homes_logo.svg"
+            src="/Khushi_homes_logo.svg"
             alt="Khushi Homes"
             className="h-12 mx-auto mb-4"
           />

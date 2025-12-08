@@ -32,7 +32,7 @@ export const AdminLayout = ({ children }: AdminLayoutProps) => {
             <div className="flex items-center gap-8">
               <Link to="/" className="flex items-center gap-2">
                 <img
-                  src="/static/Khushi_homes_logo.svg"
+                  src="/Khushi_homes_logo.svg"
                   alt="Khushi Homes"
                   className="h-8"
                 />

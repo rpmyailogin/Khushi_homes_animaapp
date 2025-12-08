@@ -17,7 +17,7 @@ const teamMembers: TeamMember[] = [
     name: "Sunny Katyal",
     role: "Founder & CEO",
     bio: "Sunny Katyal is the visionary behind Khushi Homes, bringing over a decade of experience in residential construction and real estate development. His passion for creating exceptional living spaces and commitment to quality has established Khushi Homes as a trusted name in the industry. Under his leadership, the company has successfully delivered numerous projects that blend innovative design with functional excellence.",
-    image: "/static/sunny-profile.jpg",
+    image: "/sunny-profile.jpg",
     social: {
       linkedin: "#",
       twitter: "#",
@@ -28,7 +28,7 @@ const teamMembers: TeamMember[] = [
     name: "Samrita Sharma",
     role: "Head of Designs",
     bio: "Samrita Sharma leads the design division at Khushi Homes with her exceptional eye for detail and contemporary aesthetics. With extensive experience in architectural design and interior planning, she transforms client visions into stunning reality. Her innovative approach to space optimization and sustainable design principles ensures that every project reflects both beauty and functionality.",
-    image: "/static/samrita-profile.jpg",
+    image: "/samrita-profile.jpg",
     social: {
       linkedin: "#",
       twitter: "#",
@@ -39,7 +39,7 @@ const teamMembers: TeamMember[] = [
     name: "Ritesh Patel",
     role: "Customer Relation Manager",
     bio: "Ritesh Patel is the cornerstone of client satisfaction at Khushi Homes. With his exceptional communication skills and dedication to customer service, he ensures that every client's journey from consultation to project completion is seamless and enjoyable. His ability to understand client needs and provide personalized solutions has earned him the trust and appreciation of countless homeowners.",
-    image: "/static/ritesh-profile.jpg",
+    image: "/ritesh-profile.jpg",
     social: {
       linkedin: "#",
       twitter: "#",
