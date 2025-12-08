@@ -85,7 +85,8 @@ export const ContactPage = () => {
                   </div>
                   <div>
                     <h4 className="text-black font-medium box-border caret-transparent mb-1">Phone</h4>
-                    <p className="box-border caret-transparent text-sm">+61 XXX XXX XXX</p>
+                    <a href="tel:+61406996223" className="box-border caret-transparent text-sm block hover:underline">+61 0406 996 223</a>
+                    <a href="tel:+61424238507" className="box-border caret-transparent text-sm block hover:underline">+61 0424238507</a>
                   </div>
                 </div>
 
@@ -97,7 +98,7 @@ export const ContactPage = () => {
                   </div>
                   <div>
                     <h4 className="text-black font-medium box-border caret-transparent mb-1">Email</h4>
-                    <p className="box-border caret-transparent text-sm">info@khushihomes.com.au</p>
+                    <a href="mailto:info@khushihomes.com.au" className="box-border caret-transparent text-sm hover:underline">info@khushihomes.com.au</a>
                   </div>
                 </div>
 
@@ -110,7 +111,7 @@ export const ContactPage = () => {
                   </div>
                   <div>
                     <h4 className="text-black font-medium box-border caret-transparent mb-1">Location</h4>
-                    <p className="box-border caret-transparent text-sm">Melbourne, VIC, Australia</p>
+                    <p className="box-border caret-transparent text-sm">440 Docklands Drive Docklands 3008</p>
                   </div>
                 </div>
 
