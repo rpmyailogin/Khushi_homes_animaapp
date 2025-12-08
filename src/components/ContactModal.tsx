@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { supabase } from '@/lib/supabase';
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -29,34 +30,33 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
     setSubmitMessage('');
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/rest/v1/contact_submissions`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'apikey': import.meta.env.VITE_SUPABASE_ANON_KEY,
-          'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`
-        },
-        body: JSON.stringify(formData)
-      });
+      const { error } = await supabase
+        .from('contact_submissions')
+        .insert([{
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone || null,
+          message: formData.message,
+          project_type: formData.projectType,
+          status: 'new'
+        }]);
 
-      if (response.ok) {
-        setSubmitMessage('Thank you! We will get back to you soon.');
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          message: '',
-          projectType: 'new-home'
-        });
-        setTimeout(() => {
-          onClose();
-          setSubmitMessage('');
-        }, 2000);
-      } else {
-        setSubmitMessage('Something went wrong. Please try again.');
-      }
-    } catch (error) {
-      setSubmitMessage('Error submitting form. Please try again.');
+      if (error) throw error;
+
+      setSubmitMessage('Thank you! We will get back to you soon.');
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        message: '',
+        projectType: 'new-home'
+      });
+      setTimeout(() => {
+        onClose();
+        setSubmitMessage('');
+      }, 2000);
+    } catch (error: any) {
+      setSubmitMessage(error.message || 'Error submitting form. Please try again.');
     } finally {
       setIsSubmitting(false);
     }

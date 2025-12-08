@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { supabase } from '@/lib/supabase';
 
 export const NewsletterForm = () => {
   const [email, setEmail] = useState('');
@@ -12,15 +13,9 @@ export const NewsletterForm = () => {
     setMessage('');
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/rest/v1/newsletter_subscriptions`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'apikey': import.meta.env.VITE_SUPABASE_ANON_KEY,
-          'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
-          'Prefer': 'resolution=merge-duplicates'
-        },
-        body: JSON.stringify({
+      const { error } = await supabase
+        .from('newsletter_subscriptions')
+        .insert([{
           email,
           name: name || null,
           preferences: {
@@ -28,20 +23,21 @@ export const NewsletterForm = () => {
             newsletters: true,
             offers: true
           }
-        })
-      });
+        }]);
 
-      if (response.ok) {
+      if (error) {
+        if (error.code === '23505') {
+          setMessage('This email is already subscribed to our newsletter.');
+        } else {
+          throw error;
+        }
+      } else {
         setMessage('Successfully subscribed! Thank you for joining our newsletter.');
         setEmail('');
         setName('');
-      } else if (response.status === 409) {
-        setMessage('This email is already subscribed to our newsletter.');
-      } else {
-        setMessage('Something went wrong. Please try again.');
       }
-    } catch (error) {
-      setMessage('Error subscribing. Please try again later.');
+    } catch (error: any) {
+      setMessage(error.message || 'Error subscribing. Please try again later.');
     } finally {
       setIsSubmitting(false);
     }
