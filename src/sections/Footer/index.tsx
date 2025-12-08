@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { FooterCTA } from "@/sections/Footer/components/FooterCTA";
 import { FooterLinks } from "@/sections/Footer/components/FooterLinks";
 
@@ -8,6 +9,14 @@ export const Footer = () => {
         <div className="box-border caret-transparent py-8 sm:py-10 md:pt-[70px] md:pb-20">
           <FooterCTA />
           <FooterLinks />
+        </div>
+        <div className="box-border caret-transparent border-t border-white/10 pt-4 text-center">
+          <Link
+            to="/admin/login"
+            className="inline-block text-xs text-white/40 hover:text-white/80 transition-colors"
+          >
+            Admin
+          </Link>
         </div>
       </div>
     </section>
