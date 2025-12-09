@@ -1,48 +1,74 @@
+import { useEffect, useState } from 'react';
 import { ProjectCard } from "@/sections/ProjectsSection/components/ProjectCard";
+import { supabase } from '@/lib/supabase';
+
+interface Project {
+  id: string;
+  title: string;
+  short_description: string;
+  description: string;
+  featured_image: string | null;
+  location: string | null;
+}
 
 export const ProjectGrid = () => {
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchProjects();
+  }, []);
+
+  const fetchProjects = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('projects')
+        .select('*')
+        .eq('is_published', true)
+        .order('display_order', { ascending: true })
+        .limit(3);
+
+      if (error) throw error;
+      setProjects(data || []);
+    } catch (error) {
+      console.error('Error fetching projects:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center py-20">
+        <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-black"></div>
+      </div>
+    );
+  }
+
+  if (projects.length === 0) {
+    return null;
+  }
+
   return (
     <div
       role="list"
       className="box-border caret-transparent grid grid-cols-1 gap-y-8 sm:gap-y-10 md:grid-cols-2 md:gap-x-6 md:gap-y-[30px] lg:grid-cols-3"
     >
-      <ProjectCard
-        href="/projects"
-        imageUrl="https://cdn.prod.website-files.com/679b74f316932fb3b1e01c07/67a04795c6255244602f2723_project-thumb-07.jpg"
-        imageAlt="Project Image"
-        location="42 Collins Street, Melbourne VIC 3000"
-        title="Melbourne Business Hub"
-        description="Modern commercial development in the heart of Melbourne's CBD, featuring cutting-edge sustainable architecture."
-        details="This 12-storey office complex showcases premium finishes, energy-efficient systems, and flexible workspaces designed for contemporary business needs. Completed in 2024 with a 6-star Green Star rating."
-        buttonText="View Project"
-        arrowIconUrl="https://cdn.prod.website-files.com/679b678d080aadecaa78b6ac/679c559d1989cb82e96c949e_15fec19f4179bbda8c7cdc30da4795c2_button-arrow.svg"
-        arrowIconAlt="Arrow"
-      />
-      <ProjectCard
-        href="/projects"
-        imageUrl="https://cdn.prod.website-files.com/679b74f316932fb3b1e01c07/67a0476b96cf1a8864a59421_project-thumb-06.jpg"
-        imageAlt="Project Image"
-        location="156 George Street, Sydney NSW 2000"
-        title="Harbour View Residences"
-        description="Luxury waterfront apartments blending modern design with Sydney's iconic harbour landscape."
-        details="A stunning 8-level residential building offering 32 premium apartments with harbour glimpses, rooftop terrace, and resort-style amenities. Features include designer kitchens, floor-to-ceiling glass, and smart home technology throughout."
-        buttonText="View Project"
-        arrowIconUrl="https://cdn.prod.website-files.com/679b678d080aadecaa78b6ac/679c559d1989cb82e96c949e_15fec19f4179bbda8c7cdc30da4795c2_button-arrow.svg"
-        arrowIconAlt="Arrow"
-        descriptionContainerWidth="w-[356px]"
-      />
-      <ProjectCard
-        href="/projects"
-        imageUrl="https://cdn.prod.website-files.com/679b74f316932fb3b1e01c07/67a04742a2d0f48bd0a20ed4_project-thumb-05.jpg"
-        imageAlt="Project Image"
-        location="88 Wickham Terrace, Brisbane QLD 4000"
-        title="Riverside Eco Apartments"
-        description="Sustainable living spaces designed for the environmentally conscious urban lifestyle in Brisbane's premium location."
-        details="This award-winning development features 45 eco-friendly apartments with solar panels, rainwater harvesting, and native landscaping. Each residence includes high-quality finishes, spacious balconies, and access to a communal garden and wellness facilities."
-        buttonText="View Project"
-        arrowIconUrl="https://cdn.prod.website-files.com/679b678d080aadecaa78b6ac/679c559d1989cb82e96c949e_15fec19f4179bbda8c7cdc30da4795c2_button-arrow.svg"
-        arrowIconAlt="Arrow"
-      />
+      {projects.map((project) => (
+        <ProjectCard
+          key={project.id}
+          href="/projects"
+          imageUrl={project.featured_image || "https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1200"}
+          imageAlt={project.title}
+          location={project.location || ""}
+          title={project.title}
+          description={project.short_description}
+          details={project.description}
+          buttonText="View Project"
+          arrowIconUrl="https://cdn.prod.website-files.com/679b678d080aadecaa78b6ac/679c559d1989cb82e96c949e_15fec19f4179bbda8c7cdc30da4795c2_button-arrow.svg"
+          arrowIconAlt="Arrow"
+        />
+      ))}
     </div>
   );
 };

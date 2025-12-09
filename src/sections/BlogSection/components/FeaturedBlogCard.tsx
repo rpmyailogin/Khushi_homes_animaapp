@@ -1,7 +1,61 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { supabase } from '@/lib/supabase';
+
+interface Blog {
+  id: string;
+  title: string;
+  excerpt: string;
+  category: string;
+  featured_image: string | null;
+  published_at: string;
+}
 
 export const FeaturedBlogCard = () => {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [blog, setBlog] = useState<Blog | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchFeaturedBlog();
+  }, []);
+
+  const fetchFeaturedBlog = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('blogs')
+        .select('*')
+        .eq('is_published', true)
+        .eq('is_featured', true)
+        .order('published_at', { ascending: false })
+        .limit(1)
+        .maybeSingle();
+
+      if (error) throw error;
+      setBlog(data);
+    } catch (error) {
+      console.error('Error fetching featured blog:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="box-border caret-transparent max-w-none w-full md:max-w-[50%]">
+        <div className="bg-gray-100 h-[492px] flex items-center justify-center">
+          <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-black"></div>
+        </div>
+      </div>
+    );
+  }
+
+  if (!blog) {
+    return null;
+  }
+
+  const formatDate = (date: string) => {
+    return new Date(date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+  };
 
   return (
     <div className="box-border caret-transparent max-w-none w-full md:max-w-[50%]">
@@ -16,8 +70,8 @@ export const FeaturedBlogCard = () => {
             >
               <div className="box-border caret-transparent overflow-hidden">
                 <img
-                  src="https://cdn.prod.website-files.com/679b74f316932fb3b1e01c07/679cb63a5742e9506defbe20_blog-main-01.jpg"
-                  alt="Post Image"
+                  src={blog.featured_image || "https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1200"}
+                  alt={blog.title}
                   className="aspect-[auto_633_/_492] box-border caret-transparent inline-block h-[492px] max-h-[220px] max-w-full min-h-[220px] object-cover w-full transition-transform duration-500 group-hover:scale-105 md:max-h-[492px] md:min-h-[492px]"
                 />
               </div>
@@ -35,7 +89,7 @@ export const FeaturedBlogCard = () => {
                     <div className={`text-sm box-border caret-transparent leading-[14px] px-2.5 py-[5px] transition-colors duration-500 ${
                       isExpanded ? 'bg-white/20 text-white' : 'bg-gray-100'
                     }`}>
-                      Technology
+                      {blog.category}
                     </div>
                     <div className={`text-xs box-border caret-transparent h-6 leading-[18px] w-px transition-colors duration-500 md:text-sm md:leading-[21px] ${
                       isExpanded ? 'bg-white/30' : 'bg-black/10'
@@ -43,13 +97,13 @@ export const FeaturedBlogCard = () => {
                     <div className={`text-xs box-border caret-transparent leading-[18px] transition-colors duration-500 md:text-sm md:leading-[21px] ${
                       isExpanded ? 'text-white' : 'text-zinc-800'
                     }`}>
-                      Feb 11, 2025
+                      {formatDate(blog.published_at)}
                     </div>
                   </div>
                   <h4 className={`text-lg box-border caret-transparent leading-[27px] transition-colors duration-500 md:text-xl md:leading-[30px] ${
                     isExpanded ? 'text-white' : 'text-black'
                   }`}>
-                    Building smart how technology is transforming construction
+                    {blog.title}
                   </h4>
                 </div>
                 <div
@@ -60,7 +114,7 @@ export const FeaturedBlogCard = () => {
                   }`}
                 >
                   <p className="text-white text-sm box-border caret-transparent leading-relaxed">
-                    Discover how cutting-edge technology is revolutionizing the construction industry, from smart building materials to AI-powered project management.
+                    {blog.excerpt}
                   </p>
                 </div>
               </div>
