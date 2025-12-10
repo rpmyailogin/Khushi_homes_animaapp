@@ -51,9 +51,9 @@ export const FooterCTA = () => {
 
   return (
     <>
-      <div className="items-start border-l-zinc-800 border-r-zinc-800 border-t-zinc-800 box-border caret-transparent flex flex-col justify-between gap-y-8 pb-8 border-b-white/20 border-b sm:gap-y-10 sm:pb-10 md:items-start md:flex-row md:gap-x-10 md:gap-y-[normal] md:pb-[50px]">
+      <div className="items-start border-l-zinc-800 border-r-zinc-800 border-t-zinc-800 box-border caret-transparent flex flex-col justify-between gap-y-6 pb-6 border-b-white/20 border-b sm:gap-y-8 sm:pb-8 md:items-start md:flex-row md:gap-x-10 md:gap-y-[normal] md:pb-10">
         <div className="items-start box-border caret-transparent flex flex-col justify-start max-w-none w-full md:max-w-[42%]">
-          <h2 className="text-white text-xl box-border caret-transparent leading-[28px] mb-6 sm:text-[26px] sm:leading-[33.8px] sm:mb-[30px] md:text-[40px] md:leading-[52px]">
+          <h2 className="text-white text-xl box-border caret-transparent leading-[28px] mb-4 sm:text-[26px] sm:leading-[33.8px] sm:mb-5 md:text-[32px] md:leading-[42px]">
             Contact us today to discuss your next project
           </h2>
           <button
