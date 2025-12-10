@@ -10,6 +10,23 @@ interface Blog {
   published_at: string;
 }
 
+const fallbackBlogs: Blog[] = [
+  {
+    id: 'fallback-1',
+    title: "Eco-friendly construction materials you should know about",
+    category: "Materials",
+    published_at: "2025-02-11T00:00:00Z",
+    featured_image: "https://cdn.prod.website-files.com/679b74f316932fb3b1e01c07/679cb69863b614ca6c0adaf1_blog-thumb-07.jpg"
+  },
+  {
+    id: 'fallback-2',
+    title: "Adopting lean construction practices for maximum efficiency",
+    category: "Efficiency",
+    published_at: "2025-02-11T00:00:00Z",
+    featured_image: "https://cdn.prod.website-files.com/679b74f316932fb3b1e01c07/679cb6893d98ac6330958f1c_blog-thumb-06.jpg"
+  }
+];
+
 export const BlogList = () => {
   const [blogs, setBlogs] = useState<Blog[]>([]);
   const [loading, setLoading] = useState(true);
@@ -29,9 +46,15 @@ export const BlogList = () => {
         .limit(2);
 
       if (error) throw error;
-      setBlogs(data || []);
+
+      if (data && data.length > 0) {
+        setBlogs(data);
+      } else {
+        setBlogs(fallbackBlogs);
+      }
     } catch (error) {
       console.error('Error fetching blogs:', error);
+      setBlogs(fallbackBlogs);
     } finally {
       setLoading(false);
     }

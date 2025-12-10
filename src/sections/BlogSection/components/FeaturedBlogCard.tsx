@@ -10,6 +10,15 @@ interface Blog {
   published_at: string;
 }
 
+const fallbackBlog: Blog = {
+  id: 'fallback-featured',
+  title: "Building smart how technology is transforming construction",
+  category: "Technology",
+  published_at: "2025-02-11T00:00:00Z",
+  excerpt: "Discover how cutting-edge technology is revolutionizing the construction industry, from smart building materials to AI-powered project management.",
+  featured_image: "https://cdn.prod.website-files.com/679b74f316932fb3b1e01c07/679cb63a5742e9506defbe20_blog-main-01.jpg"
+};
+
 export const FeaturedBlogCard = () => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [blog, setBlog] = useState<Blog | null>(null);
@@ -31,9 +40,10 @@ export const FeaturedBlogCard = () => {
         .maybeSingle();
 
       if (error) throw error;
-      setBlog(data);
+      setBlog(data || fallbackBlog);
     } catch (error) {
       console.error('Error fetching featured blog:', error);
+      setBlog(fallbackBlog);
     } finally {
       setLoading(false);
     }
