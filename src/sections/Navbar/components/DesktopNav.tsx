@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
 
 export const DesktopNav = () => {
+  const handleHomeClick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <nav
       role="navigation"
@@ -8,6 +12,7 @@ export const DesktopNav = () => {
     >
       <Link
         to="/"
+        onClick={handleHomeClick}
         className="relative text-black text-sm items-start box-border caret-transparent flex flex-col justify-start leading-[16.8px] max-w-full min-h-0 min-w-0 uppercase overflow-hidden py-3 md:[align-items:normal] md:justify-normal md:min-h-[auto] md:min-w-[auto] md:pt-0 md:pb-0.5"
       >
         <div className="box-border caret-transparent min-h-0 min-w-0 md:min-h-[auto] md:min-w-[auto]">

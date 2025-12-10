@@ -8,6 +8,11 @@ export const MobileNav = () => {
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
 
+  const handleHomeClick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    closeMenu();
+  };
+
   return (
     <>
       <button
@@ -27,7 +32,7 @@ export const MobileNav = () => {
         <nav className="flex flex-col p-5 gap-y-1">
           <Link
             to="/"
-            onClick={closeMenu}
+            onClick={handleHomeClick}
             className="text-black text-sm uppercase py-3 px-4 hover:bg-black/5 rounded transition-colors touch-manipulation"
           >
             Home
