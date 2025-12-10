@@ -15,6 +15,7 @@ export const AdminLoginPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    document.title = "Admin Login - Khushi Homes";
     if (isAdmin) {
       navigate('/admin/dashboard');
     }

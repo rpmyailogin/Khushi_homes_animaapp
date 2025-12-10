@@ -21,6 +21,11 @@ export const AdminProjectsPage = () => {
   const [loading, setLoading] = useState(true);
   const [deleting, setDeleting] = useState<string | null>(null);
 
+  useEffect(() => {
+    document.title = "Manage Projects - Khushi Homes Admin";
+    fetchProjects();
+  }, []);
+
   const fetchProjects = async () => {
     try {
       const { data, error } = await supabase

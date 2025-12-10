@@ -1,9 +1,13 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { SectionHeader } from "@/components/SectionHeader";
 import { ContactModal } from '@/components/ContactModal';
 
 export const ServicesPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useEffect(() => {
+    document.title = "Services - Khushi Homes";
+  }, []);
   const services = [
     {
       id: 1,

@@ -21,6 +21,7 @@ export const ProjectsPage = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    document.title = "Projects - Khushi Homes";
     fetchProjects();
   }, []);
 

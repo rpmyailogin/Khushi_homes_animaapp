@@ -13,6 +13,7 @@ export const AdminDashboard = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    document.title = "Dashboard - Khushi Homes Admin";
     const fetchStats = async () => {
       try {
         const [blogsResult, projectsResult, contactsResult, newslettersResult] = await Promise.all([

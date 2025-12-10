@@ -20,6 +20,11 @@ export const AdminBlogsPage = () => {
   const [loading, setLoading] = useState(true);
   const [deleting, setDeleting] = useState<string | null>(null);
 
+  useEffect(() => {
+    document.title = "Manage Blogs - Khushi Homes Admin";
+    fetchBlogs();
+  }, []);
+
   const fetchBlogs = async () => {
     try {
       const { data, error } = await supabase

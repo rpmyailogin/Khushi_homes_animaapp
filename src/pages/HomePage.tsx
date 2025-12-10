@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Hero } from "@/sections/Hero";
 import { ProjectsSection } from "@/sections/ProjectsSection";
 import { AboutSection } from "@/sections/AboutSection";
@@ -9,6 +10,10 @@ import { TestimonialsSection } from "@/sections/TestimonialsSection";
 import { ContactSection } from "@/sections/ContactSection";
 
 export const HomePage = () => {
+  useEffect(() => {
+    document.title = "Khushi Homes - Building Dreams in Melbourne";
+  }, []);
+
   return (
     <>
       <Hero />

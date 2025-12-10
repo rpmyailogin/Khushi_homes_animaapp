@@ -19,6 +19,7 @@ export const BlogsPage = () => {
   const [categories, setCategories] = useState<string[]>(["All"]);
 
   useEffect(() => {
+    document.title = "Blogs - Khushi Homes";
     fetchBlogs();
   }, []);
 

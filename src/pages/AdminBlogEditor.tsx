@@ -28,10 +28,11 @@ export const AdminBlogEditor = () => {
   const [error, setError] = useState('');
 
   useEffect(() => {
+    document.title = isEditMode ? "Edit Blog - Khushi Homes Admin" : "Create Blog - Khushi Homes Admin";
     if (isEditMode) {
       fetchBlog();
     }
-  }, [id]);
+  }, [id, isEditMode]);
 
   const fetchBlog = async () => {
     try {

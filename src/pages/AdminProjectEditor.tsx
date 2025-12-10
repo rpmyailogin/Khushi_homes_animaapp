@@ -34,10 +34,11 @@ export const AdminProjectEditor = () => {
   const [error, setError] = useState('');
 
   useEffect(() => {
+    document.title = isEditMode ? "Edit Project - Khushi Homes Admin" : "Create Project - Khushi Homes Admin";
     if (isEditMode) {
       fetchProject();
     }
-  }, [id]);
+  }, [id, isEditMode]);
 
   const fetchProject = async () => {
     try {

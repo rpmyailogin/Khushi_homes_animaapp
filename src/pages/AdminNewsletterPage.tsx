@@ -21,6 +21,7 @@ export const AdminNewsletterPage = () => {
   const [filter, setFilter] = useState<'all' | 'active' | 'inactive'>('all');
 
   useEffect(() => {
+    document.title = "Newsletter Subscribers - Khushi Homes Admin";
     fetchSubscribers();
   }, []);
 

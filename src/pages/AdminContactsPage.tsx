@@ -20,6 +20,7 @@ export const AdminContactsPage = () => {
   const [selectedContact, setSelectedContact] = useState<ContactSubmission | null>(null);
 
   useEffect(() => {
+    document.title = "Contact Submissions - Khushi Homes Admin";
     fetchContacts();
   }, []);
 

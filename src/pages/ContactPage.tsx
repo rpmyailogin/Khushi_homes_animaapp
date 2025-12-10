@@ -1,7 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { SectionHeader } from '@/components/SectionHeader';
 
 export const ContactPage = () => {
+  useEffect(() => {
+    document.title = "Contact Us - Khushi Homes";
+  }, []);
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',

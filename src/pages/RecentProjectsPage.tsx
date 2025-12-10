@@ -1,6 +1,10 @@
+import { useEffect } from "react";
 import { SectionHeader } from "@/components/SectionHeader";
 
 export const RecentProjectsPage = () => {
+  useEffect(() => {
+    document.title = "Recent Projects - Khushi Homes";
+  }, []);
   const recentProjects = [
     {
       id: 1,
