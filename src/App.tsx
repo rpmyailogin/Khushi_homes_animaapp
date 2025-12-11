@@ -19,26 +19,28 @@ import { AdminProjectsPage } from "@/pages/AdminProjectsPage";
 import { AdminProjectEditor } from "@/pages/AdminProjectEditor";
 import { AdminContactsPage } from "@/pages/AdminContactsPage";
 import { AdminNewsletterPage } from "@/pages/AdminNewsletterPage";
+import UnderConstruction from "@/components/UnderConstruction";
 
 export const App = () => {
   const location = useLocation();
   const isAdminRoute = location.pathname.startsWith('/admin');
+  const isUnderConstruction = import.meta.env.VITE_UNDER_CONSTRUCTION === 'true';
 
   return (
     <AdminAuthProvider>
       <div className="text-zinc-800 text-base not-italic normal-nums font-normal accent-auto bg-white box-border caret-transparent block tracking-[normal] leading-[27.2px] list-outside list-disc min-h-full pointer-events-auto text-start indent-[0px] normal-case visible border-separate font-public_sans">
         <ScrollToTop />
-        {!isAdminRoute && <Navbar />}
-        <main className={!isAdminRoute ? "pt-[60px]" : ""}>
+        {!isAdminRoute && !isUnderConstruction && <Navbar />}
+        <main className={!isAdminRoute && !isUnderConstruction ? "pt-[60px]" : ""}>
           <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/about" element={<AboutUsPage />} />
-            <Route path="/projects" element={<ProjectsPage />} />
-            <Route path="/services" element={<ServicesPage />} />
-            <Route path="/blogs" element={<BlogsPage />} />
-            <Route path="/case-studies" element={<ProjectsPage />} />
-            <Route path="/recent-projects" element={<RecentProjectsPage />} />
-            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/" element={isUnderConstruction ? <UnderConstruction /> : <HomePage />} />
+            <Route path="/about" element={isUnderConstruction ? <UnderConstruction /> : <AboutUsPage />} />
+            <Route path="/projects" element={isUnderConstruction ? <UnderConstruction /> : <ProjectsPage />} />
+            <Route path="/services" element={isUnderConstruction ? <UnderConstruction /> : <ServicesPage />} />
+            <Route path="/blogs" element={isUnderConstruction ? <UnderConstruction /> : <BlogsPage />} />
+            <Route path="/case-studies" element={isUnderConstruction ? <UnderConstruction /> : <ProjectsPage />} />
+            <Route path="/recent-projects" element={isUnderConstruction ? <UnderConstruction /> : <RecentProjectsPage />} />
+            <Route path="/contact" element={isUnderConstruction ? <UnderConstruction /> : <ContactPage />} />
 
             <Route path="/admin/login" element={<AdminLoginPage />} />
             <Route
@@ -115,7 +117,7 @@ export const App = () => {
             />
           </Routes>
         </main>
-        {!isAdminRoute && <Footer />}
+        {!isAdminRoute && !isUnderConstruction && <Footer />}
         <div className="fixed box-border caret-transparent contents z-[2147483647] left-0 top-0">
           <div className="caret-transparent"></div>
         </div>
