@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { SectionHeader } from "@/components/SectionHeader";
 import { ContactModal } from '@/components/ContactModal';
+import { PropertyCard } from '@/sections/ProjectsSection/components/PropertyCard';
 import { supabase } from '@/lib/supabase';
 
 interface Project {
@@ -13,6 +14,11 @@ interface Project {
   budget_range: string | null;
   completion_date: string | null;
   area_sqft: number | null;
+  bedrooms: number | null;
+  bathrooms: number | null;
+  garage_spaces: number | null;
+  land_size_sqm: number | null;
+  property_features: string[] | null;
 }
 
 export const ProjectsPage = () => {
@@ -42,28 +48,18 @@ export const ProjectsPage = () => {
     }
   };
 
-  const getYear = (date: string | null) => {
-    if (!date) return 'N/A';
-    return new Date(date).getFullYear().toString();
-  };
-
-  const calculateDuration = (completionDate: string | null) => {
-    if (!completionDate) return 'N/A';
-    return 'Completed';
-  };
-
   return (
     <div className="box-border caret-transparent">
       <section className="bg-gray-100 box-border caret-transparent py-10 md:py-20">
         <div className="box-border caret-transparent max-w-full w-full mx-auto px-5 md:max-w-[1336px]">
           <SectionHeader subtitle="Portfolio" title="Our Projects" />
           <p className="box-border caret-transparent max-w-3xl mb-10">
-            Explore our portfolio of beautifully crafted homes across Australia. From custom new builds to complete renovations, each project showcases our commitment to quality craftsmanship and modern design.
+            Explore our portfolio of beautifully crafted homes across Melbourne. From custom new builds to complete renovations, each project showcases our commitment to quality craftsmanship and modern design.
           </p>
         </div>
       </section>
 
-      <section className="box-border caret-transparent py-10 md:py-[60px]">
+      <section className="box-border caret-transparent py-10 md:py-[60px]" style={{ backgroundColor: '#e6feff' }}>
         <div className="box-border caret-transparent max-w-full w-full mx-auto px-5 md:max-w-[1336px]">
           {loading ? (
             <div className="flex items-center justify-center py-20">
@@ -74,59 +70,28 @@ export const ProjectsPage = () => {
               <p className="text-zinc-600">No projects available at the moment.</p>
             </div>
           ) : (
-            <div className="box-border caret-transparent grid auto-cols-[1fr] grid-cols-[1fr] grid-rows-[auto] gap-y-10 sm:grid-cols-2 md:gap-x-[30px] md:gap-y-[60px]">
+            <div className="grid grid-cols-1 gap-y-8 sm:grid-cols-2 sm:gap-x-6 md:gap-x-8 md:gap-y-10">
               {projects.map((project) => (
-                <div key={project.id} className="box-border caret-transparent flex flex-col border border-solid border-black/10 hover:shadow-[rgba(0,0,0,0.06)_0px_30px_60px_0px] transition-shadow" style={{ backgroundColor: '#e6feff' }}>
-                  <div className="box-border caret-transparent overflow-hidden" style={{ backgroundColor: '#e6feff' }}>
-                    <img
-                      src={project.featured_image || "https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=800"}
-                      alt={project.title}
-                      className="box-border caret-transparent inline-block max-h-[300px] max-w-full min-h-[300px] object-cover w-full hover:scale-105 transition-transform duration-500"
-                    />
-                  </div>
-                  <div className="box-border caret-transparent p-5 md:p-[30px] flex flex-col gap-y-4" style={{ backgroundColor: '#e6feff' }}>
-                    <div className="box-border caret-transparent flex items-center justify-between gap-x-3">
-                      <div className="text-sm bg-gray-100 box-border caret-transparent leading-[14px] px-2.5 py-[5px]">
-                        {project.project_type}
-                      </div>
-                      <div className="text-sm box-border caret-transparent leading-[21px]">
-                        {getYear(project.completion_date)}
-                      </div>
-                    </div>
-                    <h3 className="text-black text-xl font-medium box-border caret-transparent leading-[30px] md:text-2xl md:leading-[36px]">
-                      {project.title}
-                    </h3>
-                    <p className="box-border caret-transparent">
-                      {project.short_description}
-                    </p>
-                    <div className="box-border caret-transparent flex flex-col gap-y-2 pt-4 border-t border-solid border-black/10">
-                      {project.location && (
-                        <div className="box-border caret-transparent flex justify-between">
-                          <span className="text-sm box-border caret-transparent leading-[21px]">Location:</span>
-                          <span className="text-sm font-medium box-border caret-transparent leading-[21px]">{project.location}</span>
-                        </div>
-                      )}
-                      {project.budget_range && (
-                        <div className="box-border caret-transparent flex justify-between">
-                          <span className="text-sm box-border caret-transparent leading-[21px]">Project Value:</span>
-                          <span className="text-sm font-medium box-border caret-transparent leading-[21px]">{project.budget_range}</span>
-                        </div>
-                      )}
-                      {project.area_sqft && (
-                        <div className="box-border caret-transparent flex justify-between">
-                          <span className="text-sm box-border caret-transparent leading-[21px]">Area:</span>
-                          <span className="text-sm font-medium box-border caret-transparent leading-[21px]">{project.area_sqft} sq ft</span>
-                        </div>
-                      )}
-                      {project.completion_date && (
-                        <div className="box-border caret-transparent flex justify-between">
-                          <span className="text-sm box-border caret-transparent leading-[21px]">Status:</span>
-                          <span className="text-sm font-medium box-border caret-transparent leading-[21px]">{calculateDuration(project.completion_date)}</span>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                </div>
+                <PropertyCard
+                  key={project.id}
+                  title={project.title}
+                  location={project.location}
+                  short_description={project.short_description}
+                  featured_image={
+                    project.featured_image ||
+                    'https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1200'
+                  }
+                  project_type={project.project_type}
+                  completion_date={project.completion_date}
+                  area_sqft={project.area_sqft}
+                  budget_range={project.budget_range}
+                  bedrooms={project.bedrooms}
+                  bathrooms={project.bathrooms}
+                  garage_spaces={project.garage_spaces}
+                  land_size_sqm={project.land_size_sqm}
+                  property_features={project.property_features || []}
+                  onEnquire={() => setIsModalOpen(true)}
+                />
               ))}
             </div>
           )}
@@ -156,6 +121,7 @@ export const ProjectsPage = () => {
           </div>
         </div>
       </section>
+
       <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>
   );
