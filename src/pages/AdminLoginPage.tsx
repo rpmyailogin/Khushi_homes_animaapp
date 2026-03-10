@@ -126,7 +126,7 @@ export const AdminLoginPage = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="w-full px-4 py-3 border border-zinc-300 focus:outline-none focus:border-black transition-colors"
+                className="w-full px-4 py-3 border border-zinc-300 focus:outline-none focus:border-black transition-colors text-black caret-black"
                 placeholder="admin@example.com"
               />
             </div>
@@ -141,7 +141,7 @@ export const AdminLoginPage = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                className="w-full px-4 py-3 border border-zinc-300 focus:outline-none focus:border-black transition-colors"
+                className="w-full px-4 py-3 border border-zinc-300 focus:outline-none focus:border-black transition-colors text-black caret-black"
                 placeholder="••••••••"
               />
             </div>
@@ -172,7 +172,7 @@ export const AdminLoginPage = () => {
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
                 required
-                className="w-full px-4 py-3 border border-zinc-300 focus:outline-none focus:border-black transition-colors"
+                className="w-full px-4 py-3 border border-zinc-300 focus:outline-none focus:border-black transition-colors text-black caret-black"
                 placeholder="Your full name"
               />
             </div>
@@ -187,7 +187,7 @@ export const AdminLoginPage = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="w-full px-4 py-3 border border-zinc-300 focus:outline-none focus:border-black transition-colors"
+                className="w-full px-4 py-3 border border-zinc-300 focus:outline-none focus:border-black transition-colors text-black caret-black"
                 placeholder="admin@example.com"
               />
             </div>
@@ -203,7 +203,7 @@ export const AdminLoginPage = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 minLength={6}
-                className="w-full px-4 py-3 border border-zinc-300 focus:outline-none focus:border-black transition-colors"
+                className="w-full px-4 py-3 border border-zinc-300 focus:outline-none focus:border-black transition-colors text-black caret-black"
                 placeholder="••••••••"
               />
             </div>
