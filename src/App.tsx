@@ -21,6 +21,7 @@ import { AdminContactsPage } from "@/pages/AdminContactsPage";
 import { AdminNewsletterPage } from "@/pages/AdminNewsletterPage";
 import { AdminAdminsPage } from "@/pages/AdminAdminsPage";
 import { BlogDetailPage } from "@/pages/BlogDetailPage";
+import { ProjectDetailPage } from "@/pages/ProjectDetailPage";
 import UnderConstruction from "@/components/UnderConstruction";
 
 export const App = () => {
@@ -38,6 +39,7 @@ export const App = () => {
             <Route path="/" element={isUnderConstruction ? <UnderConstruction /> : <HomePage />} />
             <Route path="/about" element={isUnderConstruction ? <UnderConstruction /> : <AboutUsPage />} />
             <Route path="/projects" element={isUnderConstruction ? <UnderConstruction /> : <ProjectsPage />} />
+            <Route path="/projects/:slug" element={isUnderConstruction ? <UnderConstruction /> : <ProjectDetailPage />} />
             <Route path="/services" element={isUnderConstruction ? <UnderConstruction /> : <ServicesPage />} />
             <Route path="/blogs" element={isUnderConstruction ? <UnderConstruction /> : <BlogsPage />} />
             <Route path="/blog/:slug" element={isUnderConstruction ? <UnderConstruction /> : <BlogDetailPage />} />

@@ -6,6 +6,7 @@ import { supabase } from '@/lib/supabase';
 
 interface Project {
   id: string;
+  slug: string;
   title: string;
   short_description: string;
   featured_image: string | null;
@@ -71,10 +72,11 @@ export const ProjectsPage = () => {
               <p className="text-zinc-600">No projects available at the moment.</p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 gap-y-8 sm:grid-cols-2 sm:gap-x-6 md:gap-x-8 md:gap-y-10">
+            <div className="flex flex-col gap-6">
               {projects.map((project) => (
                 <PropertyCard
                   key={project.id}
+                  slug={project.slug}
                   title={project.title}
                   location={project.location}
                   short_description={project.short_description}

@@ -4,6 +4,7 @@ import { supabase } from '@/lib/supabase';
 
 interface Project {
   id: string;
+  slug: string;
   title: string;
   short_description: string;
   description: string;
@@ -81,19 +82,20 @@ export const ProjectGrid = () => {
   return (
     <div
       role="list"
-      className="box-border caret-transparent grid grid-cols-1 gap-y-8 sm:gap-y-10 md:grid-cols-2 md:gap-x-6 md:gap-y-[30px] lg:grid-cols-3"
+      className="box-border caret-transparent flex flex-col gap-6"
     >
       {projects.map((project) => (
         <ProjectCard
           key={project.id}
           href="/projects"
+          slug={project.slug}
           imageUrl={project.featured_image || "https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1200"}
           imageAlt={project.title}
           location={project.location || ""}
           title={project.title}
           description={project.short_description}
           details={project.description}
-          buttonText="View Project"
+          buttonText="See More"
           arrowIconUrl="https://cdn.prod.website-files.com/679b678d080aadecaa78b6ac/679c559d1989cb82e96c949e_15fec19f4179bbda8c7cdc30da4795c2_button-arrow.svg"
           arrowIconAlt="Arrow"
         />

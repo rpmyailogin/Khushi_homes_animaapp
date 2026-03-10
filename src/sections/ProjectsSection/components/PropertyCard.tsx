@@ -1,6 +1,8 @@
+import { Link } from 'react-router-dom';
 import { MapPin, Bed, Bath, Car, Maximize2 } from 'lucide-react';
 
 export interface PropertyCardProps {
+  slug: string;
   title: string;
   location: string | null;
   short_description: string;
@@ -29,6 +31,7 @@ const formatProjectType = (type: string) =>
   type.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
 
 export const PropertyCard = ({
+  slug,
   title,
   location,
   short_description,
@@ -52,14 +55,15 @@ export const PropertyCard = ({
 
   return (
     <div
-      className="flex flex-col border border-black/10 hover:shadow-[rgba(0,0,0,0.08)_0px_20px_50px_0px] transition-shadow duration-300"
+      className="flex flex-col md:flex-row border border-black/10 hover:shadow-[rgba(0,0,0,0.08)_0px_20px_50px_0px] transition-shadow duration-300"
       style={{ backgroundColor: '#e6feff' }}
     >
-      <div className="relative overflow-hidden">
+      <div className="relative overflow-hidden md:w-[42%] lg:w-[44%] shrink-0">
         <img
           src={featured_image}
           alt={title}
-          className="w-full h-[260px] sm:h-[300px] md:h-[320px] object-cover hover:scale-105 transition-transform duration-500"
+          className="w-full h-[240px] md:h-full object-cover hover:scale-105 transition-transform duration-500"
+          style={{ minHeight: '240px' }}
         />
         <div className="absolute top-3 left-3 bg-black text-white text-xs px-2.5 py-1">
           {formatProjectType(project_type)}
@@ -117,7 +121,7 @@ export const PropertyCard = ({
         </p>
 
         {hasDetails && (
-          <div className="grid grid-cols-2 gap-2.5 mb-4">
+          <div className="grid grid-cols-2 gap-2 mb-4">
             {budget_range && (
               <div className="bg-white/70 border border-black/5 px-3 py-2.5">
                 <span className="text-xs text-zinc-400 block mb-0.5 uppercase tracking-wide">Investment</span>
@@ -163,12 +167,18 @@ export const PropertyCard = ({
           </div>
         )}
 
-        <div className="mt-auto">
+        <div className="mt-auto flex flex-col sm:flex-row gap-2.5">
+          <Link
+            to={`/projects/${slug}`}
+            className="flex items-center justify-center gap-2 flex-1 border border-black text-black text-sm px-5 py-3 hover:bg-black hover:text-white transition-colors"
+          >
+            See More
+          </Link>
           <button
             onClick={onEnquire}
-            className="flex items-center justify-center gap-2.5 w-full bg-red-600 text-white text-sm px-5 py-3 hover:bg-red-700 transition-colors"
+            className="flex items-center justify-center gap-2.5 flex-1 bg-red-600 text-white text-sm px-5 py-3 hover:bg-red-700 transition-colors"
           >
-            <span>Enquire About This Property</span>
+            <span>Enquire</span>
             <img
               src="https://cdn.prod.website-files.com/679b678d080aadecaa78b6ac/679c559d1989cb82e96c949e_15fec19f4179bbda8c7cdc30da4795c2_button-arrow.svg"
               alt=""
