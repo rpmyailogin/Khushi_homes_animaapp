@@ -25,16 +25,10 @@ export const ContactInfo = () => {
             Give us a call
           </div>
           <a
-            href="tel:+61406996223"
+            href="tel:1300548744"
             className="text-black text-base box-border caret-transparent block leading-6 mt-0.5 md:text-xl md:leading-[30px] hover:underline"
           >
-            +61 0406 996 223
-          </a>
-          <a
-            href="tel:+61424238507"
-            className="text-black text-base box-border caret-transparent block leading-6 mt-0.5 md:text-xl md:leading-[30px] hover:underline"
-          >
-            +61 0424238507
+            1300 548 744
           </a>
         </div>
         <div className="items-start box-border caret-transparent flex flex-col justify-start">

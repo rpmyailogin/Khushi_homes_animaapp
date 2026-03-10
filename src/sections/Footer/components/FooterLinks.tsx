@@ -50,13 +50,8 @@ export const FooterLinks = () => {
             },
             {
               label: "Give us a call",
-              value: "+61 0406 996 223",
-              href: "tel:+61406996223",
-            },
-            {
-              label: "",
-              value: "+61 0424238507",
-              href: "tel:+61424238507",
+              value: "1300 548 744",
+              href: "tel:1300548744",
             },
           ]}
         />
