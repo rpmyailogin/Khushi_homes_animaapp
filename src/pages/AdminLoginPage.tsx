@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { useAdminAuth } from '@/contexts/AdminAuthContext';
 import { supabase } from '@/lib/supabase';
 
@@ -12,15 +12,16 @@ export const AdminLoginPage = () => {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const [hasAdmins, setHasAdmins] = useState<boolean | null>(null);
-  const { signIn, isAdmin } = useAdminAuth();
+  const { signIn, isAdmin, loading: authLoading } = useAdminAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
     document.title = "Admin Login - Khushi Homes";
-    if (isAdmin) {
-      navigate('/admin/dashboard');
-    }
-  }, [isAdmin, navigate]);
+  }, []);
+
+  if (!authLoading && isAdmin) {
+    return <Navigate to="/admin/dashboard" replace />;
+  }
 
   useEffect(() => {
     const checkAdmins = async () => {

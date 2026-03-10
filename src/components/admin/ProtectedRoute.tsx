@@ -1,5 +1,5 @@
-import { ReactNode, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { ReactNode } from 'react';
+import { Navigate } from 'react-router-dom';
 import { useAdminAuth } from '@/contexts/AdminAuthContext';
 
 interface ProtectedRouteProps {
@@ -8,13 +8,6 @@ interface ProtectedRouteProps {
 
 export const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
   const { isAdmin, loading } = useAdminAuth();
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (!loading && !isAdmin) {
-      navigate('/admin/login');
-    }
-  }, [isAdmin, loading, navigate]);
 
   if (loading) {
     return (
@@ -28,7 +21,7 @@ export const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
   }
 
   if (!isAdmin) {
-    return null;
+    return <Navigate to="/admin/login" replace />;
   }
 
   return <>{children}</>;
