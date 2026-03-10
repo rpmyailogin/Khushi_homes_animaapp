@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { ProjectCard } from "@/sections/ProjectsSection/components/ProjectCard";
+import { PropertyCard } from "@/sections/ProjectsSection/components/PropertyCard";
+import { ContactModal } from "@/components/ContactModal";
 import { supabase } from '@/lib/supabase';
 
 interface Project {
@@ -10,38 +11,101 @@ interface Project {
   description: string;
   featured_image: string | null;
   location: string | null;
+  project_type: string;
+  completion_date: string | null;
+  area_sqft: number | null;
+  home_size_sqm: number | null;
+  budget_range: string | null;
+  bedrooms: number | null;
+  bathrooms: number | null;
+  garage_spaces: number | null;
+  land_size_sqm: number | null;
+  property_features: string[];
 }
 
-const fallbackProjects = [
+const fallbackProjects: Project[] = [
   {
     id: 'fallback-1',
+    slug: 'melbourne-business-hub',
     title: "Melbourne Business Hub",
     location: "42 Collins Street, Melbourne VIC 3000",
-    short_description: "Modern commercial development in the heart of Melbourne's CBD, featuring cutting-edge sustainable architecture.",
-    description: "This 12-storey office complex showcases premium finishes, energy-efficient systems, and flexible workspaces designed for contemporary business needs. Completed in 2024 with a 6-star Green Star rating.",
-    featured_image: "https://cdn.prod.website-files.com/679b74f316932fb3b1e01c07/67a04795c6255244602f2723_project-thumb-07.jpg"
+    short_description: "Modern commercial development in the heart of Melbourne's CBD.",
+    description: "",
+    featured_image: "https://cdn.prod.website-files.com/679b74f316932fb3b1e01c07/67a04795c6255244602f2723_project-thumb-07.jpg",
+    project_type: "commercial",
+    completion_date: "2024-01-01",
+    area_sqft: null,
+    home_size_sqm: 450,
+    budget_range: "$1.2M",
+    bedrooms: 4,
+    bathrooms: 3,
+    garage_spaces: 2,
+    land_size_sqm: 600,
+    property_features: ["Smart Home", "Solar Panels"],
   },
   {
     id: 'fallback-2',
+    slug: 'harbour-view-residences',
     title: "Harbour View Residences",
     location: "156 George Street, Sydney NSW 2000",
     short_description: "Luxury waterfront apartments blending modern design with Sydney's iconic harbour landscape.",
-    description: "A stunning 8-level residential building offering 32 premium apartments with harbour glimpses, rooftop terrace, and resort-style amenities. Features include designer kitchens, floor-to-ceiling glass, and smart home technology throughout.",
-    featured_image: "https://cdn.prod.website-files.com/679b74f316932fb3b1e01c07/67a0476b96cf1a8864a59421_project-thumb-06.jpg"
+    description: "",
+    featured_image: "https://cdn.prod.website-files.com/679b74f316932fb3b1e01c07/67a0476b96cf1a8864a59421_project-thumb-06.jpg",
+    project_type: "residential",
+    completion_date: "2023-06-01",
+    area_sqft: null,
+    home_size_sqm: 380,
+    budget_range: "$950K",
+    bedrooms: 3,
+    bathrooms: 2,
+    garage_spaces: 1,
+    land_size_sqm: 500,
+    property_features: ["Harbour Views", "Rooftop Terrace"],
   },
   {
     id: 'fallback-3',
+    slug: 'riverside-eco-apartments',
     title: "Riverside Eco Apartments",
     location: "88 Wickham Terrace, Brisbane QLD 4000",
-    short_description: "Sustainable living spaces designed for the environmentally conscious urban lifestyle in Brisbane's premium location.",
-    description: "This award-winning development features 45 eco-friendly apartments with solar panels, rainwater harvesting, and native landscaping. Each residence includes high-quality finishes, spacious balconies, and access to a communal garden and wellness facilities.",
-    featured_image: "https://cdn.prod.website-files.com/679b74f316932fb3b1e01c07/67a04742a2d0f48bd0a20ed4_project-thumb-05.jpg"
-  }
+    short_description: "Sustainable living spaces designed for the environmentally conscious urban lifestyle.",
+    description: "",
+    featured_image: "https://cdn.prod.website-files.com/679b74f316932fb3b1e01c07/67a04742a2d0f48bd0a20ed4_project-thumb-05.jpg",
+    project_type: "residential",
+    completion_date: "2023-11-01",
+    area_sqft: null,
+    home_size_sqm: 310,
+    budget_range: "$780K",
+    bedrooms: 2,
+    bathrooms: 2,
+    garage_spaces: 1,
+    land_size_sqm: 420,
+    property_features: ["Eco-Friendly", "Rainwater Harvesting"],
+  },
+  {
+    id: 'fallback-4',
+    slug: 'southbank-luxury-homes',
+    title: "Southbank Luxury Homes",
+    location: "12 Riverside Drive, Melbourne VIC 3006",
+    short_description: "Premium riverside homes with stunning views and world-class finishes.",
+    description: "",
+    featured_image: "https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=800",
+    project_type: "residential",
+    completion_date: "2024-03-01",
+    area_sqft: null,
+    home_size_sqm: 520,
+    budget_range: "$1.5M",
+    bedrooms: 5,
+    bathrooms: 4,
+    garage_spaces: 3,
+    land_size_sqm: 700,
+    property_features: ["River Views", "Pool"],
+  },
 ];
 
 export const ProjectGrid = () => {
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
+  const [showEnquire, setShowEnquire] = useState(false);
 
   useEffect(() => {
     fetchProjects();
@@ -54,7 +118,7 @@ export const ProjectGrid = () => {
         .select('*')
         .eq('is_published', true)
         .order('display_order', { ascending: true })
-        .limit(3);
+        .limit(4);
 
       if (error) throw error;
 
@@ -80,26 +144,37 @@ export const ProjectGrid = () => {
   }
 
   return (
-    <div
-      role="list"
-      className="box-border caret-transparent flex flex-col gap-6"
-    >
-      {projects.map((project) => (
-        <ProjectCard
-          key={project.id}
-          href="/projects"
-          slug={project.slug}
-          imageUrl={project.featured_image || "https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1200"}
-          imageAlt={project.title}
-          location={project.location || ""}
-          title={project.title}
-          description={project.short_description}
-          details={project.description}
-          buttonText="See More"
-          arrowIconUrl="https://cdn.prod.website-files.com/679b678d080aadecaa78b6ac/679c559d1989cb82e96c949e_15fec19f4179bbda8c7cdc30da4795c2_button-arrow.svg"
-          arrowIconAlt="Arrow"
+    <>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {projects.map((project) => (
+          <PropertyCard
+            key={project.id}
+            slug={project.slug}
+            title={project.title}
+            location={project.location}
+            short_description={project.short_description}
+            featured_image={project.featured_image || "https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1200"}
+            project_type={project.project_type || 'residential'}
+            completion_date={project.completion_date}
+            area_sqft={project.area_sqft}
+            home_size_sqm={project.home_size_sqm}
+            budget_range={project.budget_range}
+            bedrooms={project.bedrooms}
+            bathrooms={project.bathrooms}
+            garage_spaces={project.garage_spaces}
+            land_size_sqm={project.land_size_sqm}
+            property_features={project.property_features || []}
+            onEnquire={() => setShowEnquire(true)}
+          />
+        ))}
+      </div>
+
+      {showEnquire && (
+        <ContactModal
+          isOpen={showEnquire}
+          onClose={() => setShowEnquire(false)}
         />
-      ))}
-    </div>
+      )}
+    </>
   );
 };
