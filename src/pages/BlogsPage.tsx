@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { SectionHeader } from "@/components/SectionHeader";
 import { supabase } from '@/lib/supabase';
 
 interface Blog {
   id: string;
   title: string;
+  slug: string;
   excerpt: string;
   category: string;
   author: string;
@@ -17,6 +19,7 @@ export const BlogsPage = () => {
   const [loading, setLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [categories, setCategories] = useState<string[]>(["All"]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     document.title = "Blogs - Khushi Homes";
@@ -102,7 +105,8 @@ export const BlogsPage = () => {
                   {filteredBlogs.map((post) => (
                     <div
                       key={post.id}
-                      className="box-border caret-transparent flex flex-col border border-solid border-black/10 hover:bg-gray-100 hover:shadow-[rgba(0,0,0,0.06)_0px_30px_60px_0px] transition-all"
+                      onClick={() => navigate(`/blog/${post.slug}`)}
+                      className="box-border caret-transparent flex flex-col border border-solid border-black/10 hover:shadow-[rgba(0,0,0,0.10)_0px_10px_40px_0px] transition-all cursor-pointer"
                     >
                       <div className="bg-gray-100 box-border caret-transparent overflow-hidden">
                         <img
@@ -121,7 +125,7 @@ export const BlogsPage = () => {
                             {formatDate(post.published_at)}
                           </div>
                         </div>
-                        <h3 className="text-black text-lg font-medium box-border caret-transparent leading-[27px] hover:underline cursor-pointer">
+                        <h3 className="text-black text-lg font-medium box-border caret-transparent leading-[27px] hover:underline">
                           {post.title}
                         </h3>
                         <p className="text-sm box-border caret-transparent leading-[21px]">
@@ -131,6 +135,7 @@ export const BlogsPage = () => {
                           <div className="text-xs box-border caret-transparent leading-[18px]">
                             By {post.author}
                           </div>
+                          <span className="text-xs text-zinc-500 hover:text-black transition-colors">Read more →</span>
                         </div>
                       </div>
                     </div>

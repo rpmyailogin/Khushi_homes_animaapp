@@ -1,6 +1,30 @@
 @tailwind components;
 @tailwind utilities;
 
+.prose-blog { color: #27272a; font-size: 1rem; line-height: 1.8; }
+.prose-blog h1 { font-size: 2rem; font-weight: 700; color: #000; margin: 1.5em 0 0.5em; line-height: 1.2; }
+.prose-blog h2 { font-size: 1.5rem; font-weight: 600; color: #000; margin: 1.5em 0 0.5em; line-height: 1.3; }
+.prose-blog h3 { font-size: 1.25rem; font-weight: 600; color: #000; margin: 1.25em 0 0.4em; line-height: 1.4; }
+.prose-blog h4 { font-size: 1.1rem; font-weight: 600; color: #000; margin: 1em 0 0.4em; }
+.prose-blog p { margin-bottom: 1.25em; }
+.prose-blog ul { list-style: disc; padding-left: 1.75em; margin-bottom: 1.25em; }
+.prose-blog ol { list-style: decimal; padding-left: 1.75em; margin-bottom: 1.25em; }
+.prose-blog li { margin-bottom: 0.4em; }
+.prose-blog strong, .prose-blog b { font-weight: 700; color: #111; }
+.prose-blog em, .prose-blog i { font-style: italic; }
+.prose-blog u { text-decoration: underline; }
+.prose-blog s { text-decoration: line-through; }
+.prose-blog blockquote { border-left: 4px solid #000; padding: 0.75em 1.25em; margin: 1.5em 0; color: #52525b; background: #f4f4f5; font-style: italic; }
+.prose-blog pre { background: #f4f4f5; padding: 1em 1.25em; border-radius: 4px; overflow-x: auto; font-size: 0.9em; margin-bottom: 1.25em; }
+.prose-blog code { background: #f4f4f5; padding: 0.1em 0.4em; border-radius: 3px; font-size: 0.9em; }
+.prose-blog a { color: #000; text-decoration: underline; }
+.prose-blog a:hover { color: #dc2626; }
+.prose-blog .ql-align-center { text-align: center; }
+.prose-blog .ql-align-right { text-align: right; }
+.prose-blog .ql-align-justify { text-align: justify; }
+.prose-blog .ql-indent-1 { padding-left: 3em; }
+.prose-blog .ql-indent-2 { padding-left: 6em; }
+
 @font-face {
   /* This font could not be included automatically because of legal reasons. Please add it manually or switch to another font */
   font-family: 'webflow-icons';
