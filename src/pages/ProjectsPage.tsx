@@ -72,7 +72,7 @@ export const ProjectsPage = () => {
               <p className="text-zinc-600">No projects available at the moment.</p>
             </div>
           ) : (
-            <div className="flex flex-col gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {projects.map((project) => (
                 <PropertyCard
                   key={project.id}
