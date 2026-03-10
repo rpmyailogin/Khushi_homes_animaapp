@@ -55,18 +55,36 @@ export const AdminLoginPage = () => {
     setError('');
     setLoading(true);
     try {
+      let userId: string;
+
       const { data: authData, error: signUpError } = await supabase.auth.signUp({ email, password });
+
       if (signUpError) {
-        setError(signUpError.message);
-        return;
-      }
-      if (!authData.user) {
-        setError('Failed to create account.');
-        return;
+        if (signUpError.message.toLowerCase().includes('already registered') || signUpError.message.toLowerCase().includes('already been registered')) {
+          const { data: signInData, error: signInError } = await supabase.auth.signInWithPassword({ email, password });
+          if (signInError) {
+            setError('This email is already registered. Please sign in instead, or use the correct password.');
+            return;
+          }
+          if (!signInData.user) {
+            setError('Failed to authenticate existing account.');
+            return;
+          }
+          userId = signInData.user.id;
+        } else {
+          setError(signUpError.message);
+          return;
+        }
+      } else {
+        if (!authData.user) {
+          setError('Failed to create account.');
+          return;
+        }
+        userId = authData.user.id;
       }
 
       const { error: adminError } = await supabase.from('admins').insert({
-        user_id: authData.user.id,
+        user_id: userId,
         email,
         full_name: fullName,
         role: 'super_admin',
@@ -74,11 +92,17 @@ export const AdminLoginPage = () => {
       });
 
       if (adminError) {
-        setError(adminError.message);
-        return;
+        if (adminError.message.includes('duplicate') || adminError.code === '23505') {
+          setSuccess('Admin account already exists. You can sign in now.');
+        } else {
+          setError(adminError.message);
+          return;
+        }
+      } else {
+        setSuccess('Admin account created! You can now sign in.');
       }
 
-      setSuccess('Admin account created! You can now sign in.');
+      await supabase.auth.signOut();
       setMode('login');
       setEmail('');
       setPassword('');
