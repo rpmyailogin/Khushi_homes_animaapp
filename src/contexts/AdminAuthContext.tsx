@@ -66,7 +66,7 @@ export const AdminAuthProvider = ({ children }: { children: ReactNode }) => {
       (async () => {
         setSession(session);
         setUser(session?.user ?? null);
-        if (session?.user && event !== 'SIGNED_IN') {
+        if (session?.user) {
           const record = await fetchAdminRecord(session.user.id);
           setAdminRecord(record);
           if (!record) {
