@@ -62,11 +62,11 @@ export const AdminAuthProvider = ({ children }: { children: ReactNode }) => {
       setLoading(false);
     });
 
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
       (async () => {
         setSession(session);
         setUser(session?.user ?? null);
-        if (session?.user) {
+        if (session?.user && event !== 'SIGNED_IN') {
           const record = await fetchAdminRecord(session.user.id);
           setAdminRecord(record);
           if (!record) {
@@ -75,7 +75,7 @@ export const AdminAuthProvider = ({ children }: { children: ReactNode }) => {
             setSession(null);
             setAdminRecord(null);
           }
-        } else {
+        } else if (!session?.user) {
           setAdminRecord(null);
         }
       })();
