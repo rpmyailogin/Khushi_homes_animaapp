@@ -1,12 +1,17 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAdminAuth } from '@/contexts/AdminAuthContext';
+import { supabase } from '@/lib/supabase';
 
 export const AdminLoginPage = () => {
+  const [mode, setMode] = useState<'login' | 'register'>('login');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [fullName, setFullName] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
+  const [hasAdmins, setHasAdmins] = useState<boolean | null>(null);
   const { signIn, isAdmin } = useAdminAuth();
   const navigate = useNavigate();
 
@@ -17,11 +22,20 @@ export const AdminLoginPage = () => {
     }
   }, [isAdmin, navigate]);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  useEffect(() => {
+    const checkAdmins = async () => {
+      const { count } = await supabase
+        .from('admins')
+        .select('*', { count: 'exact', head: true });
+      setHasAdmins((count ?? 0) > 0);
+    };
+    checkAdmins();
+  }, []);
+
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
     setLoading(true);
-
     try {
       const { error } = await signIn(email, password);
       if (error) {
@@ -29,6 +43,47 @@ export const AdminLoginPage = () => {
       } else {
         navigate('/admin/dashboard');
       }
+    } catch (err: any) {
+      setError(err.message || 'An error occurred');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleRegister = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError('');
+    setLoading(true);
+    try {
+      const { data: authData, error: signUpError } = await supabase.auth.signUp({ email, password });
+      if (signUpError) {
+        setError(signUpError.message);
+        return;
+      }
+      if (!authData.user) {
+        setError('Failed to create account.');
+        return;
+      }
+
+      const { error: adminError } = await supabase.from('admins').insert({
+        user_id: authData.user.id,
+        email,
+        full_name: fullName,
+        role: 'super_admin',
+        is_active: true,
+      });
+
+      if (adminError) {
+        setError(adminError.message);
+        return;
+      }
+
+      setSuccess('Admin account created! You can now sign in.');
+      setMode('login');
+      setEmail('');
+      setPassword('');
+      setFullName('');
+      setHasAdmins(true);
     } catch (err: any) {
       setError(err.message || 'An error occurred');
     } finally {
@@ -45,60 +100,150 @@ export const AdminLoginPage = () => {
             alt="Khushi Homes"
             className="h-12 mx-auto mb-4"
           />
-          <h1 className="text-2xl font-medium text-black mb-2">Admin Login</h1>
-          <p className="text-sm text-zinc-600">Sign in to access the admin panel</p>
+          <h1 className="text-2xl font-medium text-black mb-2">
+            {mode === 'login' ? 'Admin Login' : 'Create Admin Account'}
+          </h1>
+          <p className="text-sm text-zinc-600">
+            {mode === 'login' ? 'Sign in to access the admin panel' : 'Set up your super admin account'}
+          </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium text-black mb-2">
-              Email Address
-            </label>
-            <input
-              type="email"
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              className="w-full px-4 py-3 border border-zinc-300 focus:outline-none focus:border-black transition-colors"
-              placeholder="admin@example.com"
-            />
+        {success && (
+          <div className="mb-6 bg-green-50 border border-green-200 text-green-800 px-4 py-3 text-sm">
+            {success}
           </div>
+        )}
 
-          <div>
-            <label htmlFor="password" className="block text-sm font-medium text-black mb-2">
-              Password
-            </label>
-            <input
-              type="password"
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              className="w-full px-4 py-3 border border-zinc-300 focus:outline-none focus:border-black transition-colors"
-              placeholder="••••••••"
-            />
-          </div>
-
-          {error && (
-            <div className="bg-red-50 border border-red-200 text-red-800 px-4 py-3 text-sm">
-              {error}
+        {mode === 'login' ? (
+          <form onSubmit={handleLogin} className="space-y-6">
+            <div>
+              <label htmlFor="email" className="block text-sm font-medium text-black mb-2">
+                Email Address
+              </label>
+              <input
+                type="email"
+                id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="w-full px-4 py-3 border border-zinc-300 focus:outline-none focus:border-black transition-colors"
+                placeholder="admin@example.com"
+              />
             </div>
+
+            <div>
+              <label htmlFor="password" className="block text-sm font-medium text-black mb-2">
+                Password
+              </label>
+              <input
+                type="password"
+                id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                className="w-full px-4 py-3 border border-zinc-300 focus:outline-none focus:border-black transition-colors"
+                placeholder="••••••••"
+              />
+            </div>
+
+            {error && (
+              <div className="bg-red-50 border border-red-200 text-red-800 px-4 py-3 text-sm">
+                {error}
+              </div>
+            )}
+
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full bg-black text-white py-3 px-6 hover:bg-red-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {loading ? 'Signing in...' : 'Sign In'}
+            </button>
+          </form>
+        ) : (
+          <form onSubmit={handleRegister} className="space-y-6">
+            <div>
+              <label htmlFor="fullName" className="block text-sm font-medium text-black mb-2">
+                Full Name
+              </label>
+              <input
+                type="text"
+                id="fullName"
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
+                required
+                className="w-full px-4 py-3 border border-zinc-300 focus:outline-none focus:border-black transition-colors"
+                placeholder="Your full name"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="reg-email" className="block text-sm font-medium text-black mb-2">
+                Email Address
+              </label>
+              <input
+                type="email"
+                id="reg-email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="w-full px-4 py-3 border border-zinc-300 focus:outline-none focus:border-black transition-colors"
+                placeholder="admin@example.com"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="reg-password" className="block text-sm font-medium text-black mb-2">
+                Password
+              </label>
+              <input
+                type="password"
+                id="reg-password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                minLength={6}
+                className="w-full px-4 py-3 border border-zinc-300 focus:outline-none focus:border-black transition-colors"
+                placeholder="••••••••"
+              />
+            </div>
+
+            {error && (
+              <div className="bg-red-50 border border-red-200 text-red-800 px-4 py-3 text-sm">
+                {error}
+              </div>
+            )}
+
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full bg-black text-white py-3 px-6 hover:bg-red-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {loading ? 'Creating account...' : 'Create Admin Account'}
+            </button>
+          </form>
+        )}
+
+        <div className="mt-6 space-y-3 text-center">
+          {!hasAdmins && mode === 'login' && (
+            <button
+              onClick={() => { setMode('register'); setError(''); setSuccess(''); }}
+              className="block w-full text-sm text-zinc-600 hover:text-black transition-colors"
+            >
+              No admins yet? Create the first admin account
+            </button>
           )}
-
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full bg-black text-white py-3 px-6 hover:bg-red-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            {loading ? 'Signing in...' : 'Sign In'}
-          </button>
-        </form>
-
-        <div className="mt-6 text-center">
+          {mode === 'register' && (
+            <button
+              onClick={() => { setMode('login'); setError(''); setSuccess(''); }}
+              className="block w-full text-sm text-zinc-600 hover:text-black transition-colors"
+            >
+              Back to Sign In
+            </button>
+          )}
           <a
             href="/"
-            className="text-sm text-zinc-600 hover:text-black transition-colors"
+            className="block text-sm text-zinc-600 hover:text-black transition-colors"
           >
             Back to Website
           </a>
