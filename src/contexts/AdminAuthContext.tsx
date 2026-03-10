@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
+import { createContext, useContext, useEffect, useState, useRef, ReactNode } from 'react';
 import { supabase } from '@/lib/supabase';
 import type { User, Session } from '@supabase/supabase-js';
 
@@ -45,43 +45,62 @@ export const AdminAuthProvider = ({ children }: { children: ReactNode }) => {
   const [session, setSession] = useState<Session | null>(null);
   const [adminRecord, setAdminRecord] = useState<AdminRecord | null>(null);
   const [loading, setLoading] = useState(true);
+  const initializedRef = useRef(false);
 
   useEffect(() => {
-    supabase.auth.getSession().then(async ({ data: { session } }) => {
-      setSession(session);
-      setUser(session?.user ?? null);
+    let mounted = true;
+
+    const initialize = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!mounted) return;
+
       if (session?.user) {
         const record = await fetchAdminRecord(session.user.id);
-        setAdminRecord(record);
-        if (!record) {
+        if (!mounted) return;
+        if (record) {
+          setSession(session);
+          setUser(session.user);
+          setAdminRecord(record);
+        } else {
           await supabase.auth.signOut();
-          setUser(null);
-          setSession(null);
         }
       }
+
+      initializedRef.current = true;
       setLoading(false);
-    });
+    };
+
+    initialize();
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+      if (!initializedRef.current) return;
+
       (async () => {
-        setSession(session);
-        setUser(session?.user ?? null);
         if (session?.user) {
           const record = await fetchAdminRecord(session.user.id);
-          setAdminRecord(record);
-          if (!record) {
+          if (!mounted) return;
+          if (record) {
+            setSession(session);
+            setUser(session.user);
+            setAdminRecord(record);
+          } else {
             await supabase.auth.signOut();
             setUser(null);
             setSession(null);
             setAdminRecord(null);
           }
-        } else if (!session?.user) {
+        } else {
+          setSession(null);
+          setUser(null);
           setAdminRecord(null);
         }
       })();
     });
 
-    return () => subscription.unsubscribe();
+    return () => {
+      mounted = false;
+      subscription.unsubscribe();
+    };
   }, []);
 
   const signIn = async (email: string, password: string) => {
@@ -95,6 +114,8 @@ export const AdminAuthProvider = ({ children }: { children: ReactNode }) => {
         return { error: { message: 'Access denied. You are not authorized as an admin.' } };
       }
       setAdminRecord(record);
+      setUser(data.user);
+      setSession(data.session);
 
       await supabase
         .from('admins')
@@ -107,6 +128,8 @@ export const AdminAuthProvider = ({ children }: { children: ReactNode }) => {
 
   const signOut = async () => {
     await supabase.auth.signOut();
+    setUser(null);
+    setSession(null);
     setAdminRecord(null);
   };
 
