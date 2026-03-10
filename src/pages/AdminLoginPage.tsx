@@ -19,19 +19,23 @@ export const AdminLoginPage = () => {
     document.title = "Admin Login - Khushi Homes";
   }, []);
 
-  if (!authLoading && isAdmin) {
-    return <Navigate to="/admin/dashboard" replace />;
-  }
-
   useEffect(() => {
     const checkAdmins = async () => {
-      const { count } = await supabase
-        .from('admins')
-        .select('*', { count: 'exact', head: true });
-      setHasAdmins((count ?? 0) > 0);
+      try {
+        const { count } = await supabase
+          .from('admins')
+          .select('*', { count: 'exact', head: true });
+        setHasAdmins((count ?? 0) > 0);
+      } catch {
+        setHasAdmins(true);
+      }
     };
     checkAdmins();
   }, []);
+
+  if (!authLoading && isAdmin) {
+    return <Navigate to="/admin/dashboard" replace />;
+  }
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();

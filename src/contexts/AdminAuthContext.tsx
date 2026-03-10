@@ -29,15 +29,19 @@ interface AdminAuthContextType {
 const AdminAuthContext = createContext<AdminAuthContextType | undefined>(undefined);
 
 const fetchAdminRecord = async (userId: string): Promise<AdminRecord | null> => {
-  const { data, error } = await supabase
-    .from('admins')
-    .select('*')
-    .eq('user_id', userId)
-    .eq('is_active', true)
-    .maybeSingle();
+  try {
+    const { data, error } = await supabase
+      .from('admins')
+      .select('*')
+      .eq('user_id', userId)
+      .eq('is_active', true)
+      .maybeSingle();
 
-  if (error || !data) return null;
-  return data as AdminRecord;
+    if (error || !data) return null;
+    return data as AdminRecord;
+  } catch {
+    return null;
+  }
 };
 
 export const AdminAuthProvider = ({ children }: { children: ReactNode }) => {
@@ -46,36 +50,16 @@ export const AdminAuthProvider = ({ children }: { children: ReactNode }) => {
   const [adminRecord, setAdminRecord] = useState<AdminRecord | null>(null);
   const [loading, setLoading] = useState(true);
   const initializedRef = useRef(false);
+  const signInInProgressRef = useRef(false);
 
   useEffect(() => {
     let mounted = true;
 
     const initialize = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
-      if (!mounted) return;
-
-      if (session?.user) {
-        const record = await fetchAdminRecord(session.user.id);
+      try {
+        const { data: { session } } = await supabase.auth.getSession();
         if (!mounted) return;
-        if (record) {
-          setSession(session);
-          setUser(session.user);
-          setAdminRecord(record);
-        } else {
-          await supabase.auth.signOut();
-        }
-      }
 
-      initializedRef.current = true;
-      setLoading(false);
-    };
-
-    initialize();
-
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
-      if (!initializedRef.current) return;
-
-      (async () => {
         if (session?.user) {
           const record = await fetchAdminRecord(session.user.id);
           if (!mounted) return;
@@ -83,18 +67,36 @@ export const AdminAuthProvider = ({ children }: { children: ReactNode }) => {
             setSession(session);
             setUser(session.user);
             setAdminRecord(record);
-          } else {
-            await supabase.auth.signOut();
-            setUser(null);
-            setSession(null);
-            setAdminRecord(null);
           }
-        } else {
-          setSession(null);
-          setUser(null);
-          setAdminRecord(null);
         }
-      })();
+      } catch {
+        // ignore
+      } finally {
+        if (mounted) {
+          initializedRef.current = true;
+          setLoading(false);
+        }
+      }
+    };
+
+    initialize();
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, newSession) => {
+      if (!initializedRef.current) return;
+      if (signInInProgressRef.current) return;
+
+      if (event === 'SIGNED_OUT') {
+        setSession(null);
+        setUser(null);
+        setAdminRecord(null);
+        return;
+      }
+
+      if (event === 'TOKEN_REFRESHED' && newSession) {
+        setSession(newSession);
+        setUser(newSession.user);
+        return;
+      }
     });
 
     return () => {
@@ -104,33 +106,39 @@ export const AdminAuthProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   const signIn = async (email: string, password: string) => {
-    const { data, error } = await supabase.auth.signInWithPassword({ email, password });
-    if (error) return { error };
+    signInInProgressRef.current = true;
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+      if (error) return { error };
 
-    if (data.user) {
-      const record = await fetchAdminRecord(data.user.id);
-      if (!record) {
-        await supabase.auth.signOut();
-        return { error: { message: 'Access denied. You are not authorized as an admin.' } };
+      if (data.user) {
+        const record = await fetchAdminRecord(data.user.id);
+        if (!record) {
+          await supabase.auth.signOut();
+          return { error: { message: 'Access denied. You are not authorized as an admin.' } };
+        }
+        setAdminRecord(record);
+        setUser(data.user);
+        setSession(data.session);
+
+        supabase
+          .from('admins')
+          .update({ last_login: new Date().toISOString() })
+          .eq('user_id', data.user.id)
+          .then(() => {});
       }
-      setAdminRecord(record);
-      setUser(data.user);
-      setSession(data.session);
 
-      await supabase
-        .from('admins')
-        .update({ last_login: new Date().toISOString() })
-        .eq('user_id', data.user.id);
+      return { error: null };
+    } finally {
+      signInInProgressRef.current = false;
     }
-
-    return { error: null };
   };
 
   const signOut = async () => {
-    await supabase.auth.signOut();
     setUser(null);
     setSession(null);
     setAdminRecord(null);
+    await supabase.auth.signOut();
   };
 
   const value = {
