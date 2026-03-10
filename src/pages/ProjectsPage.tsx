@@ -14,6 +14,7 @@ interface Project {
   budget_range: string | null;
   completion_date: string | null;
   area_sqft: number | null;
+  home_size_sqm: number | null;
   bedrooms: number | null;
   bathrooms: number | null;
   garage_spaces: number | null;
@@ -84,6 +85,7 @@ export const ProjectsPage = () => {
                   project_type={project.project_type}
                   completion_date={project.completion_date}
                   area_sqft={project.area_sqft}
+                  home_size_sqm={project.home_size_sqm}
                   budget_range={project.budget_range}
                   bedrooms={project.bedrooms}
                   bathrooms={project.bathrooms}

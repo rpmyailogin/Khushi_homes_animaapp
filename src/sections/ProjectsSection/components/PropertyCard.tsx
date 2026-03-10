@@ -8,6 +8,7 @@ export interface PropertyCardProps {
   project_type: string;
   completion_date: string | null;
   area_sqft: number | null;
+  home_size_sqm: number | null;
   budget_range: string | null;
   bedrooms: number | null;
   bathrooms: number | null;
@@ -35,6 +36,7 @@ export const PropertyCard = ({
   project_type,
   completion_date,
   area_sqft,
+  home_size_sqm,
   budget_range,
   bedrooms,
   bathrooms,
@@ -43,8 +45,9 @@ export const PropertyCard = ({
   property_features,
   onEnquire,
 }: PropertyCardProps) => {
-  const hasStats = bedrooms || bathrooms || garage_spaces || area_sqft;
-  const hasDetails = budget_range || area_sqft || land_size_sqm || completion_date;
+  const displayHomeSizeSqm = home_size_sqm || (area_sqft ? sqftToSqm(area_sqft) : null);
+  const hasStats = bedrooms || bathrooms || garage_spaces || displayHomeSizeSqm;
+  const hasDetails = budget_range || displayHomeSizeSqm || land_size_sqm || completion_date;
   const features = Array.isArray(property_features) ? property_features : [];
 
   return (
@@ -100,10 +103,10 @@ export const PropertyCard = ({
                 <span className="text-xs text-zinc-700 font-medium">{garage_spaces} Garage</span>
               </div>
             )}
-            {area_sqft && (
+            {displayHomeSizeSqm && (
               <div className="flex items-center gap-1.5">
                 <Maximize2 size={14} className="text-zinc-500" />
-                <span className="text-xs text-zinc-700 font-medium">{sqftToSqm(area_sqft)} m²</span>
+                <span className="text-xs text-zinc-700 font-medium">{displayHomeSizeSqm} m²</span>
               </div>
             )}
           </div>
@@ -121,10 +124,10 @@ export const PropertyCard = ({
                 <span className="text-sm font-medium text-black">{budget_range}</span>
               </div>
             )}
-            {area_sqft && (
+            {displayHomeSizeSqm && (
               <div className="bg-white/70 border border-black/5 px-3 py-2.5">
                 <span className="text-xs text-zinc-400 block mb-0.5 uppercase tracking-wide">Home Size</span>
-                <span className="text-sm font-medium text-black">{sqftToSqm(area_sqft)} m²</span>
+                <span className="text-sm font-medium text-black">{displayHomeSizeSqm} m²</span>
               </div>
             )}
             {land_size_sqm && (
