@@ -1,39 +1,15 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
 import { AdminLayout } from '@/components/admin/AdminLayout';
+import { RichTextEditor } from '@/components/RichTextEditor';
 import { supabase } from '@/lib/supabase';
 import { useAdminAuth } from '@/contexts/AdminAuthContext';
-
-const quillModules = {
-  toolbar: [
-    [{ header: [1, 2, 3, 4, false] }],
-    ['bold', 'italic', 'underline', 'strike'],
-    [{ list: 'ordered' }, { list: 'bullet' }],
-    [{ indent: '-1' }, { indent: '+1' }],
-    ['blockquote', 'code-block'],
-    [{ align: [] }],
-    ['link'],
-    ['clean'],
-  ],
-  clipboard: {
-    matchVisual: false,
-  },
-};
-
-const quillFormats = [
-  'header', 'bold', 'italic', 'underline', 'strike',
-  'list', 'bullet', 'indent', 'blockquote', 'code-block',
-  'align', 'link',
-];
 
 export const AdminBlogEditor = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { user } = useAdminAuth();
   const isEditMode = !!id;
-  const quillRef = useRef<ReactQuill>(null);
 
   const [formData, setFormData] = useState({
     title: '',
@@ -188,26 +164,6 @@ export const AdminBlogEditor = () => {
 
   return (
     <AdminLayout>
-      <style>{`
-        .ql-editor {
-          min-height: 400px;
-          font-size: 15px;
-          line-height: 1.7;
-          font-family: inherit;
-        }
-        .ql-editor h1 { font-size: 2em; font-weight: 700; margin: 0.5em 0; }
-        .ql-editor h2 { font-size: 1.5em; font-weight: 600; margin: 0.5em 0; }
-        .ql-editor h3 { font-size: 1.25em; font-weight: 600; margin: 0.5em 0; }
-        .ql-editor h4 { font-size: 1em; font-weight: 600; margin: 0.5em 0; }
-        .ql-editor p { margin-bottom: 0.75em; }
-        .ql-editor ul, .ql-editor ol { padding-left: 1.5em; margin-bottom: 0.75em; }
-        .ql-editor li { margin-bottom: 0.25em; }
-        .ql-editor blockquote { border-left: 4px solid #d1d5db; padding-left: 1em; color: #6b7280; margin: 1em 0; }
-        .ql-editor pre { background: #f3f4f6; padding: 1em; border-radius: 4px; overflow-x: auto; }
-        .ql-toolbar { border-color: #d4d4d8 !important; }
-        .ql-container { border-color: #d4d4d8 !important; }
-      `}</style>
-
       <div className="mb-8">
         <h1 className="text-3xl font-medium text-black mb-2">
           {isEditMode ? 'Edit Blog Post' : 'Create New Blog Post'}
@@ -272,17 +228,11 @@ export const AdminBlogEditor = () => {
               <p className="text-xs text-zinc-500 mb-2">
                 Paste directly from Word — bold, headings, lists and other formatting will be preserved.
               </p>
-              <div className="border border-zinc-300">
-                <ReactQuill
-                  ref={quillRef}
-                  theme="snow"
-                  value={content}
-                  onChange={setContent}
-                  modules={quillModules}
-                  formats={quillFormats}
-                  placeholder="Write your full blog content here, or paste from Word..."
-                />
-              </div>
+              <RichTextEditor
+                value={content}
+                onChange={setContent}
+                placeholder="Write your full blog content here, or paste from Word..."
+              />
             </div>
           </div>
         </div>

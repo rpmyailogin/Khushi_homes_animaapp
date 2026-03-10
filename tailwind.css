@@ -1,6 +1,17 @@
 @tailwind components;
 @tailwind utilities;
 
+.blog-editor-content:empty:before { content: attr(data-placeholder); color: #a1a1aa; pointer-events: none; }
+.blog-editor-content h1 { font-size: 2em; font-weight: 700; margin: 0.5em 0; }
+.blog-editor-content h2 { font-size: 1.5em; font-weight: 600; margin: 0.5em 0; }
+.blog-editor-content h3 { font-size: 1.25em; font-weight: 600; margin: 0.5em 0; }
+.blog-editor-content h4 { font-size: 1em; font-weight: 600; margin: 0.4em 0; }
+.blog-editor-content p { margin-bottom: 0.75em; }
+.blog-editor-content ul { list-style: disc; padding-left: 1.5em; margin-bottom: 0.75em; }
+.blog-editor-content ol { list-style: decimal; padding-left: 1.5em; margin-bottom: 0.75em; }
+.blog-editor-content li { margin-bottom: 0.25em; }
+.blog-editor-content blockquote { border-left: 4px solid #d1d5db; padding-left: 1em; color: #6b7280; margin: 1em 0; }
+
 .prose-blog { color: #27272a; font-size: 1rem; line-height: 1.8; }
 .prose-blog h1 { font-size: 2rem; font-weight: 700; color: #000; margin: 1.5em 0 0.5em; line-height: 1.2; }
 .prose-blog h2 { font-size: 1.5rem; font-weight: 600; color: #000; margin: 1.5em 0 0.5em; line-height: 1.3; }
