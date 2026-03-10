@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
-import { PropertyCard } from "@/sections/ProjectsSection/components/PropertyCard";
-import { ContactModal } from "@/components/ContactModal";
+import { HomeProjectCard } from "@/sections/ProjectsSection/components/HomeProjectCard";
 import { supabase } from '@/lib/supabase';
 
 interface Project {
@@ -105,7 +104,6 @@ const fallbackProjects: Project[] = [
 export const ProjectGrid = () => {
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
-  const [showEnquire, setShowEnquire] = useState(false);
 
   useEffect(() => {
     fetchProjects();
@@ -144,37 +142,25 @@ export const ProjectGrid = () => {
   }
 
   return (
-    <>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         {projects.map((project) => (
-          <PropertyCard
+          <HomeProjectCard
             key={project.id}
             slug={project.slug}
             title={project.title}
             location={project.location}
-            short_description={project.short_description}
             featured_image={project.featured_image || "https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1200"}
             project_type={project.project_type || 'residential'}
             completion_date={project.completion_date}
-            area_sqft={project.area_sqft}
             home_size_sqm={project.home_size_sqm}
-            budget_range={project.budget_range}
+            area_sqft={project.area_sqft}
             bedrooms={project.bedrooms}
             bathrooms={project.bathrooms}
             garage_spaces={project.garage_spaces}
             land_size_sqm={project.land_size_sqm}
-            property_features={project.property_features || []}
-            onEnquire={() => setShowEnquire(true)}
+            budget_range={project.budget_range}
           />
         ))}
-      </div>
-
-      {showEnquire && (
-        <ContactModal
-          isOpen={showEnquire}
-          onClose={() => setShowEnquire(false)}
-        />
-      )}
-    </>
+    </div>
   );
 };
