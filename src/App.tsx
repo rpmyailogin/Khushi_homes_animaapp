@@ -19,6 +19,7 @@ import { AdminProjectsPage } from "@/pages/AdminProjectsPage";
 import { AdminProjectEditor } from "@/pages/AdminProjectEditor";
 import { AdminContactsPage } from "@/pages/AdminContactsPage";
 import { AdminNewsletterPage } from "@/pages/AdminNewsletterPage";
+import { AdminAdminsPage } from "@/pages/AdminAdminsPage";
 import UnderConstruction from "@/components/UnderConstruction";
 
 export const App = () => {
@@ -112,6 +113,14 @@ export const App = () => {
               element={
                 <ProtectedRoute>
                   <AdminNewsletterPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/admins"
+              element={
+                <ProtectedRoute>
+                  <AdminAdminsPage />
                 </ProtectedRoute>
               }
             />

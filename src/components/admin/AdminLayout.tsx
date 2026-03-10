@@ -7,7 +7,7 @@ interface AdminLayoutProps {
 }
 
 export const AdminLayout = ({ children }: AdminLayoutProps) => {
-  const { signOut, user } = useAdminAuth();
+  const { signOut, user, isSuperAdmin } = useAdminAuth();
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -22,6 +22,7 @@ export const AdminLayout = ({ children }: AdminLayoutProps) => {
     { path: '/admin/projects', label: 'Projects', icon: '🏗️' },
     { path: '/admin/contacts', label: 'Contacts', icon: '📧' },
     { path: '/admin/newsletter', label: 'Newsletter', icon: '📮' },
+    ...(isSuperAdmin ? [{ path: '/admin/admins', label: 'Admins', icon: '👤' }] : []),
   ];
 
   return (
