@@ -1,5 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { SectionHeader } from '@/components/SectionHeader';
+import { supabase } from '@/lib/supabase';
+import { isValidEmail, isValidPhone, isValidName, isValidMessage, checkRateLimit } from '@/lib/security';
 
 export const ContactPage = () => {
   useEffect(() => {
@@ -15,44 +17,63 @@ export const ContactPage = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState('');
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
+  const honeypotRef = useRef<HTMLInputElement>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     });
+    setFieldErrors(prev => ({ ...prev, [e.target.name]: '' }));
+  };
+
+  const validateForm = (): boolean => {
+    const errors: Record<string, string> = {};
+    if (!isValidName(formData.name)) errors.name = 'Name must be 2-100 characters';
+    if (!isValidEmail(formData.email)) errors.email = 'Please enter a valid email address';
+    if (!isValidPhone(formData.phone)) errors.phone = 'Please enter a valid phone number';
+    if (!isValidMessage(formData.message)) errors.message = 'Message must be 10-5000 characters';
+    setFieldErrors(errors);
+    return Object.keys(errors).length === 0;
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (honeypotRef.current?.value) return;
+    if (!validateForm()) return;
+    if (!checkRateLimit('contact-page', 3, 600000)) {
+      setSubmitMessage('Too many submissions. Please try again in a few minutes.');
+      return;
+    }
+
     setIsSubmitting(true);
     setSubmitMessage('');
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/rest/v1/contact_submissions`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'apikey': import.meta.env.VITE_SUPABASE_ANON_KEY,
-          'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`
-        },
-        body: JSON.stringify(formData)
-      });
+      const { error } = await supabase
+        .from('contact_submissions')
+        .insert([{
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          phone: formData.phone.trim() || null,
+          message: formData.message.trim(),
+          project_type: formData.projectType,
+          status: 'new'
+        }]);
 
-      if (response.ok) {
-        setSubmitMessage('Thank you for contacting us! We will get back to you soon.');
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          message: '',
-          projectType: 'new-home'
-        });
-      } else {
-        setSubmitMessage('Something went wrong. Please try again.');
-      }
-    } catch (error) {
-      setSubmitMessage('Error submitting form. Please try again.');
+      if (error) throw error;
+
+      setSubmitMessage('Thank you for contacting us! We will get back to you soon.');
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        message: '',
+        projectType: 'new-home'
+      });
+    } catch {
+      setSubmitMessage('Something went wrong. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -135,6 +156,9 @@ export const ContactPage = () => {
 
             <div className="box-border caret-transparent">
               <form onSubmit={handleSubmit} className="bg-white box-border caret-transparent p-8 border border-solid border-black/10">
+                <div className="absolute opacity-0 h-0 w-0 overflow-hidden" aria-hidden="true" tabIndex={-1}>
+                  <input ref={honeypotRef} type="text" name="website" autoComplete="off" tabIndex={-1} />
+                </div>
                 <div className="box-border caret-transparent mb-6">
                   <label htmlFor="name" className="text-sm font-medium box-border caret-transparent block mb-2">
                     Full Name *
@@ -146,9 +170,11 @@ export const ContactPage = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
+                    maxLength={100}
                     className="box-border caret-transparent w-full px-4 py-3 border border-solid border-black/10 focus:outline-none focus:border-black transition-colors"
                     placeholder="John Smith"
                   />
+                  {fieldErrors.name && <p className="text-red-600 text-xs mt-1">{fieldErrors.name}</p>}
                 </div>
 
                 <div className="box-border caret-transparent mb-6">
@@ -162,9 +188,11 @@ export const ContactPage = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
+                    maxLength={254}
                     className="box-border caret-transparent w-full px-4 py-3 border border-solid border-black/10 focus:outline-none focus:border-black transition-colors"
                     placeholder="john@example.com"
                   />
+                  {fieldErrors.email && <p className="text-red-600 text-xs mt-1">{fieldErrors.email}</p>}
                 </div>
 
                 <div className="box-border caret-transparent mb-6">
@@ -177,9 +205,11 @@ export const ContactPage = () => {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
+                    maxLength={20}
                     className="box-border caret-transparent w-full px-4 py-3 border border-solid border-black/10 focus:outline-none focus:border-black transition-colors"
                     placeholder="+61 XXX XXX XXX"
                   />
+                  {fieldErrors.phone && <p className="text-red-600 text-xs mt-1">{fieldErrors.phone}</p>}
                 </div>
 
                 <div className="box-border caret-transparent mb-6">
@@ -214,9 +244,11 @@ export const ContactPage = () => {
                     onChange={handleChange}
                     required
                     rows={5}
+                    maxLength={5000}
                     className="box-border caret-transparent w-full px-4 py-3 border border-solid border-black/10 focus:outline-none focus:border-black transition-colors resize-none"
                     placeholder="Tell us about your project..."
                   />
+                  {fieldErrors.message && <p className="text-red-600 text-xs mt-1">{fieldErrors.message}</p>}
                 </div>
 
                 {submitMessage && (

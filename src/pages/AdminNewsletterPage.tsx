@@ -35,7 +35,6 @@ export const AdminNewsletterPage = () => {
       if (error) throw error;
       setSubscribers(data || []);
     } catch (error) {
-      console.error('Error fetching subscribers:', error);
     } finally {
       setLoading(false);
     }

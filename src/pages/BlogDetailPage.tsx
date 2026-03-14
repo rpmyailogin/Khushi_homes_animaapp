@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { supabase } from '@/lib/supabase';
+import { sanitizeHtml } from '@/lib/security';
 
 interface Blog {
   id: string;
@@ -115,7 +116,7 @@ export const BlogDetailPage = () => {
 
         <div
           className="prose-blog"
-          dangerouslySetInnerHTML={{ __html: blog.content }}
+          dangerouslySetInnerHTML={{ __html: sanitizeHtml(blog.content) }}
         />
 
         {blog.tags && blog.tags.length > 0 && (

@@ -1,8 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { useAdminAuth } from '@/contexts/AdminAuthContext';
 import { supabase } from '@/lib/supabase';
 import { KhushiLogo } from '@/components/KhushiLogo';
+import { checkRateLimit } from '@/lib/security';
 
 export const AdminLoginPage = () => {
   const [mode, setMode] = useState<'login' | 'register'>('login');
@@ -13,8 +14,10 @@ export const AdminLoginPage = () => {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const [hasAdmins, setHasAdmins] = useState<boolean | null>(null);
+  const [lockoutUntil, setLockoutUntil] = useState<number | null>(null);
   const { signIn, isAdmin, loading: authLoading } = useAdminAuth();
   const navigate = useNavigate();
+  const honeypotRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     document.title = "Admin Login - Khushi Homes";
@@ -38,19 +41,38 @@ export const AdminLoginPage = () => {
     return <Navigate to="/admin/dashboard" replace />;
   }
 
+  const getRemainingLockout = () => {
+    if (!lockoutUntil) return 0;
+    return Math.max(0, Math.ceil((lockoutUntil - Date.now()) / 1000));
+  };
+
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (honeypotRef.current?.value) return;
+
+    const remaining = getRemainingLockout();
+    if (remaining > 0) {
+      setError(`Too many failed attempts. Please try again in ${remaining} seconds.`);
+      return;
+    }
+
+    if (!checkRateLimit('admin-login', 5, 300000)) {
+      setLockoutUntil(Date.now() + 300000);
+      setError('Too many login attempts. Please try again in 5 minutes.');
+      return;
+    }
+
     setError('');
     setLoading(true);
     try {
       const { error } = await signIn(email, password);
       if (error) {
-        setError(error.message || 'Invalid email or password');
+        setError('Invalid email or password.');
       } else {
         navigate('/admin/dashboard');
       }
-    } catch (err: any) {
-      setError(err.message || 'An error occurred');
+    } catch {
+      setError('An error occurred. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -58,6 +80,13 @@ export const AdminLoginPage = () => {
 
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (honeypotRef.current?.value) return;
+
+    if (!checkRateLimit('admin-register', 3, 600000)) {
+      setError('Too many attempts. Please try again later.');
+      return;
+    }
+
     setError('');
     setLoading(true);
     try {
@@ -78,7 +107,7 @@ export const AdminLoginPage = () => {
           }
           userId = signInData.user.id;
         } else {
-          setError(signUpError.message);
+          setError('Registration failed. Please try again.');
           return;
         }
       } else {
@@ -101,7 +130,7 @@ export const AdminLoginPage = () => {
         if (adminError.message.includes('duplicate') || adminError.code === '23505') {
           setSuccess('Admin account already exists. You can sign in now.');
         } else {
-          setError(adminError.message);
+          setError('Registration failed. Please try again.');
           return;
         }
       } else {
@@ -114,8 +143,8 @@ export const AdminLoginPage = () => {
       setPassword('');
       setFullName('');
       setHasAdmins(true);
-    } catch (err: any) {
-      setError(err.message || 'An error occurred');
+    } catch {
+      setError('An error occurred. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -144,6 +173,9 @@ export const AdminLoginPage = () => {
 
         {mode === 'login' ? (
           <form onSubmit={handleLogin} className="space-y-6">
+            <div className="absolute opacity-0 h-0 w-0 overflow-hidden" aria-hidden="true" tabIndex={-1}>
+              <input ref={honeypotRef} type="text" name="company" autoComplete="off" tabIndex={-1} />
+            </div>
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-black mb-2">
                 Email Address
@@ -154,6 +186,7 @@ export const AdminLoginPage = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
+                maxLength={254}
                 className="w-full px-4 py-3 border border-zinc-300 focus:outline-none focus:border-black transition-colors text-black caret-black"
                 placeholder="admin@example.com"
               />
@@ -169,6 +202,7 @@ export const AdminLoginPage = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
+                maxLength={128}
                 className="w-full px-4 py-3 border border-zinc-300 focus:outline-none focus:border-black transition-colors text-black caret-black"
                 placeholder="••••••••"
               />
@@ -190,6 +224,9 @@ export const AdminLoginPage = () => {
           </form>
         ) : (
           <form onSubmit={handleRegister} className="space-y-6">
+            <div className="absolute opacity-0 h-0 w-0 overflow-hidden" aria-hidden="true" tabIndex={-1}>
+              <input ref={honeypotRef} type="text" name="company" autoComplete="off" tabIndex={-1} />
+            </div>
             <div>
               <label htmlFor="fullName" className="block text-sm font-medium text-black mb-2">
                 Full Name
@@ -200,6 +237,7 @@ export const AdminLoginPage = () => {
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
                 required
+                maxLength={100}
                 className="w-full px-4 py-3 border border-zinc-300 focus:outline-none focus:border-black transition-colors text-black caret-black"
                 placeholder="Your full name"
               />
@@ -215,6 +253,7 @@ export const AdminLoginPage = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
+                maxLength={254}
                 className="w-full px-4 py-3 border border-zinc-300 focus:outline-none focus:border-black transition-colors text-black caret-black"
                 placeholder="admin@example.com"
               />
@@ -231,6 +270,7 @@ export const AdminLoginPage = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 minLength={6}
+                maxLength={128}
                 className="w-full px-4 py-3 border border-zinc-300 focus:outline-none focus:border-black transition-colors text-black caret-black"
                 placeholder="••••••••"
               />

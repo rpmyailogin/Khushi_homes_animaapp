@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { supabase } from '@/lib/supabase';
+import { isValidEmail, isValidPhone, isValidName, isValidMessage, checkRateLimit } from '@/lib/security';
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -16,6 +17,7 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState('');
+  const honeypotRef = useRef<HTMLInputElement>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
@@ -26,6 +28,21 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (honeypotRef.current?.value) return;
+
+    if (!isValidName(formData.name) || !isValidEmail(formData.email) || !isValidMessage(formData.message)) {
+      setSubmitMessage('Please check your inputs and try again.');
+      return;
+    }
+    if (formData.phone && !isValidPhone(formData.phone)) {
+      setSubmitMessage('Please enter a valid phone number.');
+      return;
+    }
+    if (!checkRateLimit('contact-modal', 3, 600000)) {
+      setSubmitMessage('Too many submissions. Please try again in a few minutes.');
+      return;
+    }
+
     setIsSubmitting(true);
     setSubmitMessage('');
 
@@ -33,10 +50,10 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
       const { error } = await supabase
         .from('contact_submissions')
         .insert([{
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone || null,
-          message: formData.message,
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          phone: formData.phone.trim() || null,
+          message: formData.message.trim(),
           project_type: formData.projectType,
           status: 'new'
         }]);
@@ -55,8 +72,8 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
         onClose();
         setSubmitMessage('');
       }, 2000);
-    } catch (error: any) {
-      setSubmitMessage(error.message || 'Error submitting form. Please try again.');
+    } catch {
+      setSubmitMessage('Error submitting form. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -83,6 +100,9 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
         </div>
 
         <form onSubmit={handleSubmit} className="p-4 sm:p-6 md:p-8">
+          <div className="absolute opacity-0 h-0 w-0 overflow-hidden" aria-hidden="true" tabIndex={-1}>
+            <input ref={honeypotRef} type="text" name="website" autoComplete="off" tabIndex={-1} />
+          </div>
           <div className="box-border caret-transparent mb-6">
             <label htmlFor="modal-name" className="text-sm font-medium box-border caret-transparent block mb-2">
               Full Name *
@@ -94,6 +114,7 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
               value={formData.name}
               onChange={handleChange}
               required
+              maxLength={100}
               className="box-border caret-transparent w-full px-4 py-3 border border-solid border-black/10 focus:outline-none focus:border-black transition-colors"
               placeholder="John Smith"
             />
@@ -110,6 +131,7 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
               value={formData.email}
               onChange={handleChange}
               required
+              maxLength={254}
               className="box-border caret-transparent w-full px-4 py-3 border border-solid border-black/10 focus:outline-none focus:border-black transition-colors"
               placeholder="john@example.com"
             />
@@ -125,6 +147,7 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
               name="phone"
               value={formData.phone}
               onChange={handleChange}
+              maxLength={20}
               className="box-border caret-transparent w-full px-4 py-3 border border-solid border-black/10 focus:outline-none focus:border-black transition-colors"
               placeholder="+61 XXX XXX XXX"
             />
@@ -162,13 +185,14 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
               onChange={handleChange}
               required
               rows={4}
+              maxLength={5000}
               className="box-border caret-transparent w-full px-4 py-3 border border-solid border-black/10 focus:outline-none focus:border-black transition-colors resize-none"
               placeholder="Tell us about your project..."
             />
           </div>
 
           {submitMessage && (
-            <div className={`box-border caret-transparent mb-6 p-4 ${submitMessage.includes('Error') || submitMessage.includes('wrong') ? 'bg-red-50 text-red-800' : 'bg-green-50 text-green-800'}`}>
+            <div className={`box-border caret-transparent mb-6 p-4 ${submitMessage.includes('Error') || submitMessage.includes('check') || submitMessage.includes('Too many') ? 'bg-red-50 text-red-800' : 'bg-green-50 text-green-800'}`}>
               {submitMessage}
             </div>
           )}

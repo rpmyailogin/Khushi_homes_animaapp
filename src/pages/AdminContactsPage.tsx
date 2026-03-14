@@ -34,7 +34,6 @@ export const AdminContactsPage = () => {
       if (error) throw error;
       setContacts(data || []);
     } catch (error) {
-      console.error('Error fetching contacts:', error);
     } finally {
       setLoading(false);
     }

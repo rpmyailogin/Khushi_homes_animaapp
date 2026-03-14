@@ -62,7 +62,6 @@ export const ProjectDetailPage = () => {
         document.title = `${data.title} - Khushi Homes`;
       }
     } catch (err) {
-      console.error('Error fetching project:', err);
     } finally {
       setLoading(false);
     }

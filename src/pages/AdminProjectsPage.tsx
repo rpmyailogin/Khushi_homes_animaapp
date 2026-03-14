@@ -36,7 +36,6 @@ export const AdminProjectsPage = () => {
       if (error) throw error;
       setProjects(data || []);
     } catch (error) {
-      console.error('Error fetching projects:', error);
     } finally {
       setLoading(false);
     }

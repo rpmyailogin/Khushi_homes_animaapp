@@ -4,6 +4,7 @@ import { AdminLayout } from '@/components/admin/AdminLayout';
 import { RichTextEditor } from '@/components/RichTextEditor';
 import { supabase } from '@/lib/supabase';
 import { useAdminAuth } from '@/contexts/AdminAuthContext';
+import { validateImageFile, sanitizeFileName } from '@/lib/security';
 
 export const AdminBlogEditor = () => {
   const { id } = useParams();
@@ -80,8 +81,10 @@ export const AdminBlogEditor = () => {
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       const file = e.target.files[0];
-      if (file.size > 5 * 1024 * 1024) {
-        alert('File size must be less than 5MB');
+      const validation = validateImageFile(file);
+      if (!validation.valid) {
+        alert(validation.error);
+        e.target.value = '';
         return;
       }
       setFeaturedImage(file);
@@ -90,8 +93,7 @@ export const AdminBlogEditor = () => {
   };
 
   const uploadImage = async (file: File): Promise<string> => {
-    const fileExt = file.name.split('.').pop();
-    const fileName = `${Date.now()}-${Math.random().toString(36).substring(7)}.${fileExt}`;
+    const fileName = sanitizeFileName(file.name);
 
     const { error: uploadError } = await supabase.storage
       .from('blog-images')

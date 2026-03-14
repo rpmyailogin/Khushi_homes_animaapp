@@ -41,7 +41,6 @@ export const BlogsPage = () => {
       const uniqueCategories = Array.from(new Set(data?.map(blog => blog.category) || []));
       setCategories(["All", ...uniqueCategories]);
     } catch (error) {
-      console.error('Error fetching blogs:', error);
     } finally {
       setLoading(false);
     }

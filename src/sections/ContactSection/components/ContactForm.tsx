@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { supabase } from '@/lib/supabase';
+import { isValidEmail, isValidPhone, isValidName, isValidMessage, checkRateLimit } from '@/lib/security';
 
 export const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -11,6 +12,7 @@ export const ContactForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'success' | 'error' | null>(null);
   const [errorMessage, setErrorMessage] = useState('');
+  const honeypotRef = useRef<HTMLInputElement>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -21,6 +23,24 @@ export const ContactForm = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (honeypotRef.current?.value) return;
+
+    if (!isValidName(formData.name) || !isValidEmail(formData.email) || !isValidMessage(formData.message)) {
+      setSubmitStatus('error');
+      setErrorMessage('Please check your inputs and try again.');
+      return;
+    }
+    if (formData.phone && !isValidPhone(formData.phone)) {
+      setSubmitStatus('error');
+      setErrorMessage('Please enter a valid phone number.');
+      return;
+    }
+    if (!checkRateLimit('contact-section', 3, 600000)) {
+      setSubmitStatus('error');
+      setErrorMessage('Too many submissions. Please try again in a few minutes.');
+      return;
+    }
+
     setIsSubmitting(true);
     setSubmitStatus(null);
     setErrorMessage('');
@@ -29,10 +49,10 @@ export const ContactForm = () => {
       const { error } = await supabase
         .from('contact_submissions')
         .insert([{
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone || null,
-          message: formData.message,
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          phone: formData.phone.trim() || null,
+          message: formData.message.trim(),
           project_type: 'other',
           status: 'new'
         }]);
@@ -46,9 +66,9 @@ export const ContactForm = () => {
         phone: '',
         message: ''
       });
-    } catch (error: any) {
+    } catch {
       setSubmitStatus('error');
-      setErrorMessage(error.message || 'Something went wrong. Please try again.');
+      setErrorMessage('Something went wrong. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -73,6 +93,9 @@ export const ContactForm = () => {
           aria-label="Contact Form"
           className="items-end box-border caret-transparent flex flex-col justify-start"
         >
+          <div className="absolute opacity-0 h-0 w-0 overflow-hidden" aria-hidden="true" tabIndex={-1}>
+            <input ref={honeypotRef} type="text" name="website" autoComplete="off" tabIndex={-1} />
+          </div>
           <div className="box-border caret-transparent grid grid-cols-1 gap-y-4 w-full mb-6 sm:gap-y-5 sm:mb-[30px] md:gap-x-[30px] md:grid-cols-2 md:gap-y-10 md:mb-10">
             <input
               name="name"
@@ -81,6 +104,7 @@ export const ContactForm = () => {
               value={formData.name}
               onChange={handleChange}
               required
+              maxLength={100}
               className="text-sm box-border caret-transparent block leading-[21px] align-middle w-full border px-3 py-2 border-solid border-zinc-300 md:col-span-2 md:p-[15px]"
             />
             <input
@@ -90,6 +114,7 @@ export const ContactForm = () => {
               value={formData.email}
               onChange={handleChange}
               required
+              maxLength={254}
               className="text-sm box-border caret-transparent block leading-[21px] align-middle w-full border px-3 py-2 border-solid border-zinc-300 md:p-[15px]"
             />
             <input
@@ -98,6 +123,7 @@ export const ContactForm = () => {
               type="tel"
               value={formData.phone}
               onChange={handleChange}
+              maxLength={20}
               className="text-sm box-border caret-transparent block leading-[21px] align-middle w-full border px-3 py-2 border-solid border-zinc-300 md:p-[15px]"
             />
             <textarea
@@ -106,6 +132,7 @@ export const ContactForm = () => {
               value={formData.message}
               onChange={handleChange}
               required
+              maxLength={5000}
               className="text-sm box-border caret-transparent block leading-[21px] min-h-[140px] align-middle w-full px-3 py-2 border border-solid border-zinc-300 sm:min-h-[180px] md:col-span-2 md:p-3.5"
             ></textarea>
           </div>

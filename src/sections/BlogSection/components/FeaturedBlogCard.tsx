@@ -42,7 +42,6 @@ export const FeaturedBlogCard = () => {
       if (error) throw error;
       setBlog(data || fallbackBlog);
     } catch (error) {
-      console.error('Error fetching featured blog:', error);
       setBlog(fallbackBlog);
     } finally {
       setLoading(false);

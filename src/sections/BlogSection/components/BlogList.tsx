@@ -53,7 +53,6 @@ export const BlogList = () => {
         setBlogs(fallbackBlogs);
       }
     } catch (error) {
-      console.error('Error fetching blogs:', error);
       setBlogs(fallbackBlogs);
     } finally {
       setLoading(false);

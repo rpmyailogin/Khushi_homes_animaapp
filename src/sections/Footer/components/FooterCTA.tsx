@@ -1,5 +1,7 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { ContactModal } from '@/components/ContactModal';
+import { supabase } from '@/lib/supabase';
+import { isValidEmail, checkRateLimit } from '@/lib/security';
 
 export const FooterCTA = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -7,43 +9,50 @@ export const FooterCTA = () => {
   const [name, setName] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [message, setMessage] = useState('');
+  const honeypotRef = useRef<HTMLInputElement>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (honeypotRef.current?.value) return;
+
+    if (!isValidEmail(email)) {
+      setMessage('Please enter a valid email address.');
+      return;
+    }
+    if (!checkRateLimit('footer-newsletter', 3, 600000)) {
+      setMessage('Too many attempts. Please try again in a few minutes.');
+      return;
+    }
+
     setIsSubmitting(true);
     setMessage('');
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/rest/v1/newsletter_subscriptions`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'apikey': import.meta.env.VITE_SUPABASE_ANON_KEY,
-          'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
-          'Prefer': 'resolution=merge-duplicates'
-        },
-        body: JSON.stringify({
-          email,
-          name: name || null,
+      const { error } = await supabase
+        .from('newsletter_subscriptions')
+        .insert([{
+          email: email.trim(),
+          name: name.trim() || null,
           preferences: {
             blog_updates: true,
             newsletters: true,
             offers: true
           }
-        })
-      });
+        }]);
 
-      if (response.ok) {
+      if (error) {
+        if (error.code === '23505') {
+          setMessage('This email is already subscribed.');
+        } else {
+          throw error;
+        }
+      } else {
         setMessage('Successfully subscribed!');
         setEmail('');
         setName('');
-      } else if (response.status === 409) {
-        setMessage('This email is already subscribed.');
-      } else {
-        setMessage('Something went wrong. Please try again.');
       }
-    } catch (error) {
-      setMessage('Error subscribing. Please try again later.');
+    } catch {
+      setMessage('Something went wrong. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -151,12 +160,16 @@ export const FooterCTA = () => {
               Subscribe for latest updates and offers
             </h3>
             <form onSubmit={handleSubmit} className="box-border caret-transparent">
+              <div className="absolute opacity-0 h-0 w-0 overflow-hidden" aria-hidden="true" tabIndex={-1}>
+                <input ref={honeypotRef} type="text" name="company" autoComplete="off" tabIndex={-1} />
+              </div>
               <div className="box-border caret-transparent grid grid-cols-1 gap-3 mb-3 sm:grid-cols-2">
                 <input
                   type="text"
                   id="newsletter-name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
+                  maxLength={100}
                   className="box-border caret-transparent w-full px-4 py-2.5 border border-solid border-white/20 focus:outline-none focus:border-white transition-colors bg-white text-sm"
                   placeholder="Your name"
                 />
@@ -167,6 +180,7 @@ export const FooterCTA = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
+                  maxLength={254}
                   className="box-border caret-transparent w-full px-4 py-2.5 border border-solid border-white/20 focus:outline-none focus:border-white transition-colors bg-white text-sm"
                   placeholder="your@email.com"
                 />

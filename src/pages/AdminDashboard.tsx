@@ -30,7 +30,6 @@ export const AdminDashboard = () => {
           newsletters: newslettersResult.count || 0,
         });
       } catch (error) {
-        console.error('Error fetching stats:', error);
       } finally {
         setLoading(false);
       }

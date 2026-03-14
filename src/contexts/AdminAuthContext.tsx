@@ -44,6 +44,9 @@ const fetchAdminRecord = async (userId: string): Promise<AdminRecord | null> => 
   }
 };
 
+const SESSION_TIMEOUT_MS = 30 * 60 * 1000;
+const ACTIVITY_CHECK_INTERVAL_MS = 60 * 1000;
+
 export const AdminAuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
   const [session, setSession] = useState<Session | null>(null);
@@ -51,6 +54,41 @@ export const AdminAuthProvider = ({ children }: { children: ReactNode }) => {
   const [loading, setLoading] = useState(true);
   const initializedRef = useRef(false);
   const signInInProgressRef = useRef(false);
+  const lastActivityRef = useRef(Date.now());
+
+  useEffect(() => {
+    const updateActivity = () => { lastActivityRef.current = Date.now(); };
+    const events = ['mousedown', 'keydown', 'scroll', 'touchstart'];
+    events.forEach(evt => window.addEventListener(evt, updateActivity, { passive: true }));
+    return () => { events.forEach(evt => window.removeEventListener(evt, updateActivity)); };
+  }, []);
+
+  useEffect(() => {
+    if (!user || !adminRecord) return;
+
+    const interval = setInterval(async () => {
+      const inactive = Date.now() - lastActivityRef.current > SESSION_TIMEOUT_MS;
+      if (inactive) {
+        setUser(null);
+        setSession(null);
+        setAdminRecord(null);
+        await supabase.auth.signOut();
+        return;
+      }
+
+      if (user) {
+        const record = await fetchAdminRecord(user.id);
+        if (!record) {
+          setUser(null);
+          setSession(null);
+          setAdminRecord(null);
+          await supabase.auth.signOut();
+        }
+      }
+    }, ACTIVITY_CHECK_INTERVAL_MS);
+
+    return () => clearInterval(interval);
+  }, [user, adminRecord]);
 
   useEffect(() => {
     let mounted = true;
@@ -67,6 +105,8 @@ export const AdminAuthProvider = ({ children }: { children: ReactNode }) => {
             setSession(session);
             setUser(session.user);
             setAdminRecord(record);
+          } else {
+            await supabase.auth.signOut();
           }
         }
       } catch {

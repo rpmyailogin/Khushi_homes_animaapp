@@ -4,6 +4,7 @@ import { X } from 'lucide-react';
 import { AdminLayout } from '@/components/admin/AdminLayout';
 import { supabase } from '@/lib/supabase';
 import { useAdminAuth } from '@/contexts/AdminAuthContext';
+import { validateImageFile, sanitizeFileName } from '@/lib/security';
 
 const MAX_IMAGE_SLOTS = 5;
 
@@ -117,8 +118,10 @@ export const AdminProjectEditor = () => {
   const handleImageChange = (index: number, e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
-    if (file.size > 5 * 1024 * 1024) {
-      alert('File size must be less than 5MB');
+    const validation = validateImageFile(file);
+    if (!validation.valid) {
+      alert(validation.error);
+      e.target.value = '';
       return;
     }
     const previewUrl = URL.createObjectURL(file);
@@ -138,8 +141,7 @@ export const AdminProjectEditor = () => {
   };
 
   const uploadImage = async (file: File): Promise<string> => {
-    const ext = file.name.split('.').pop();
-    const path = `${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
+    const path = sanitizeFileName(file.name);
     const { error: uploadError } = await supabase.storage
       .from('project-images')
       .upload(path, file);

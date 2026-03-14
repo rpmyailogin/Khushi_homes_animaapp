@@ -126,7 +126,6 @@ export const ProjectGrid = () => {
         setProjects(fallbackProjects);
       }
     } catch (error) {
-      console.error('Error fetching projects:', error);
       setProjects(fallbackProjects);
     } finally {
       setLoading(false);
