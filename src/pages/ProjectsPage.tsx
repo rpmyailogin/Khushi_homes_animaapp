@@ -23,6 +23,11 @@ interface Project {
   property_features: string[] | null;
 }
 
+const PROJECT_IMAGE_OVERRIDES: Record<string, string> = {
+  '7-meadow-cres-mount-waverley-vic-3149': '/7_Meadow_Crescent_Mount_Waverly.jpeg',
+  '66-heathfield-rise-box-hill-north-vic-3129': '/66_Heathfield_Rise_Boxhill.jpeg',
+};
+
 export const ProjectsPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [projects, setProjects] = useState<Project[]>([]);
@@ -81,6 +86,7 @@ export const ProjectsPage = () => {
                   location={project.location}
                   short_description={project.short_description}
                   featured_image={
+                    PROJECT_IMAGE_OVERRIDES[project.slug] ||
                     project.featured_image ||
                     'https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1200'
                   }

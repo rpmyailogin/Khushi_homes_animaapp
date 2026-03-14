@@ -25,6 +25,11 @@ interface Project {
   property_features: string[] | null;
 }
 
+const PROJECT_IMAGE_OVERRIDES: Record<string, string> = {
+  '7-meadow-cres-mount-waverley-vic-3149': '/7_Meadow_Crescent_Mount_Waverly.jpeg',
+  '66-heathfield-rise-box-hill-north-vic-3129': '/66_Heathfield_Rise_Boxhill.jpeg',
+};
+
 const sqftToSqm = (sqft: number) => Math.round(sqft * 0.0929);
 
 const getYear = (date: string | null) => {
@@ -91,8 +96,10 @@ export const ProjectDetailPage = () => {
     );
   }
 
+  const hardcodedImage = project.slug ? PROJECT_IMAGE_OVERRIDES[project.slug] : undefined;
+  const featuredImage = hardcodedImage || project.featured_image;
   const allImages = [
-    ...(project.featured_image ? [project.featured_image] : []),
+    ...(featuredImage ? [featuredImage] : []),
     ...(Array.isArray(project.gallery_images) ? project.gallery_images : []),
   ].filter(Boolean);
 
