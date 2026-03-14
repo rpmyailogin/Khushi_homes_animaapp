@@ -10,28 +10,28 @@ export const ServiceGrid = () => {
         title="New Home Construction"
         iconUrl="https://cdn.prod.website-files.com/679b74f316932fb3b1e01c07/679dba1be9049fbc8805b173_ic-structural.svg"
         description="Transform your vision into reality with custom-designed homes built to Australian standards. Our experienced team manages every phase from design through to final handover."
-        serviceImageUrl="https://cdn.prod.website-files.com/679b74f316932fb3b1e01c07/679dba1d3d27868b02647dfb_services-thumb-05.jpg"
+        serviceImageUrl="https://images.pexels.com/photos/2102587/pexels-photo-2102587.jpeg?auto=compress&cs=tinysrgb&w=800"
         href="/services"
       />
       <ServiceCard
         title="Home Rebuilds & Renovations"
         iconUrl="https://cdn.prod.website-files.com/679b74f316932fb3b1e01c07/679dba41441cc64868b978bd_ic-foundation.svg"
         description="Breathe new life into your existing property with comprehensive rebuild services. We deliver seamless renovations that enhance both function and value."
-        serviceImageUrl="https://cdn.prod.website-files.com/679b74f316932fb3b1e01c07/679dba46477f30fd79c4ca4a_services-thumb-06.jpg"
+        serviceImageUrl="https://images.pexels.com/photos/1669754/pexels-photo-1669754.jpeg?auto=compress&cs=tinysrgb&w=800"
         href="/services"
       />
       <ServiceCard
         title="Outdoor Living Spaces"
         iconUrl="https://cdn.prod.website-files.com/679b74f316932fb3b1e01c07/679dba1be9049fbc8805b173_ic-structural.svg"
         description="Extend your living area with stunning outdoor entertainment zones. We design and build decks, patios, and alfresco areas perfect for Australian lifestyle."
-        serviceImageUrl="https://cdn.prod.website-files.com/679b74f316932fb3b1e01c07/679dba1d3d27868b02647dfb_services-thumb-05.jpg"
+        serviceImageUrl="https://images.pexels.com/photos/1643384/pexels-photo-1643384.jpeg?auto=compress&cs=tinysrgb&w=800"
         href="/services"
       />
       <ServiceCard
         title="Project Management"
         iconUrl="https://cdn.prod.website-files.com/679b74f316932fb3b1e01c07/679dba41441cc64868b978bd_ic-foundation.svg"
         description="Complete oversight and coordination of your construction project. We handle scheduling, quality control, and compliance to ensure on-time delivery."
-        serviceImageUrl="https://cdn.prod.website-files.com/679b74f316932fb3b1e01c07/679dba46477f30fd79c4ca4a_services-thumb-06.jpg"
+        serviceImageUrl="https://images.pexels.com/photos/3862135/pexels-photo-3862135.jpeg?auto=compress&cs=tinysrgb&w=800"
         href="/services"
       />
     </div>

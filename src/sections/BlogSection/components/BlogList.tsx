@@ -16,14 +16,14 @@ const fallbackBlogs: Blog[] = [
     title: "Eco-friendly construction materials you should know about",
     category: "Materials",
     published_at: "2025-02-11T00:00:00Z",
-    featured_image: "https://cdn.prod.website-files.com/679b74f316932fb3b1e01c07/679cb69863b614ca6c0adaf1_blog-thumb-07.jpg"
+    featured_image: "https://images.pexels.com/photos/2219024/pexels-photo-2219024.jpeg?auto=compress&cs=tinysrgb&w=800"
   },
   {
     id: 'fallback-2',
     title: "Adopting lean construction practices for maximum efficiency",
     category: "Efficiency",
     published_at: "2025-02-11T00:00:00Z",
-    featured_image: "https://cdn.prod.website-files.com/679b74f316932fb3b1e01c07/679cb6893d98ac6330958f1c_blog-thumb-06.jpg"
+    featured_image: "https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=800"
   }
 ];
 
