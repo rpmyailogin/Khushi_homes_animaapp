@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { useAdminAuth } from '@/contexts/AdminAuthContext';
 import { supabase } from '@/lib/supabase';
+import { KhushiLogo } from '@/components/KhushiLogo';
 
 export const AdminLoginPage = () => {
   const [mode, setMode] = useState<'login' | 'register'>('login');
@@ -124,11 +125,9 @@ export const AdminLoginPage = () => {
     <div className="min-h-screen flex items-center justify-center bg-zinc-50 px-4">
       <div className="max-w-md w-full bg-white shadow-lg border border-zinc-200 p-8">
         <div className="mb-8 text-center">
-          <img
-            src="/Khushi_homes_logo.svg"
-            alt="Khushi Homes"
-            className="h-12 mx-auto mb-4"
-          />
+          <div className="flex justify-center mb-4">
+            <KhushiLogo className="h-12" />
+          </div>
           <h1 className="text-2xl font-medium text-black mb-2">
             {mode === 'login' ? 'Admin Login' : 'Create Admin Account'}
           </h1>

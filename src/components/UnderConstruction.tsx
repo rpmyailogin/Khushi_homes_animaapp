@@ -1,4 +1,5 @@
 import { Mail, Phone, MapPin } from 'lucide-react';
+import { KhushiLogo } from '@/components/KhushiLogo';
 
 export default function UnderConstruction() {
 
@@ -6,11 +7,7 @@ export default function UnderConstruction() {
     <div className="min-h-screen bg-gradient-to-br from-amber-50 via-white to-orange-50">
       <div className="container mx-auto px-4 py-12">
         <div className="flex justify-center mb-12">
-          <img
-            src="/Khushi_homes_logo.svg"
-            alt="Khushi Homes"
-            className="h-16 md:h-20"
-          />
+          <KhushiLogo className="h-16 md:h-20" />
         </div>
 
         <div className="max-w-6xl mx-auto">

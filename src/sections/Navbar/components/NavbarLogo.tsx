@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { KhushiLogo } from "@/components/KhushiLogo";
 
 export const NavbarLogo = () => {
   const handleClick = () => {
@@ -11,11 +12,7 @@ export const NavbarLogo = () => {
       onClick={handleClick}
       className="box-border caret-transparent block max-w-full no-underline hover:no-underline"
     >
-      <img
-        src="/Khushi_homes_logo.svg"
-        alt="Khushi Homes"
-        className="h-10 w-auto"
-      />
+      <KhushiLogo className="h-10 w-auto" />
     </Link>
   );
 };
