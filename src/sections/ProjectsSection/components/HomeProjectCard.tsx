@@ -54,7 +54,7 @@ export const HomeProjectCard = ({
         <img
           src={featured_image}
           alt={title}
-          className="w-full h-52 object-cover group-hover:scale-105 transition-transform duration-500"
+          className="w-full h-[246px] object-cover group-hover:scale-105 transition-transform duration-500"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
         <div className="absolute top-3 left-3">
