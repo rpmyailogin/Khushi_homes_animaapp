@@ -89,7 +89,7 @@ export const ContactPage = () => {
                   </div>
                   <div>
                     <h4 className="text-black font-medium box-border caret-transparent mb-1">Phone</h4>
-                    <a href="tel:1300548744" className="box-border caret-transparent text-sm block hover:underline">1300 548 744</a>
+                    <a href="tel:1300548744" className="box-border caret-transparent text-sm block hover:underline">1300 KHUSHI</a>
                   </div>
                 </div>
 

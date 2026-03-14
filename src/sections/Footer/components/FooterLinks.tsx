@@ -50,7 +50,7 @@ export const FooterLinks = () => {
             },
             {
               label: "Give us a call",
-              value: "1300 548 744",
+              value: "1300 KHUSHI",
               href: "tel:1300548744",
             },
           ]}

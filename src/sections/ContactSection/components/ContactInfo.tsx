@@ -28,7 +28,7 @@ export const ContactInfo = () => {
             href="tel:1300548744"
             className="text-black text-base box-border caret-transparent block leading-6 mt-0.5 md:text-xl md:leading-[30px] hover:underline"
           >
-            1300 548 744
+            1300 KHUSHI
           </a>
         </div>
         <div className="items-start box-border caret-transparent flex flex-col justify-start">
