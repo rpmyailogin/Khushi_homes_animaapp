@@ -24,7 +24,7 @@ export const ServiceGrid = () => {
         title="Outdoor Living Spaces"
         iconUrl="https://cdn.prod.website-files.com/679b74f316932fb3b1e01c07/679dba1be9049fbc8805b173_ic-structural.svg"
         description="Extend your living area with stunning outdoor entertainment zones. We design and build decks, patios, and alfresco areas perfect for Australian lifestyle."
-        serviceImageUrl="https://images.pexels.com/photos/1643384/pexels-photo-1643384.jpeg?auto=compress&cs=tinysrgb&w=800"
+        serviceImageUrl="https://images.pexels.com/photos/1080696/pexels-photo-1080696.jpeg?auto=compress&cs=tinysrgb&w=800"
         href="/services"
       />
       <ServiceCard
