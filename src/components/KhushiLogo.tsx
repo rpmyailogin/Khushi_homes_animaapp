@@ -10,6 +10,7 @@ export const KhushiLogo = ({ className = "h-10 w-auto" }: KhushiLogoProps) => {
       src={logoSrc}
       alt="Khushi Homes"
       className={className}
+      style={{ objectFit: "contain", backgroundColor: "transparent" }}
     />
   );
 };
