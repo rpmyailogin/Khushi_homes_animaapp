@@ -293,22 +293,6 @@ export const AdminLoginPage = () => {
         )}
 
         <div className="mt-6 space-y-3 text-center">
-          {!hasAdmins && mode === 'login' && (
-            <button
-              onClick={() => { setMode('register'); setError(''); setSuccess(''); }}
-              className="block w-full text-sm text-zinc-600 hover:text-black transition-colors"
-            >
-              No admins yet? Create the first admin account
-            </button>
-          )}
-          {mode === 'register' && (
-            <button
-              onClick={() => { setMode('login'); setError(''); setSuccess(''); }}
-              className="block w-full text-sm text-zinc-600 hover:text-black transition-colors"
-            >
-              Back to Sign In
-            </button>
-          )}
           <a
             href="/"
             className="block text-sm text-zinc-600 hover:text-black transition-colors"
