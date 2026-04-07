@@ -12,7 +12,7 @@ export const NavbarLogo = () => {
       onClick={handleClick}
       className="box-border caret-transparent block max-w-full no-underline hover:no-underline"
     >
-      <KhushiLogo className="h-10 w-auto" />
+      <KhushiLogo className="h-[52px] w-auto" />
     </Link>
   );
 };
