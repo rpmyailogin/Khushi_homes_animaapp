@@ -1,7 +1,13 @@
 import DOMPurify from 'dompurify';
 
 export function sanitizeHtml(dirty: string): string {
-  return DOMPurify.sanitize(dirty, {
+  DOMPurify.addHook('afterSanitizeAttributes', (node) => {
+    if (node.tagName === 'A') {
+      node.setAttribute('rel', 'noopener noreferrer');
+    }
+  });
+
+  const clean = DOMPurify.sanitize(dirty, {
     ALLOWED_TAGS: [
       'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
       'p', 'br', 'hr',
@@ -11,9 +17,14 @@ export function sanitizeHtml(dirty: string): string {
       'span', 'div',
       'img',
     ],
-    ALLOWED_ATTR: ['href', 'target', 'rel', 'class', 'style', 'src', 'alt'],
+    ALLOWED_ATTR: ['href', 'target', 'rel', 'class', 'src', 'alt'],
     ALLOW_DATA_ATTR: false,
+    FORBID_TAGS: ['script', 'iframe', 'object', 'embed', 'form'],
+    FORBID_ATTR: ['onerror', 'onload', 'onclick', 'onmouseover', 'style'],
   });
+
+  DOMPurify.removeHook('afterSanitizeAttributes');
+  return clean;
 }
 
 export function sanitizeText(input: string): string {
