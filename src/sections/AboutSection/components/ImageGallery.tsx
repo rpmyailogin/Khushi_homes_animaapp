@@ -5,8 +5,6 @@ export const ImageGallery = () => {
         <img
           src="https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=600"
           alt="About Image 1"
-          loading="lazy"
-          decoding="async"
           className="box-border caret-transparent inline-block h-full max-w-full object-cover w-full"
         />
       </div>
@@ -14,8 +12,6 @@ export const ImageGallery = () => {
         <img
           src="https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=600"
           alt="About Image 2"
-          loading="lazy"
-          decoding="async"
           className="box-border caret-transparent inline-block h-full max-w-full object-cover w-full"
         />
       </div>

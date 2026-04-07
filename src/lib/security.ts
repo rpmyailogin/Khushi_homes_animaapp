@@ -1,13 +1,7 @@
 import DOMPurify from 'dompurify';
 
 export function sanitizeHtml(dirty: string): string {
-  DOMPurify.addHook('afterSanitizeAttributes', (node) => {
-    if (node.tagName === 'A') {
-      node.setAttribute('rel', 'noopener noreferrer');
-    }
-  });
-
-  const clean = DOMPurify.sanitize(dirty, {
+  return DOMPurify.sanitize(dirty, {
     ALLOWED_TAGS: [
       'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
       'p', 'br', 'hr',
@@ -17,14 +11,9 @@ export function sanitizeHtml(dirty: string): string {
       'span', 'div',
       'img',
     ],
-    ALLOWED_ATTR: ['href', 'target', 'rel', 'class', 'src', 'alt'],
+    ALLOWED_ATTR: ['href', 'target', 'rel', 'class', 'style', 'src', 'alt'],
     ALLOW_DATA_ATTR: false,
-    FORBID_TAGS: ['script', 'iframe', 'object', 'embed', 'form'],
-    FORBID_ATTR: ['onerror', 'onload', 'onclick', 'onmouseover', 'style'],
   });
-
-  DOMPurify.removeHook('afterSanitizeAttributes');
-  return clean;
 }
 
 export function sanitizeText(input: string): string {
@@ -55,7 +44,7 @@ export function isValidName(name: string): boolean {
 
 export function isValidMessage(message: string): boolean {
   const trimmed = message.trim();
-  return trimmed.length >= 3 && trimmed.length <= 5000;
+  return trimmed.length >= 10 && trimmed.length <= 5000;
 }
 
 const ALLOWED_IMAGE_TYPES = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];

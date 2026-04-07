@@ -6,37 +6,12 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "Content-Type, Authorization, X-Client-Info, Apikey",
 };
 
-function escapeHtml(str: string | null | undefined): string {
-  if (!str) return "";
-  return str
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
-}
-
 Deno.serve(async (req: Request) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { status: 200, headers: corsHeaders });
   }
 
   try {
-    if (req.method !== "POST") {
-      return new Response(JSON.stringify({ error: "Method not allowed" }), {
-        status: 405,
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
-      });
-    }
-
-    const authHeader = req.headers.get("Authorization");
-    if (!authHeader || !authHeader.startsWith("Bearer ")) {
-      return new Response(JSON.stringify({ error: "Unauthorized" }), {
-        status: 401,
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
-      });
-    }
-
     const payload = await req.json();
     const record = payload.record;
 
@@ -47,27 +22,14 @@ Deno.serve(async (req: Request) => {
       });
     }
 
-    const rawName = String(record.name || "").slice(0, 200);
-    const rawEmail = String(record.email || "").slice(0, 254);
-    const rawPhone = String(record.phone || "").slice(0, 30);
-    const rawSubject = String(record.subject || "").slice(0, 500);
-    const rawMessage = String(record.message || "").slice(0, 5000);
-    const rawProjectType = String(record.project_type || "").slice(0, 100);
-    const rawCreatedAt = String(record.created_at || new Date().toISOString());
-
-    const name = escapeHtml(rawName);
-    const email = escapeHtml(rawEmail);
-    const phone = escapeHtml(rawPhone);
-    const subject = escapeHtml(rawSubject);
-    const message = escapeHtml(rawMessage);
-    const project_type = escapeHtml(rawProjectType);
+    const { name, email, phone, subject, message, project_type, created_at } = record;
 
     const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
     if (!RESEND_API_KEY) {
       throw new Error("RESEND_API_KEY is not set");
     }
 
-    const formattedDate = new Date(rawCreatedAt).toLocaleString("en-AU", {
+    const formattedDate = new Date(created_at).toLocaleString("en-AU", {
       timeZone: "Australia/Melbourne",
       dateStyle: "full",
       timeStyle: "short",
@@ -101,32 +63,32 @@ Deno.serve(async (req: Request) => {
               <table width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #e8e8e8;border-radius:6px;overflow:hidden;margin-bottom:24px;">
                 <tr style="background-color:#f9f9f9;">
                   <td style="padding:12px 16px;font-size:13px;color:#888;font-weight:600;text-transform:uppercase;letter-spacing:1px;width:140px;border-bottom:1px solid #e8e8e8;">Name</td>
-                  <td style="padding:12px 16px;font-size:15px;color:#1a1a1a;border-bottom:1px solid #e8e8e8;">${name || "\u2014"}</td>
+                  <td style="padding:12px 16px;font-size:15px;color:#1a1a1a;border-bottom:1px solid #e8e8e8;">${name || "—"}</td>
                 </tr>
                 <tr>
                   <td style="padding:12px 16px;font-size:13px;color:#888;font-weight:600;text-transform:uppercase;letter-spacing:1px;border-bottom:1px solid #e8e8e8;">Email</td>
                   <td style="padding:12px 16px;font-size:15px;color:#1a1a1a;border-bottom:1px solid #e8e8e8;">
-                    <a href="mailto:${email}" style="color:#c9a96e;text-decoration:none;">${email || "\u2014"}</a>
+                    <a href="mailto:${email}" style="color:#c9a96e;text-decoration:none;">${email || "—"}</a>
                   </td>
                 </tr>
                 <tr style="background-color:#f9f9f9;">
                   <td style="padding:12px 16px;font-size:13px;color:#888;font-weight:600;text-transform:uppercase;letter-spacing:1px;border-bottom:1px solid #e8e8e8;">Phone</td>
                   <td style="padding:12px 16px;font-size:15px;color:#1a1a1a;border-bottom:1px solid #e8e8e8;">
-                    <a href="tel:${phone}" style="color:#c9a96e;text-decoration:none;">${phone || "\u2014"}</a>
+                    <a href="tel:${phone}" style="color:#c9a96e;text-decoration:none;">${phone || "—"}</a>
                   </td>
                 </tr>
                 <tr>
                   <td style="padding:12px 16px;font-size:13px;color:#888;font-weight:600;text-transform:uppercase;letter-spacing:1px;border-bottom:1px solid #e8e8e8;">Project Type</td>
-                  <td style="padding:12px 16px;font-size:15px;color:#1a1a1a;border-bottom:1px solid #e8e8e8;">${project_type || "\u2014"}</td>
+                  <td style="padding:12px 16px;font-size:15px;color:#1a1a1a;border-bottom:1px solid #e8e8e8;">${project_type || "—"}</td>
                 </tr>
-                ${rawSubject ? `
+                ${subject ? `
                 <tr style="background-color:#f9f9f9;">
                   <td style="padding:12px 16px;font-size:13px;color:#888;font-weight:600;text-transform:uppercase;letter-spacing:1px;border-bottom:1px solid #e8e8e8;">Subject</td>
                   <td style="padding:12px 16px;font-size:15px;color:#1a1a1a;border-bottom:1px solid #e8e8e8;">${subject}</td>
                 </tr>` : ""}
-                <tr ${rawSubject ? "" : 'style="background-color:#f9f9f9;"'}>
+                <tr ${subject ? "" : 'style="background-color:#f9f9f9;"'}>
                   <td style="padding:12px 16px;font-size:13px;color:#888;font-weight:600;text-transform:uppercase;letter-spacing:1px;">Submitted</td>
-                  <td style="padding:12px 16px;font-size:15px;color:#1a1a1a;">${escapeHtml(formattedDate)}</td>
+                  <td style="padding:12px 16px;font-size:15px;color:#1a1a1a;">${formattedDate}</td>
                 </tr>
               </table>
 
@@ -135,7 +97,7 @@ Deno.serve(async (req: Request) => {
                   <td style="padding:12px 16px;font-size:13px;color:#888;font-weight:600;text-transform:uppercase;letter-spacing:1px;border-bottom:1px solid #e8e8e8;">Message</td>
                 </tr>
                 <tr>
-                  <td style="padding:16px;font-size:15px;color:#1a1a1a;line-height:1.7;white-space:pre-wrap;">${message || "\u2014"}</td>
+                  <td style="padding:16px;font-size:15px;color:#1a1a1a;line-height:1.7;white-space:pre-wrap;">${message || "—"}</td>
                 </tr>
               </table>
 
@@ -159,8 +121,6 @@ Deno.serve(async (req: Request) => {
 </body>
 </html>`;
 
-    const safeReplyTo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(rawEmail) ? rawEmail : undefined;
-
     const response = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
@@ -170,8 +130,8 @@ Deno.serve(async (req: Request) => {
       body: JSON.stringify({
         from: "Khushi Homes Website <enquiries@khushihomes.com.au>",
         to: ["sunny@khushihomes.com.au"],
-        ...(safeReplyTo ? { reply_to: safeReplyTo } : {}),
-        subject: `New Enquiry from ${name}${rawSubject ? ` \u2014 ${subject}` : ""}`,
+        reply_to: email,
+        subject: `New Enquiry from ${name}${subject ? ` — ${subject}` : ""}`,
         html: emailHtml,
       }),
     });
@@ -182,13 +142,13 @@ Deno.serve(async (req: Request) => {
       throw new Error(`Resend API error: ${JSON.stringify(result)}`);
     }
 
-    return new Response(JSON.stringify({ success: true }), {
+    return new Response(JSON.stringify({ success: true, id: result.id }), {
       status: 200,
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
   } catch (error) {
     console.error("notify-contact error:", error);
-    return new Response(JSON.stringify({ error: "Internal server error" }), {
+    return new Response(JSON.stringify({ error: error.message }), {
       status: 500,
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });

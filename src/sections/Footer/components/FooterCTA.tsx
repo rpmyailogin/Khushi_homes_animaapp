@@ -9,34 +9,22 @@ export const FooterCTA = () => {
   const [name, setName] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [message, setMessage] = useState('');
-  const [isError, setIsError] = useState(false);
   const honeypotRef = useRef<HTMLInputElement>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (honeypotRef.current && honeypotRef.current.value && honeypotRef.current.value !== '') {
-      setIsSubmitting(true);
-      setTimeout(() => {
-        setIsError(false);
-        setMessage('Successfully subscribed!');
-        setIsSubmitting(false);
-      }, 1500);
-      return;
-    }
+    if (honeypotRef.current?.value) return;
 
     if (!isValidEmail(email)) {
-      setIsError(true);
       setMessage('Please enter a valid email address.');
       return;
     }
     if (!checkRateLimit('footer-newsletter', 3, 600000)) {
-      setIsError(true);
       setMessage('Too many attempts. Please try again in a few minutes.');
       return;
     }
 
     setIsSubmitting(true);
-    setIsError(false);
     setMessage('');
 
     try {
@@ -54,19 +42,16 @@ export const FooterCTA = () => {
 
       if (error) {
         if (error.code === '23505') {
-          setIsError(false);
           setMessage('This email is already subscribed.');
         } else {
           throw error;
         }
       } else {
-        setIsError(false);
         setMessage('Successfully subscribed!');
         setEmail('');
         setName('');
       }
     } catch {
-      setIsError(true);
       setMessage('Something went wrong. Please try again.');
     } finally {
       setIsSubmitting(false);
@@ -103,7 +88,7 @@ export const FooterCTA = () => {
         <div className="box-border caret-transparent flex flex-col gap-y-6 w-full sm:gap-y-8 md:max-w-[50%]">
           <div className="items-center box-border caret-transparent gap-x-4 flex flex-wrap justify-start gap-y-4 sm:gap-x-[22px] sm:gap-y-[22px] md:flex-nowrap md:gap-y-[normal]">
             <a
-              href="/about"
+              href="/projects"
               className="text-white text-sm items-center box-border caret-transparent gap-x-1.5 flex justify-start leading-[21px] max-w-full py-2 touch-manipulation"
             >
               <img
@@ -143,7 +128,7 @@ export const FooterCTA = () => {
             </h3>
             <form onSubmit={handleSubmit} className="box-border caret-transparent">
               <div className="absolute opacity-0 h-0 w-0 overflow-hidden" aria-hidden="true" tabIndex={-1}>
-                <input ref={honeypotRef} type="text" name="fax_number" autoComplete="new-password" tabIndex={-1} />
+                <input ref={honeypotRef} type="text" name="company" autoComplete="off" tabIndex={-1} />
               </div>
               <div className="box-border caret-transparent grid grid-cols-1 gap-3 mb-3 sm:grid-cols-2">
                 <input
@@ -169,7 +154,7 @@ export const FooterCTA = () => {
               </div>
 
               {message && (
-                <div className={`box-border caret-transparent mb-3 p-2 text-xs ${isError ? 'bg-red-100 text-red-800' : 'bg-green-100 text-green-800'}`}>
+                <div className={`box-border caret-transparent mb-3 p-2 text-xs ${message.includes('Error') || message.includes('wrong') ? 'bg-red-100 text-red-800' : 'bg-green-100 text-green-800'}`}>
                   {message}
                 </div>
               )}

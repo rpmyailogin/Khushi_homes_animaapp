@@ -12,7 +12,6 @@ export const ContactForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'success' | 'error' | null>(null);
   const [errorMessage, setErrorMessage] = useState('');
-  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const honeypotRef = useRef<HTMLInputElement>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -20,34 +19,22 @@ export const ContactForm = () => {
       ...formData,
       [e.target.name]: e.target.value
     });
-    setFieldErrors(prev => ({ ...prev, [e.target.name]: '' }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (honeypotRef.current && honeypotRef.current.value && honeypotRef.current.value !== '') {
-      setIsSubmitting(true);
-      setTimeout(() => {
-        setSubmitStatus('success');
-        setIsSubmitting(false);
-      }, 1500);
-      return;
-    }
+    if (honeypotRef.current?.value) return;
 
-    const errors: Record<string, string> = {};
-    if (!isValidName(formData.name)) errors.name = 'Please enter your name (at least 2 characters)';
-    if (!isValidEmail(formData.email)) errors.email = 'Please enter a valid email address';
-    if (formData.phone && !isValidPhone(formData.phone)) errors.phone = 'Please enter a valid phone number';
-    if (!isValidMessage(formData.message)) errors.message = 'Please enter a message (at least 3 characters)';
-
-    if (Object.keys(errors).length > 0) {
-      setFieldErrors(errors);
+    if (!isValidName(formData.name) || !isValidEmail(formData.email) || !isValidMessage(formData.message)) {
       setSubmitStatus('error');
-      setErrorMessage('Please fix the highlighted fields below.');
+      setErrorMessage('Please check your inputs and try again.');
       return;
     }
-    setFieldErrors({});
-
+    if (formData.phone && !isValidPhone(formData.phone)) {
+      setSubmitStatus('error');
+      setErrorMessage('Please enter a valid phone number.');
+      return;
+    }
     if (!checkRateLimit('contact-section', 3, 600000)) {
       setSubmitStatus('error');
       setErrorMessage('Too many submissions. Please try again in a few minutes.');
@@ -107,59 +94,47 @@ export const ContactForm = () => {
           className="items-end box-border caret-transparent flex flex-col justify-start"
         >
           <div className="absolute opacity-0 h-0 w-0 overflow-hidden" aria-hidden="true" tabIndex={-1}>
-            <input ref={honeypotRef} type="text" name="fax_number" autoComplete="new-password" tabIndex={-1} />
+            <input ref={honeypotRef} type="text" name="website" autoComplete="off" tabIndex={-1} />
           </div>
           <div className="box-border caret-transparent grid grid-cols-1 gap-y-4 w-full mb-6 sm:gap-y-5 sm:mb-[30px] md:gap-x-[30px] md:grid-cols-2 md:gap-y-10 md:mb-10">
-            <div className="md:col-span-2">
-              <input
-                name="name"
-                placeholder="Full Name*"
-                type="text"
-                value={formData.name}
-                onChange={handleChange}
-                required
-                maxLength={100}
-                className={`text-sm box-border caret-transparent block leading-[21px] align-middle w-full border px-3 py-2 border-solid md:p-[15px] ${fieldErrors.name ? 'border-red-500' : 'border-zinc-300'}`}
-              />
-              {fieldErrors.name && <p className="text-red-600 text-xs mt-1">{fieldErrors.name}</p>}
-            </div>
-            <div>
-              <input
-                name="email"
-                placeholder="Email* "
-                type="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-                maxLength={254}
-                className={`text-sm box-border caret-transparent block leading-[21px] align-middle w-full border px-3 py-2 border-solid md:p-[15px] ${fieldErrors.email ? 'border-red-500' : 'border-zinc-300'}`}
-              />
-              {fieldErrors.email && <p className="text-red-600 text-xs mt-1">{fieldErrors.email}</p>}
-            </div>
-            <div>
-              <input
-                name="phone"
-                placeholder="Phone No"
-                type="tel"
-                value={formData.phone}
-                onChange={handleChange}
-                maxLength={20}
-                className={`text-sm box-border caret-transparent block leading-[21px] align-middle w-full border px-3 py-2 border-solid md:p-[15px] ${fieldErrors.phone ? 'border-red-500' : 'border-zinc-300'}`}
-              />
-              {fieldErrors.phone && <p className="text-red-600 text-xs mt-1">{fieldErrors.phone}</p>}
-            </div>
-            <div className="md:col-span-2">
-              <textarea
-                placeholder="Write your message here* "
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                required
-                maxLength={5000}
-                className={`text-sm box-border caret-transparent block leading-[21px] min-h-[140px] align-middle w-full px-3 py-2 border border-solid sm:min-h-[180px] md:p-3.5 ${fieldErrors.message ? 'border-red-500' : 'border-zinc-300'}`}
-              ></textarea>
-              {fieldErrors.message && <p className="text-red-600 text-xs mt-1">{fieldErrors.message}</p>}
-            </div>
+            <input
+              name="name"
+              placeholder="Full Name*"
+              type="text"
+              value={formData.name}
+              onChange={handleChange}
+              required
+              maxLength={100}
+              className="text-sm box-border caret-transparent block leading-[21px] align-middle w-full border px-3 py-2 border-solid border-zinc-300 md:col-span-2 md:p-[15px]"
+            />
+            <input
+              name="email"
+              placeholder="Email* "
+              type="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+              maxLength={254}
+              className="text-sm box-border caret-transparent block leading-[21px] align-middle w-full border px-3 py-2 border-solid border-zinc-300 md:p-[15px]"
+            />
+            <input
+              name="phone"
+              placeholder="Phone No"
+              type="tel"
+              value={formData.phone}
+              onChange={handleChange}
+              maxLength={20}
+              className="text-sm box-border caret-transparent block leading-[21px] align-middle w-full border px-3 py-2 border-solid border-zinc-300 md:p-[15px]"
+            />
+            <textarea
+              placeholder="Write your message here* "
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              required
+              maxLength={5000}
+              className="text-sm box-border caret-transparent block leading-[21px] min-h-[140px] align-middle w-full px-3 py-2 border border-solid border-zinc-300 sm:min-h-[180px] md:col-span-2 md:p-3.5"
+            ></textarea>
           </div>
           <button
             type="submit"

@@ -54,8 +54,6 @@ export const PropertyCard = ({
         <img
           src={featured_image}
           alt={title}
-          loading="lazy"
-          decoding="async"
           className="w-full h-[220px] object-cover group-hover:scale-105 transition-transform duration-500"
         />
         <div className="absolute top-3 left-3 bg-black text-white text-xs px-2.5 py-1">
