@@ -5,7 +5,6 @@ import { ScrollToTop } from "@/components/ScrollToTop";
 import { HomePage } from "@/pages/HomePage";
 import { ProjectsPage } from "@/pages/ProjectsPage";
 import { ServicesPage } from "@/pages/ServicesPage";
-import { BlogsPage } from "@/pages/BlogsPage";
 import { RecentProjectsPage } from "@/pages/RecentProjectsPage";
 import { AboutUsPage } from "@/pages/AboutUsPage";
 import { ContactPage } from "@/pages/ContactPage";
@@ -13,14 +12,11 @@ import { AdminAuthProvider } from "@/contexts/AdminAuthContext";
 import { ProtectedRoute } from "@/components/admin/ProtectedRoute";
 import { AdminLoginPage } from "@/pages/AdminLoginPage";
 import { AdminDashboard } from "@/pages/AdminDashboard";
-import { AdminBlogsPage } from "@/pages/AdminBlogsPage";
-import { AdminBlogEditor } from "@/pages/AdminBlogEditor";
 import { AdminProjectsPage } from "@/pages/AdminProjectsPage";
 import { AdminProjectEditor } from "@/pages/AdminProjectEditor";
 import { AdminContactsPage } from "@/pages/AdminContactsPage";
 import { AdminNewsletterPage } from "@/pages/AdminNewsletterPage";
 import { AdminAdminsPage } from "@/pages/AdminAdminsPage";
-import { BlogDetailPage } from "@/pages/BlogDetailPage";
 import { ProjectDetailPage } from "@/pages/ProjectDetailPage";
 import UnderConstruction from "@/components/UnderConstruction";
 
@@ -41,9 +37,7 @@ export const App = () => {
             <Route path="/projects" element={isUnderConstruction ? <UnderConstruction /> : <ProjectsPage />} />
             <Route path="/projects/:slug" element={isUnderConstruction ? <UnderConstruction /> : <ProjectDetailPage />} />
             <Route path="/services" element={isUnderConstruction ? <UnderConstruction /> : <ServicesPage />} />
-            <Route path="/blogs" element={isUnderConstruction ? <UnderConstruction /> : <BlogsPage />} />
-            <Route path="/blog/:slug" element={isUnderConstruction ? <UnderConstruction /> : <BlogDetailPage />} />
-            <Route path="/case-studies" element={isUnderConstruction ? <UnderConstruction /> : <ProjectsPage />} />
+<Route path="/case-studies" element={isUnderConstruction ? <UnderConstruction /> : <ProjectsPage />} />
             <Route path="/recent-projects" element={isUnderConstruction ? <UnderConstruction /> : <RecentProjectsPage />} />
             <Route path="/contact" element={isUnderConstruction ? <UnderConstruction /> : <ContactPage />} />
 
@@ -56,31 +50,7 @@ export const App = () => {
                 </ProtectedRoute>
               }
             />
-            <Route
-              path="/admin/blogs"
-              element={
-                <ProtectedRoute>
-                  <AdminBlogsPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/admin/blogs/new"
-              element={
-                <ProtectedRoute>
-                  <AdminBlogEditor />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/admin/blogs/edit/:id"
-              element={
-                <ProtectedRoute>
-                  <AdminBlogEditor />
-                </ProtectedRoute>
-              }
-            />
-            <Route
+<Route
               path="/admin/projects"
               element={
                 <ProtectedRoute>

@@ -58,14 +58,7 @@ export const MobileNav = () => {
           >
             Projects
           </Link>
-          <Link
-            to="/blogs"
-            onClick={closeMenu}
-            className="text-black text-sm uppercase py-3 px-4 hover:bg-black/5 rounded transition-colors touch-manipulation"
-          >
-            Blogs
-          </Link>
-          <Link
+<Link
             to="/contact"
             onClick={closeMenu}
             className="text-black text-sm uppercase py-3 px-4 hover:bg-black/5 rounded transition-colors touch-manipulation"

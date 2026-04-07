@@ -5,7 +5,6 @@ import { supabase } from '@/lib/supabase';
 
 export const AdminDashboard = () => {
   const [stats, setStats] = useState({
-    blogs: 0,
     projects: 0,
     contacts: 0,
     newsletters: 0,
@@ -16,15 +15,13 @@ export const AdminDashboard = () => {
     document.title = "Dashboard - Khushi Homes Admin";
     const fetchStats = async () => {
       try {
-        const [blogsResult, projectsResult, contactsResult, newslettersResult] = await Promise.all([
-          supabase.from('blogs').select('*', { count: 'exact', head: true }),
+        const [projectsResult, contactsResult, newslettersResult] = await Promise.all([
           supabase.from('projects').select('*', { count: 'exact', head: true }),
           supabase.from('contact_submissions').select('*', { count: 'exact', head: true }),
           supabase.from('newsletter_subscriptions').select('*', { count: 'exact', head: true }),
         ]);
 
         setStats({
-          blogs: blogsResult.count || 0,
           projects: projectsResult.count || 0,
           contacts: contactsResult.count || 0,
           newsletters: newslettersResult.count || 0,
@@ -39,10 +36,9 @@ export const AdminDashboard = () => {
   }, []);
 
   const cards = [
-    { title: 'Total Blogs', value: stats.blogs, icon: '📝', link: '/admin/blogs', color: 'bg-blue-50 border-blue-200' },
     { title: 'Total Projects', value: stats.projects, icon: '🏗️', link: '/admin/projects', color: 'bg-green-50 border-green-200' },
     { title: 'Contact Submissions', value: stats.contacts, icon: '📧', link: '/admin/contacts', color: 'bg-yellow-50 border-yellow-200' },
-    { title: 'Newsletter Subscribers', value: stats.newsletters, icon: '📮', link: '/admin/newsletter', color: 'bg-purple-50 border-purple-200' },
+    { title: 'Newsletter Subscribers', value: stats.newsletters, icon: '📮', link: '/admin/newsletter', color: 'bg-blue-50 border-blue-200' },
   ];
 
   return (
@@ -75,14 +71,7 @@ export const AdminDashboard = () => {
       <div className="mt-8 bg-white border border-zinc-200 p-6">
         <h2 className="text-xl font-medium text-black mb-4">Quick Actions</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <Link
-            to="/admin/blogs"
-            className="flex items-center justify-between p-4 border border-zinc-200 hover:bg-zinc-50 transition-colors"
-          >
-            <span className="font-medium">Create New Blog Post</span>
-            <span>→</span>
-          </Link>
-          <Link
+<Link
             to="/admin/projects"
             className="flex items-center justify-between p-4 border border-zinc-200 hover:bg-zinc-50 transition-colors"
           >
@@ -109,8 +98,7 @@ export const AdminDashboard = () => {
       <div className="mt-6 bg-blue-50 border border-blue-200 p-6">
         <h3 className="text-lg font-medium text-black mb-2">📐 Image Size Guidelines</h3>
         <div className="space-y-2 text-sm text-zinc-700">
-          <p><strong>Blog Featured Images:</strong> 1200×675px (16:9 ratio)</p>
-          <p><strong>Project Featured Images:</strong> 1200×900px (4:3 ratio)</p>
+<p><strong>Project Featured Images:</strong> 1200×900px (4:3 ratio)</p>
           <p><strong>Project Gallery Images:</strong> 1600×1200px (4:3 ratio)</p>
           <p className="text-xs text-zinc-600 mt-3">Recommended formats: JPEG, PNG, WebP • Max file size: 5MB</p>
         </div>

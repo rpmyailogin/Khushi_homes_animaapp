@@ -19,8 +19,7 @@ export const AdminLayout = ({ children }: AdminLayoutProps) => {
 
   const navItems = [
     { path: '/admin/dashboard', label: 'Dashboard', icon: '📊' },
-    { path: '/admin/blogs', label: 'Blogs', icon: '📝' },
-    { path: '/admin/projects', label: 'Projects', icon: '🏗️' },
+{ path: '/admin/projects', label: 'Projects', icon: '🏗️' },
     { path: '/admin/contacts', label: 'Contacts', icon: '📧' },
     { path: '/admin/newsletter', label: 'Newsletter', icon: '📮' },
     ...(isSuperAdmin ? [{ path: '/admin/admins', label: 'Admins', icon: '👤' }] : []),
