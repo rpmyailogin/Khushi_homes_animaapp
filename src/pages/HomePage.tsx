@@ -6,7 +6,6 @@ import { ServicesSection } from "@/sections/ServicesSection";
 import { WhyChooseSection } from "@/sections/WhyChooseSection";
 import { StatsSection } from "@/sections/StatsSection";
 import { BlogSection } from "@/sections/BlogSection";
-import { TestimonialsSection } from "@/sections/TestimonialsSection";
 import { ContactSection } from "@/sections/ContactSection";
 
 export const HomePage = () => {
@@ -23,7 +22,6 @@ export const HomePage = () => {
       <WhyChooseSection />
       <StatsSection />
       <BlogSection />
-      <TestimonialsSection />
       <ContactSection />
     </>
   );
