@@ -17,6 +17,7 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState('');
+  const [isSubmitError, setIsSubmitError] = useState(false);
   const honeypotRef = useRef<HTMLInputElement>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -31,19 +32,23 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
     if (honeypotRef.current?.value) return;
 
     if (!isValidName(formData.name) || !isValidEmail(formData.email) || !isValidMessage(formData.message)) {
+      setIsSubmitError(true);
       setSubmitMessage('Please check your inputs and try again.');
       return;
     }
     if (formData.phone && !isValidPhone(formData.phone)) {
+      setIsSubmitError(true);
       setSubmitMessage('Please enter a valid phone number.');
       return;
     }
     if (!checkRateLimit('contact-modal', 3, 600000)) {
+      setIsSubmitError(true);
       setSubmitMessage('Too many submissions. Please try again in a few minutes.');
       return;
     }
 
     setIsSubmitting(true);
+    setIsSubmitError(false);
     setSubmitMessage('');
 
     try {
@@ -60,6 +65,7 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
 
       if (error) throw error;
 
+      setIsSubmitError(false);
       setSubmitMessage('Thank you! We will get back to you soon.');
       setFormData({
         name: '',
@@ -73,6 +79,7 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
         setSubmitMessage('');
       }, 2000);
     } catch {
+      setIsSubmitError(true);
       setSubmitMessage('Error submitting form. Please try again.');
     } finally {
       setIsSubmitting(false);
@@ -192,7 +199,7 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
           </div>
 
           {submitMessage && (
-            <div className={`box-border caret-transparent mb-6 p-4 ${submitMessage.includes('Error') || submitMessage.includes('check') || submitMessage.includes('Too many') ? 'bg-red-50 text-red-800' : 'bg-green-50 text-green-800'}`}>
+            <div className={`box-border caret-transparent mb-6 p-4 ${isSubmitError ? 'bg-red-50 text-red-800' : 'bg-green-50 text-green-800'}`}>
               {submitMessage}
             </div>
           )}

@@ -9,6 +9,7 @@ export const FooterCTA = () => {
   const [name, setName] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [message, setMessage] = useState('');
+  const [isError, setIsError] = useState(false);
   const honeypotRef = useRef<HTMLInputElement>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -16,15 +17,18 @@ export const FooterCTA = () => {
     if (honeypotRef.current?.value) return;
 
     if (!isValidEmail(email)) {
+      setIsError(true);
       setMessage('Please enter a valid email address.');
       return;
     }
     if (!checkRateLimit('footer-newsletter', 3, 600000)) {
+      setIsError(true);
       setMessage('Too many attempts. Please try again in a few minutes.');
       return;
     }
 
     setIsSubmitting(true);
+    setIsError(false);
     setMessage('');
 
     try {
@@ -42,16 +46,19 @@ export const FooterCTA = () => {
 
       if (error) {
         if (error.code === '23505') {
+          setIsError(false);
           setMessage('This email is already subscribed.');
         } else {
           throw error;
         }
       } else {
+        setIsError(false);
         setMessage('Successfully subscribed!');
         setEmail('');
         setName('');
       }
     } catch {
+      setIsError(true);
       setMessage('Something went wrong. Please try again.');
     } finally {
       setIsSubmitting(false);
@@ -154,7 +161,7 @@ export const FooterCTA = () => {
               </div>
 
               {message && (
-                <div className={`box-border caret-transparent mb-3 p-2 text-xs ${message.includes('Error') || message.includes('wrong') ? 'bg-red-100 text-red-800' : 'bg-green-100 text-green-800'}`}>
+                <div className={`box-border caret-transparent mb-3 p-2 text-xs ${isError ? 'bg-red-100 text-red-800' : 'bg-green-100 text-green-800'}`}>
                   {message}
                 </div>
               )}

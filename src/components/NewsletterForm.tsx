@@ -7,6 +7,7 @@ export const NewsletterForm = () => {
   const [name, setName] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [message, setMessage] = useState('');
+  const [isError, setIsError] = useState(false);
   const honeypotRef = useRef<HTMLInputElement>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -14,15 +15,18 @@ export const NewsletterForm = () => {
     if (honeypotRef.current?.value) return;
 
     if (!isValidEmail(email)) {
+      setIsError(true);
       setMessage('Please enter a valid email address.');
       return;
     }
     if (!checkRateLimit('newsletter-form', 3, 600000)) {
+      setIsError(true);
       setMessage('Too many attempts. Please try again in a few minutes.');
       return;
     }
 
     setIsSubmitting(true);
+    setIsError(false);
     setMessage('');
 
     try {
@@ -40,16 +44,19 @@ export const NewsletterForm = () => {
 
       if (error) {
         if (error.code === '23505') {
+          setIsError(false);
           setMessage('This email is already subscribed to our newsletter.');
         } else {
           throw error;
         }
       } else {
+        setIsError(false);
         setMessage('Successfully subscribed! Thank you for joining our newsletter.');
         setEmail('');
         setName('');
       }
     } catch {
+      setIsError(true);
       setMessage('Error subscribing. Please try again later.');
     } finally {
       setIsSubmitting(false);
@@ -105,7 +112,7 @@ export const NewsletterForm = () => {
         </div>
 
         {message && (
-          <div className={`box-border caret-transparent mb-4 p-3 text-sm ${message.includes('Error') || message.includes('valid') || message.includes('Too many') ? 'bg-red-100 text-red-800' : 'bg-green-100 text-green-800'}`}>
+          <div className={`box-border caret-transparent mb-4 p-3 text-sm ${isError ? 'bg-red-100 text-red-800' : 'bg-green-100 text-green-800'}`}>
             {message}
           </div>
         )}

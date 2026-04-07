@@ -17,6 +17,7 @@ export const ContactPage = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState('');
+  const [isSubmitError, setIsSubmitError] = useState(false);
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const honeypotRef = useRef<HTMLInputElement>(null);
 
@@ -43,11 +44,13 @@ export const ContactPage = () => {
     if (honeypotRef.current?.value) return;
     if (!validateForm()) return;
     if (!checkRateLimit('contact-page', 3, 600000)) {
+      setIsSubmitError(true);
       setSubmitMessage('Too many submissions. Please try again in a few minutes.');
       return;
     }
 
     setIsSubmitting(true);
+    setIsSubmitError(false);
     setSubmitMessage('');
 
     try {
@@ -64,6 +67,7 @@ export const ContactPage = () => {
 
       if (error) throw error;
 
+      setIsSubmitError(false);
       setSubmitMessage('Thank you for contacting us! We will get back to you soon.');
       setFormData({
         name: '',
@@ -73,6 +77,7 @@ export const ContactPage = () => {
         projectType: 'new-home'
       });
     } catch {
+      setIsSubmitError(true);
       setSubmitMessage('Something went wrong. Please try again.');
     } finally {
       setIsSubmitting(false);
@@ -252,7 +257,7 @@ export const ContactPage = () => {
                 </div>
 
                 {submitMessage && (
-                  <div className={`box-border caret-transparent mb-6 p-4 ${submitMessage.includes('Error') || submitMessage.includes('wrong') ? 'bg-red-50 text-red-800' : 'bg-green-50 text-green-800'}`}>
+                  <div className={`box-border caret-transparent mb-6 p-4 ${isSubmitError ? 'bg-red-50 text-red-800' : 'bg-green-50 text-green-800'}`}>
                     {submitMessage}
                   </div>
                 )}
