@@ -24,7 +24,7 @@ Deno.serve(async (req: Request) => {
 
     const { name, email, phone, subject, message, project_type, created_at } = record;
 
-    const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY") || "re_FC5yeQTU_AC5JavpCtrUFiuwR4N6REeq5";
+    const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
     if (!RESEND_API_KEY) {
       throw new Error("RESEND_API_KEY is not set");
     }
