@@ -155,7 +155,7 @@ export const AdminLoginPage = () => {
       <div className="max-w-md w-full bg-white shadow-lg border border-zinc-200 p-8">
         <div className="mb-8 text-center">
           <div className="flex justify-center mb-4">
-            <KhushiLogo className="h-12" />
+            <KhushiLogo className="h-12" style={{ height: '59px' }} />
           </div>
           <h1 className="text-2xl font-medium text-black mb-2">
             {mode === 'login' ? 'Admin Login' : 'Create Admin Account'}
