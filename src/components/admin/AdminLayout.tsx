@@ -32,7 +32,7 @@ export const AdminLayout = ({ children }: AdminLayoutProps) => {
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center gap-8">
               <Link to="/" className="flex items-center gap-2">
-                <KhushiLogo className="h-8" />
+                <KhushiLogo className="" style={{ height: '43px' }} />
                 <span className="text-sm font-medium text-zinc-600">Admin</span>
               </Link>
               <div className="hidden md:flex gap-1">
