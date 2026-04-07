@@ -88,37 +88,22 @@ export const FooterCTA = () => {
         <div className="box-border caret-transparent flex flex-col gap-y-6 w-full sm:gap-y-8 md:max-w-[50%]">
           <div className="items-center box-border caret-transparent gap-x-4 flex flex-wrap justify-start gap-y-4 sm:gap-x-[22px] sm:gap-y-[22px] md:flex-nowrap md:gap-y-[normal]">
             <a
-              href="/projects"
-              className="text-white text-sm items-center box-border caret-transparent gap-x-1.5 flex justify-start leading-[21px] max-w-full py-2 touch-manipulation"
+              href="/privacy-policy"
+              className="text-white/80 text-sm items-center box-border caret-transparent flex justify-start leading-[21px] max-w-full py-2 touch-manipulation hover:text-white transition-colors"
             >
-              <img
-                src="https://cdn.prod.website-files.com/679b678d080aadecaa78b6ac/679c772f28d0cf7e15328a4c_ic-about.svg"
-                alt="Icon"
-                className="box-border caret-transparent max-h-4 max-w-4 min-h-4 min-w-4"
-              />
-              <div className="box-border caret-transparent">About us</div>
+              Privacy Policy
             </a>
             <a
-              href="/projects"
-              className="text-white text-sm items-center box-border caret-transparent gap-x-1.5 flex justify-start leading-[21px] max-w-full py-2 touch-manipulation"
+              href="/terms-and-conditions"
+              className="text-white/80 text-sm items-center box-border caret-transparent flex justify-start leading-[21px] max-w-full py-2 touch-manipulation hover:text-white transition-colors"
             >
-              <img
-                src="https://cdn.prod.website-files.com/679b678d080aadecaa78b6ac/679c772f48e62cb358912407_ic-projects.svg"
-                alt="Icon"
-                className="box-border caret-transparent max-h-4 max-w-4 min-h-4 min-w-4"
-              />
-              <div className="box-border caret-transparent">Projects</div>
+              Terms and Conditions
             </a>
             <a
-              href="/services"
-              className="text-white text-sm items-center box-border caret-transparent gap-x-1.5 flex justify-start leading-[21px] max-w-full py-2 touch-manipulation"
+              href="/admin/login"
+              className="text-white/80 text-sm items-center box-border caret-transparent flex justify-start leading-[21px] max-w-full py-2 touch-manipulation hover:text-white transition-colors"
             >
-              <img
-                src="https://cdn.prod.website-files.com/679b678d080aadecaa78b6ac/679c772fbd9d9a04eda41714_ic-basic.svg"
-                alt="Icon"
-                className="box-border caret-transparent max-h-4 max-w-4 min-h-4 min-w-4"
-              />
-              <div className="box-border caret-transparent">Services</div>
+              Admin
             </a>
           </div>
 
