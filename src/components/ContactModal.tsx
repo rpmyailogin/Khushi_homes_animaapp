@@ -31,8 +31,13 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (honeypotRef.current?.value) {
-      honeypotRef.current.value = '';
+    if (honeypotRef.current && honeypotRef.current.value && honeypotRef.current.value !== '') {
+      setIsSubmitting(true);
+      setTimeout(() => {
+        setIsSubmitError(false);
+        setSubmitMessage('Thank you! We will get back to you soon.');
+        setIsSubmitting(false);
+      }, 1500);
       return;
     }
 
@@ -117,7 +122,7 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
 
         <form onSubmit={handleSubmit} className="p-4 sm:p-6 md:p-8">
           <div className="absolute opacity-0 h-0 w-0 overflow-hidden" aria-hidden="true" tabIndex={-1}>
-            <input ref={honeypotRef} type="text" name="website" autoComplete="off" tabIndex={-1} />
+            <input ref={honeypotRef} type="text" name="fax_number" autoComplete="new-password" tabIndex={-1} />
           </div>
           <div className="box-border caret-transparent mb-6">
             <label htmlFor="modal-name" className="text-sm font-medium box-border caret-transparent block mb-2">

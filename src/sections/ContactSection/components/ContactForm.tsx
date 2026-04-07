@@ -25,8 +25,12 @@ export const ContactForm = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (honeypotRef.current?.value) {
-      honeypotRef.current.value = '';
+    if (honeypotRef.current && honeypotRef.current.value && honeypotRef.current.value !== '') {
+      setIsSubmitting(true);
+      setTimeout(() => {
+        setSubmitStatus('success');
+        setIsSubmitting(false);
+      }, 1500);
       return;
     }
 
@@ -103,7 +107,7 @@ export const ContactForm = () => {
           className="items-end box-border caret-transparent flex flex-col justify-start"
         >
           <div className="absolute opacity-0 h-0 w-0 overflow-hidden" aria-hidden="true" tabIndex={-1}>
-            <input ref={honeypotRef} type="text" name="website" autoComplete="off" tabIndex={-1} />
+            <input ref={honeypotRef} type="text" name="fax_number" autoComplete="new-password" tabIndex={-1} />
           </div>
           <div className="box-border caret-transparent grid grid-cols-1 gap-y-4 w-full mb-6 sm:gap-y-5 sm:mb-[30px] md:gap-x-[30px] md:grid-cols-2 md:gap-y-10 md:mb-10">
             <div className="md:col-span-2">

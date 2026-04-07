@@ -41,8 +41,13 @@ export const ContactPage = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (honeypotRef.current?.value) {
-      honeypotRef.current.value = '';
+    if (honeypotRef.current && honeypotRef.current.value && honeypotRef.current.value !== '') {
+      setIsSubmitting(true);
+      setTimeout(() => {
+        setIsSubmitError(false);
+        setSubmitMessage('Thank you for contacting us! We will get back to you soon.');
+        setIsSubmitting(false);
+      }, 1500);
       return;
     }
     if (!validateForm()) {
@@ -169,7 +174,7 @@ export const ContactPage = () => {
             <div className="box-border caret-transparent">
               <form onSubmit={handleSubmit} className="bg-white box-border caret-transparent p-8 border border-solid border-black/10">
                 <div className="absolute opacity-0 h-0 w-0 overflow-hidden" aria-hidden="true" tabIndex={-1}>
-                  <input ref={honeypotRef} type="text" name="website" autoComplete="off" tabIndex={-1} />
+                  <input ref={honeypotRef} type="text" name="fax_number" autoComplete="new-password" tabIndex={-1} />
                 </div>
                 <div className="box-border caret-transparent mb-6">
                   <label htmlFor="name" className="text-sm font-medium box-border caret-transparent block mb-2">

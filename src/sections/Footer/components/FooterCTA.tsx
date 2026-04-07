@@ -14,7 +14,15 @@ export const FooterCTA = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (honeypotRef.current?.value) return;
+    if (honeypotRef.current && honeypotRef.current.value && honeypotRef.current.value !== '') {
+      setIsSubmitting(true);
+      setTimeout(() => {
+        setIsError(false);
+        setMessage('Successfully subscribed!');
+        setIsSubmitting(false);
+      }, 1500);
+      return;
+    }
 
     if (!isValidEmail(email)) {
       setIsError(true);
@@ -135,7 +143,7 @@ export const FooterCTA = () => {
             </h3>
             <form onSubmit={handleSubmit} className="box-border caret-transparent">
               <div className="absolute opacity-0 h-0 w-0 overflow-hidden" aria-hidden="true" tabIndex={-1}>
-                <input ref={honeypotRef} type="text" name="company" autoComplete="off" tabIndex={-1} />
+                <input ref={honeypotRef} type="text" name="fax_number" autoComplete="new-password" tabIndex={-1} />
               </div>
               <div className="box-border caret-transparent grid grid-cols-1 gap-3 mb-3 sm:grid-cols-2">
                 <input
