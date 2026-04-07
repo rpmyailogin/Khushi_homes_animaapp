@@ -18,11 +18,6 @@ export const FooterLinks = () => {
           variant=""
           title="Navigation"
           links={[
-            { href: "/", text: "Home" },
-            { href: "/about", text: "About Us" },
-            { href: "/services", text: "Services" },
-            { href: "/projects", text: "Projects" },
-            { href: "/contact", text: "Contact" },
             { href: "/privacy-policy", text: "Privacy Policy" },
             { href: "/terms-and-conditions", text: "Terms and Conditions" },
             { href: "/admin/login", text: "Admin" },
