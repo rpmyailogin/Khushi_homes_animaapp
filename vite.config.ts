@@ -6,7 +6,7 @@ import path from "path";
 export default defineConfig({
   plugins: [react()],
   publicDir: "./public",
-  base: "/",
+  base: "./",
   build: {
     outDir: "productionkhushi",
     emptyOutDir: true,
