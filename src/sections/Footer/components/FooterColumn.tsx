@@ -1,8 +1,11 @@
+import { Link } from "react-router-dom";
+
 export type FooterColumnProps = {
   title?: string;
   links?: Array<{
     href: string;
     text: string;
+    external?: boolean;
   }>;
   contactItems?: Array<{
     label: string;
@@ -39,15 +42,27 @@ export const FooterColumn = (props: FooterColumnProps) => {
         {props.title}
       </div>
       <div className="items-start box-border caret-transparent flex flex-col justify-start gap-y-1">
-        {props.links?.map((link, index) => (
-          <a
-            key={index}
-            href={link.href}
-            className="text-neutral-400 text-sm box-border caret-transparent block leading-[21px] hover:text-white hover:border-white"
-          >
-            {link.text}
-          </a>
-        ))}
+        {props.links?.map((link, index) =>
+          link.external ? (
+            <a
+              key={index}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-neutral-400 text-sm box-border caret-transparent block leading-[21px] hover:text-white hover:border-white"
+            >
+              {link.text}
+            </a>
+          ) : (
+            <Link
+              key={index}
+              to={link.href}
+              className="text-neutral-400 text-sm box-border caret-transparent block leading-[21px] hover:text-white hover:border-white"
+            >
+              {link.text}
+            </Link>
+          )
+        )}
       </div>
     </div>
   );

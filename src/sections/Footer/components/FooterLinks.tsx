@@ -7,37 +7,23 @@ export const FooterLinks = () => {
         <FooterColumn
           title="Follow us"
           links={[
-            { href: "https://www.instagram.com/", text: "Instagram" },
-            { href: "https://www.facebook.com/", text: "Facebook" },
-            { href: "https://www.youtube.com/", text: "YouTube" },
-            { href: "http://x.com/", text: "Twitter" },
+            { href: "https://www.instagram.com/", text: "Instagram", external: true },
+            { href: "https://www.facebook.com/", text: "Facebook", external: true },
+            { href: "https://www.youtube.com/", text: "YouTube", external: true },
+            { href: "http://x.com/", text: "Twitter", external: true },
           ]}
           variant=""
         />
         <FooterColumn
           variant=""
-          title="Resources"
+          title="Navigation"
           links={[
-            {
-              href: "/",
-              text: "Style Guide",
-            },
-            {
-              href: "/",
-              text: "Privacy Policy",
-            },
-            {
-              href: "/",
-              text: "Terms & Conditions",
-            },
-            {
-              href: "/",
-              text: "License",
-            },
-            {
-              href: "/admin/login",
-              text: "Admin",
-            },
+            { href: "/", text: "Home" },
+            { href: "/about", text: "About Us" },
+            { href: "/services", text: "Services" },
+            { href: "/projects", text: "Projects" },
+            { href: "/contact", text: "Contact" },
+            { href: "/admin/login", text: "Admin" },
           ]}
         />
         <FooterColumn
