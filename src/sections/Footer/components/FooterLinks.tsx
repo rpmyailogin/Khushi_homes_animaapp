@@ -23,6 +23,9 @@ export const FooterLinks = () => {
             { href: "/services", text: "Services" },
             { href: "/projects", text: "Projects" },
             { href: "/contact", text: "Contact" },
+            { href: "/privacy-policy", text: "Privacy Policy" },
+            { href: "/terms-and-conditions", text: "Terms and Conditions" },
+            { href: "/admin/login", text: "Admin" },
           ]}
         />
         <FooterColumn
