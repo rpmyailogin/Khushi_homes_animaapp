@@ -171,7 +171,7 @@ export const ContactPage = () => {
                     onChange={handleChange}
                     required
                     maxLength={100}
-                    className="box-border caret-transparent w-full px-4 py-3 border border-solid border-black/10 focus:outline-none focus:border-black transition-colors"
+                    className="box-border w-full px-4 py-3 border border-solid border-black/10 focus:outline-none focus:border-black transition-colors"
                     placeholder="John Smith"
                   />
                   {fieldErrors.name && <p className="text-red-600 text-xs mt-1">{fieldErrors.name}</p>}
@@ -189,7 +189,7 @@ export const ContactPage = () => {
                     onChange={handleChange}
                     required
                     maxLength={254}
-                    className="box-border caret-transparent w-full px-4 py-3 border border-solid border-black/10 focus:outline-none focus:border-black transition-colors"
+                    className="box-border w-full px-4 py-3 border border-solid border-black/10 focus:outline-none focus:border-black transition-colors"
                     placeholder="john@example.com"
                   />
                   {fieldErrors.email && <p className="text-red-600 text-xs mt-1">{fieldErrors.email}</p>}
@@ -206,7 +206,7 @@ export const ContactPage = () => {
                     value={formData.phone}
                     onChange={handleChange}
                     maxLength={20}
-                    className="box-border caret-transparent w-full px-4 py-3 border border-solid border-black/10 focus:outline-none focus:border-black transition-colors"
+                    className="box-border w-full px-4 py-3 border border-solid border-black/10 focus:outline-none focus:border-black transition-colors"
                     placeholder="+61 XXX XXX XXX"
                   />
                   {fieldErrors.phone && <p className="text-red-600 text-xs mt-1">{fieldErrors.phone}</p>}
@@ -222,7 +222,7 @@ export const ContactPage = () => {
                     value={formData.projectType}
                     onChange={handleChange}
                     required
-                    className="box-border caret-transparent w-full px-4 py-3 border border-solid border-black/10 focus:outline-none focus:border-black transition-colors bg-white"
+                    className="box-border w-full px-4 py-3 border border-solid border-black/10 focus:outline-none focus:border-black transition-colors bg-white"
                   >
                     <option value="new-home">New Home Construction</option>
                     <option value="renovation">Home Renovation</option>
@@ -245,7 +245,7 @@ export const ContactPage = () => {
                     required
                     rows={5}
                     maxLength={5000}
-                    className="box-border caret-transparent w-full px-4 py-3 border border-solid border-black/10 focus:outline-none focus:border-black transition-colors resize-none"
+                    className="box-border w-full px-4 py-3 border border-solid border-black/10 focus:outline-none focus:border-black transition-colors resize-none"
                     placeholder="Tell us about your project..."
                   />
                   {fieldErrors.message && <p className="text-red-600 text-xs mt-1">{fieldErrors.message}</p>}

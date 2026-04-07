@@ -82,7 +82,7 @@ export const NewsletterForm = () => {
               value={name}
               onChange={(e) => setName(e.target.value)}
               maxLength={100}
-              className="box-border caret-transparent w-full px-4 py-3 border border-solid border-white/20 focus:outline-none focus:border-white transition-colors bg-white"
+              className="box-border w-full px-4 py-3 border border-solid border-white/20 focus:outline-none focus:border-white transition-colors bg-white"
               placeholder="Your name"
             />
           </div>
@@ -98,7 +98,7 @@ export const NewsletterForm = () => {
               onChange={(e) => setEmail(e.target.value)}
               required
               maxLength={254}
-              className="box-border caret-transparent w-full px-4 py-3 border border-solid border-white/20 focus:outline-none focus:border-white transition-colors bg-white"
+              className="box-border w-full px-4 py-3 border border-solid border-white/20 focus:outline-none focus:border-white transition-colors bg-white"
               placeholder="your@email.com"
             />
           </div>

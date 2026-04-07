@@ -137,7 +137,7 @@ export const FooterCTA = () => {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   maxLength={100}
-                  className="box-border caret-transparent w-full px-4 py-2.5 border border-solid border-white/20 focus:outline-none focus:border-white transition-colors bg-white text-sm"
+                  className="box-border w-full px-4 py-2.5 border border-solid border-white/20 focus:outline-none focus:border-white transition-colors bg-white text-sm"
                   placeholder="Your name"
                 />
 
@@ -148,7 +148,7 @@ export const FooterCTA = () => {
                   onChange={(e) => setEmail(e.target.value)}
                   required
                   maxLength={254}
-                  className="box-border caret-transparent w-full px-4 py-2.5 border border-solid border-white/20 focus:outline-none focus:border-white transition-colors bg-white text-sm"
+                  className="box-border w-full px-4 py-2.5 border border-solid border-white/20 focus:outline-none focus:border-white transition-colors bg-white text-sm"
                   placeholder="your@email.com"
                 />
               </div>

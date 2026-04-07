@@ -105,7 +105,7 @@ export const ContactForm = () => {
               onChange={handleChange}
               required
               maxLength={100}
-              className="text-sm box-border caret-transparent block leading-[21px] align-middle w-full border px-3 py-2 border-solid border-zinc-300 md:col-span-2 md:p-[15px]"
+              className="text-sm box-border block leading-[21px] align-middle w-full border px-3 py-2 border-solid border-zinc-300 md:col-span-2 md:p-[15px]"
             />
             <input
               name="email"
@@ -115,7 +115,7 @@ export const ContactForm = () => {
               onChange={handleChange}
               required
               maxLength={254}
-              className="text-sm box-border caret-transparent block leading-[21px] align-middle w-full border px-3 py-2 border-solid border-zinc-300 md:p-[15px]"
+              className="text-sm box-border block leading-[21px] align-middle w-full border px-3 py-2 border-solid border-zinc-300 md:p-[15px]"
             />
             <input
               name="phone"
@@ -124,7 +124,7 @@ export const ContactForm = () => {
               value={formData.phone}
               onChange={handleChange}
               maxLength={20}
-              className="text-sm box-border caret-transparent block leading-[21px] align-middle w-full border px-3 py-2 border-solid border-zinc-300 md:p-[15px]"
+              className="text-sm box-border block leading-[21px] align-middle w-full border px-3 py-2 border-solid border-zinc-300 md:p-[15px]"
             />
             <textarea
               placeholder="Write your message here* "
@@ -133,7 +133,7 @@ export const ContactForm = () => {
               onChange={handleChange}
               required
               maxLength={5000}
-              className="text-sm box-border caret-transparent block leading-[21px] min-h-[140px] align-middle w-full px-3 py-2 border border-solid border-zinc-300 sm:min-h-[180px] md:col-span-2 md:p-3.5"
+              className="text-sm box-border block leading-[21px] min-h-[140px] align-middle w-full px-3 py-2 border border-solid border-zinc-300 sm:min-h-[180px] md:col-span-2 md:p-3.5"
             ></textarea>
           </div>
           <button

@@ -115,7 +115,7 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
               onChange={handleChange}
               required
               maxLength={100}
-              className="box-border caret-transparent w-full px-4 py-3 border border-solid border-black/10 focus:outline-none focus:border-black transition-colors"
+              className="box-border w-full px-4 py-3 border border-solid border-black/10 focus:outline-none focus:border-black transition-colors"
               placeholder="John Smith"
             />
           </div>
@@ -132,7 +132,7 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
               onChange={handleChange}
               required
               maxLength={254}
-              className="box-border caret-transparent w-full px-4 py-3 border border-solid border-black/10 focus:outline-none focus:border-black transition-colors"
+              className="box-border w-full px-4 py-3 border border-solid border-black/10 focus:outline-none focus:border-black transition-colors"
               placeholder="john@example.com"
             />
           </div>
@@ -148,7 +148,7 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
               value={formData.phone}
               onChange={handleChange}
               maxLength={20}
-              className="box-border caret-transparent w-full px-4 py-3 border border-solid border-black/10 focus:outline-none focus:border-black transition-colors"
+              className="box-border w-full px-4 py-3 border border-solid border-black/10 focus:outline-none focus:border-black transition-colors"
               placeholder="+61 XXX XXX XXX"
             />
           </div>
@@ -163,7 +163,7 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
               value={formData.projectType}
               onChange={handleChange}
               required
-              className="box-border caret-transparent w-full px-4 py-3 border border-solid border-black/10 focus:outline-none focus:border-black transition-colors bg-white"
+              className="box-border w-full px-4 py-3 border border-solid border-black/10 focus:outline-none focus:border-black transition-colors bg-white"
             >
               <option value="new-home">New Home Construction</option>
               <option value="renovation">Home Renovation</option>
@@ -186,7 +186,7 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
               required
               rows={4}
               maxLength={5000}
-              className="box-border caret-transparent w-full px-4 py-3 border border-solid border-black/10 focus:outline-none focus:border-black transition-colors resize-none"
+              className="box-border w-full px-4 py-3 border border-solid border-black/10 focus:outline-none focus:border-black transition-colors resize-none"
               placeholder="Tell us about your project..."
             />
           </div>
