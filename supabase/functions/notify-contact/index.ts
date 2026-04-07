@@ -128,8 +128,8 @@ Deno.serve(async (req: Request) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: "Khushi Homes Website <onboarding@resend.dev>",
-        to: ["khushihomes2@gmail.com"],
+        from: "Khushi Homes Website <enquiries@khushihomes.com.au>",
+        to: ["sunny@khushihomes.com.au"],
         reply_to: email,
         subject: `New Enquiry from ${name}${subject ? ` — ${subject}` : ""}`,
         html: emailHtml,
