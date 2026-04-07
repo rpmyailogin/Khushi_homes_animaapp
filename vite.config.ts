@@ -9,7 +9,7 @@ export default defineConfig({
   base: "/",
   build: {
     outDir: "productionkhushi",
-    emptyOutDir: false,
+    emptyOutDir: true,
     minify: "esbuild",
     chunkSizeWarningLimit: 600,
     rollupOptions: {
