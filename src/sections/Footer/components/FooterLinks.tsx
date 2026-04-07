@@ -23,7 +23,6 @@ export const FooterLinks = () => {
             { href: "/services", text: "Services" },
             { href: "/projects", text: "Projects" },
             { href: "/contact", text: "Contact" },
-            { href: "/admin/login", text: "Admin" },
           ]}
         />
         <FooterColumn
