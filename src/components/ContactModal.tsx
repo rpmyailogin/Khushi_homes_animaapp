@@ -18,6 +18,7 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState('');
   const [isSubmitError, setIsSubmitError] = useState(false);
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const honeypotRef = useRef<HTMLInputElement>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -25,22 +26,30 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
       ...formData,
       [e.target.name]: e.target.value
     });
+    setFieldErrors(prev => ({ ...prev, [e.target.name]: '' }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (honeypotRef.current?.value) return;
+    if (honeypotRef.current?.value) {
+      honeypotRef.current.value = '';
+      return;
+    }
 
-    if (!isValidName(formData.name) || !isValidEmail(formData.email) || !isValidMessage(formData.message)) {
+    const errors: Record<string, string> = {};
+    if (!isValidName(formData.name)) errors.name = 'Please enter your name (at least 2 characters)';
+    if (!isValidEmail(formData.email)) errors.email = 'Please enter a valid email address';
+    if (formData.phone && !isValidPhone(formData.phone)) errors.phone = 'Please enter a valid phone number';
+    if (!isValidMessage(formData.message)) errors.message = 'Please enter a message (at least 3 characters)';
+
+    if (Object.keys(errors).length > 0) {
+      setFieldErrors(errors);
       setIsSubmitError(true);
-      setSubmitMessage('Please check your inputs and try again.');
+      setSubmitMessage('Please fix the highlighted fields and try again.');
       return;
     }
-    if (formData.phone && !isValidPhone(formData.phone)) {
-      setIsSubmitError(true);
-      setSubmitMessage('Please enter a valid phone number.');
-      return;
-    }
+    setFieldErrors({});
+
     if (!checkRateLimit('contact-modal', 3, 600000)) {
       setIsSubmitError(true);
       setSubmitMessage('Too many submissions. Please try again in a few minutes.');
@@ -122,9 +131,10 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
               onChange={handleChange}
               required
               maxLength={100}
-              className="box-border caret-transparent w-full px-4 py-3 border border-solid border-black/10 focus:outline-none focus:border-black transition-colors"
+              className={`box-border caret-transparent w-full px-4 py-3 border border-solid focus:outline-none focus:border-black transition-colors ${fieldErrors.name ? 'border-red-500' : 'border-black/10'}`}
               placeholder="John Smith"
             />
+            {fieldErrors.name && <p className="text-red-600 text-xs mt-1">{fieldErrors.name}</p>}
           </div>
 
           <div className="box-border caret-transparent mb-6">
@@ -139,9 +149,10 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
               onChange={handleChange}
               required
               maxLength={254}
-              className="box-border caret-transparent w-full px-4 py-3 border border-solid border-black/10 focus:outline-none focus:border-black transition-colors"
+              className={`box-border caret-transparent w-full px-4 py-3 border border-solid focus:outline-none focus:border-black transition-colors ${fieldErrors.email ? 'border-red-500' : 'border-black/10'}`}
               placeholder="john@example.com"
             />
+            {fieldErrors.email && <p className="text-red-600 text-xs mt-1">{fieldErrors.email}</p>}
           </div>
 
           <div className="box-border caret-transparent mb-6">
@@ -155,9 +166,10 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
               value={formData.phone}
               onChange={handleChange}
               maxLength={20}
-              className="box-border caret-transparent w-full px-4 py-3 border border-solid border-black/10 focus:outline-none focus:border-black transition-colors"
+              className={`box-border caret-transparent w-full px-4 py-3 border border-solid focus:outline-none focus:border-black transition-colors ${fieldErrors.phone ? 'border-red-500' : 'border-black/10'}`}
               placeholder="+61 XXX XXX XXX"
             />
+            {fieldErrors.phone && <p className="text-red-600 text-xs mt-1">{fieldErrors.phone}</p>}
           </div>
 
           <div className="box-border caret-transparent mb-6">
@@ -193,9 +205,10 @@ export const ContactModal = ({ isOpen, onClose }: ContactModalProps) => {
               required
               rows={4}
               maxLength={5000}
-              className="box-border caret-transparent w-full px-4 py-3 border border-solid border-black/10 focus:outline-none focus:border-black transition-colors resize-none"
+              className={`box-border caret-transparent w-full px-4 py-3 border border-solid focus:outline-none focus:border-black transition-colors resize-none ${fieldErrors.message ? 'border-red-500' : 'border-black/10'}`}
               placeholder="Tell us about your project..."
             />
+            {fieldErrors.message && <p className="text-red-600 text-xs mt-1">{fieldErrors.message}</p>}
           </div>
 
           {submitMessage && (

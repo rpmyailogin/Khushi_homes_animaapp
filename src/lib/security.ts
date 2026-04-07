@@ -44,7 +44,7 @@ export function isValidName(name: string): boolean {
 
 export function isValidMessage(message: string): boolean {
   const trimmed = message.trim();
-  return trimmed.length >= 10 && trimmed.length <= 5000;
+  return trimmed.length >= 3 && trimmed.length <= 5000;
 }
 
 const ALLOWED_IMAGE_TYPES = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];

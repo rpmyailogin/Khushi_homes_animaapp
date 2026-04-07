@@ -95,7 +95,7 @@ export const FooterCTA = () => {
         <div className="box-border caret-transparent flex flex-col gap-y-6 w-full sm:gap-y-8 md:max-w-[50%]">
           <div className="items-center box-border caret-transparent gap-x-4 flex flex-wrap justify-start gap-y-4 sm:gap-x-[22px] sm:gap-y-[22px] md:flex-nowrap md:gap-y-[normal]">
             <a
-              href="/projects"
+              href="/about"
               className="text-white text-sm items-center box-border caret-transparent gap-x-1.5 flex justify-start leading-[21px] max-w-full py-2 touch-manipulation"
             >
               <img

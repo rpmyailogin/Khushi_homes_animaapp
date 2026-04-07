@@ -31,18 +31,25 @@ export const ContactPage = () => {
 
   const validateForm = (): boolean => {
     const errors: Record<string, string> = {};
-    if (!isValidName(formData.name)) errors.name = 'Name must be 2-100 characters';
+    if (!isValidName(formData.name)) errors.name = 'Please enter your name (at least 2 characters)';
     if (!isValidEmail(formData.email)) errors.email = 'Please enter a valid email address';
-    if (!isValidPhone(formData.phone)) errors.phone = 'Please enter a valid phone number';
-    if (!isValidMessage(formData.message)) errors.message = 'Message must be 10-5000 characters';
+    if (formData.phone && !isValidPhone(formData.phone)) errors.phone = 'Please enter a valid phone number';
+    if (!isValidMessage(formData.message)) errors.message = 'Please enter a message (at least 3 characters)';
     setFieldErrors(errors);
     return Object.keys(errors).length === 0;
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (honeypotRef.current?.value) return;
-    if (!validateForm()) return;
+    if (honeypotRef.current?.value) {
+      honeypotRef.current.value = '';
+      return;
+    }
+    if (!validateForm()) {
+      setIsSubmitError(true);
+      setSubmitMessage('Please fix the highlighted fields and try again.');
+      return;
+    }
     if (!checkRateLimit('contact-page', 3, 600000)) {
       setIsSubmitError(true);
       setSubmitMessage('Too many submissions. Please try again in a few minutes.');
@@ -176,7 +183,7 @@ export const ContactPage = () => {
                     onChange={handleChange}
                     required
                     maxLength={100}
-                    className="box-border caret-transparent w-full px-4 py-3 border border-solid border-black/10 focus:outline-none focus:border-black transition-colors"
+                    className={`box-border caret-transparent w-full px-4 py-3 border border-solid focus:outline-none focus:border-black transition-colors ${fieldErrors.name ? 'border-red-500' : 'border-black/10'}`}
                     placeholder="John Smith"
                   />
                   {fieldErrors.name && <p className="text-red-600 text-xs mt-1">{fieldErrors.name}</p>}
@@ -194,7 +201,7 @@ export const ContactPage = () => {
                     onChange={handleChange}
                     required
                     maxLength={254}
-                    className="box-border caret-transparent w-full px-4 py-3 border border-solid border-black/10 focus:outline-none focus:border-black transition-colors"
+                    className={`box-border caret-transparent w-full px-4 py-3 border border-solid focus:outline-none focus:border-black transition-colors ${fieldErrors.email ? 'border-red-500' : 'border-black/10'}`}
                     placeholder="john@example.com"
                   />
                   {fieldErrors.email && <p className="text-red-600 text-xs mt-1">{fieldErrors.email}</p>}
@@ -211,7 +218,7 @@ export const ContactPage = () => {
                     value={formData.phone}
                     onChange={handleChange}
                     maxLength={20}
-                    className="box-border caret-transparent w-full px-4 py-3 border border-solid border-black/10 focus:outline-none focus:border-black transition-colors"
+                    className={`box-border caret-transparent w-full px-4 py-3 border border-solid focus:outline-none focus:border-black transition-colors ${fieldErrors.phone ? 'border-red-500' : 'border-black/10'}`}
                     placeholder="+61 XXX XXX XXX"
                   />
                   {fieldErrors.phone && <p className="text-red-600 text-xs mt-1">{fieldErrors.phone}</p>}
@@ -250,7 +257,7 @@ export const ContactPage = () => {
                     required
                     rows={5}
                     maxLength={5000}
-                    className="box-border caret-transparent w-full px-4 py-3 border border-solid border-black/10 focus:outline-none focus:border-black transition-colors resize-none"
+                    className={`box-border caret-transparent w-full px-4 py-3 border border-solid focus:outline-none focus:border-black transition-colors resize-none ${fieldErrors.message ? 'border-red-500' : 'border-black/10'}`}
                     placeholder="Tell us about your project..."
                   />
                   {fieldErrors.message && <p className="text-red-600 text-xs mt-1">{fieldErrors.message}</p>}
