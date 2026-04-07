@@ -120,39 +120,6 @@ export const FooterCTA = () => {
               />
               <div className="box-border caret-transparent">Services</div>
             </a>
-            <a
-              href="/blogs"
-              className="text-white text-sm items-center box-border caret-transparent gap-x-1.5 flex justify-start leading-[21px] max-w-full py-2 touch-manipulation"
-            >
-              <img
-                src="https://cdn.prod.website-files.com/679b678d080aadecaa78b6ac/679c772f4e9c2e629fc2ab34_ic-articles.svg"
-                alt="Icon"
-                className="box-border caret-transparent max-h-4 max-w-4 min-h-4 min-w-4"
-              />
-              <div className="box-border caret-transparent">Blogs</div>
-            </a>
-            <a
-              href="/#testimonials"
-              className="text-white text-sm items-center box-border caret-transparent gap-x-1.5 flex justify-start leading-[21px] max-w-full py-2 touch-manipulation"
-            >
-              <img
-                src="https://cdn.prod.website-files.com/679b678d080aadecaa78b6ac/679c772fcfa7a1910d8d983f_ic-review.svg"
-                alt="Icon"
-                className="box-border caret-transparent max-h-4 max-w-4 min-h-4 min-w-4"
-              />
-              <div className="box-border caret-transparent">Reviews</div>
-            </a>
-            <a
-              href="/#contact"
-              className="text-white text-sm items-center box-border caret-transparent gap-x-1.5 flex justify-start leading-[21px] max-w-full py-2 touch-manipulation"
-            >
-              <img
-                src="https://cdn.prod.website-files.com/679b678d080aadecaa78b6ac/679c772f3b1c191a1b6b7914_ic-faq.svg"
-                alt="Icon"
-                className="box-border caret-transparent max-h-4 max-w-4 min-h-4 min-w-4"
-              />
-              <div className="box-border caret-transparent">FAQ</div>
-            </a>
           </div>
 
           <div className="box-border caret-transparent w-full">
