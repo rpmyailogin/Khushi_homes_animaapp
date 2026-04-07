@@ -18,7 +18,7 @@ export const StatsSection = () => {
           />
           <StatsCard
             variant="bg-white border-r-zinc-800 justify-center px-[25px] py-[30px] md:px-[34px] md:py-[60px]"
-            statValue="350+"
+            statValue="100+"
             statDescription="Projects completed on time and within budget"
           />
           <StatsCard

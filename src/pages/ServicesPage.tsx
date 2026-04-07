@@ -115,10 +115,10 @@ export const ServicesPage = () => {
             <div className="box-border caret-transparent grid auto-cols-[1fr] grid-cols-[1fr] grid-rows-[auto] gap-y-5 md:grid-cols-[1fr_1fr_1fr] md:gap-x-10">
               <div className="box-border caret-transparent">
                 <div className="text-black text-3xl font-medium box-border caret-transparent leading-[45px] mb-2">
-                  250+
+                  100+
                 </div>
                 <p className="text-sm box-border caret-transparent leading-[21px]">
-                  Homes Completed
+                  Projects Completed
                 </p>
               </div>
               <div className="box-border caret-transparent">
