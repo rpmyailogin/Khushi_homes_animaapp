@@ -109,6 +109,8 @@ export const RecentProjectsPage = () => {
                   <img
                     src={project.image}
                     alt={project.title}
+                    loading="lazy"
+                    decoding="async"
                     className="box-border caret-transparent inline-block max-h-[280px] max-w-full min-h-[280px] object-cover w-full hover:scale-105 transition-transform duration-500"
                   />
                   <div className={`absolute top-5 right-5 text-xs font-medium box-border caret-transparent leading-[18px] px-3 py-1.5 ${

@@ -3,7 +3,6 @@ import tailwind from "tailwindcss";
 import { defineConfig } from "vite";
 import path from "path";
 
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
   publicDir: "./public",
@@ -11,6 +10,18 @@ export default defineConfig({
   build: {
     outDir: "productionkhushi",
     emptyOutDir: false,
+    minify: "esbuild",
+    chunkSizeWarningLimit: 600,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          "react-vendor": ["react", "react-dom", "react-router-dom"],
+          "supabase": ["@supabase/supabase-js"],
+          "ui-vendor": ["lucide-react", "class-variance-authority", "@radix-ui/react-slot", "@radix-ui/react-toggle", "@radix-ui/react-toggle-group"],
+          "editor": ["react-quill", "quill", "dompurify"],
+        },
+      },
+    },
   },
   css: {
     postcss: {

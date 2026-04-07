@@ -113,7 +113,7 @@ export const ProjectGrid = () => {
     try {
       const { data, error } = await supabase
         .from('projects')
-        .select('*')
+        .select('id,slug,title,location,featured_image,project_type,completion_date,home_size_sqm,area_sqft,bedrooms,bathrooms,garage_spaces,land_size_sqm,budget_range')
         .eq('is_published', true)
         .order('display_order', { ascending: true })
         .limit(4);

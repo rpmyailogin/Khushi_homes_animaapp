@@ -11,6 +11,8 @@ export const HeroImage = () => {
       <img
         src="https://cdn.prod.website-files.com/679b678d080aadecaa78b6ac/67a09b154683945b0cf22d92_hero-02.jpg"
         alt="Hero Image"
+        fetchPriority="high"
+        decoding="async"
         className="aspect-[auto_1905_/_680] box-border caret-transparent inline-block h-auto max-h-[180px] max-w-full min-h-[180px] object-cover w-full sm:max-h-[200px] sm:min-h-[200px] md:max-h-[680px] md:min-h-[680px] md:h-[680px]"
       />
     </div>

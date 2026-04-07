@@ -37,7 +37,7 @@ export const ProjectsPage = () => {
     try {
       const { data, error } = await supabase
         .from('projects')
-        .select('*')
+        .select('id,slug,title,short_description,featured_image,project_type,location,budget_range,completion_date,area_sqft,home_size_sqm,bedrooms,bathrooms,garage_spaces,land_size_sqm,property_features')
         .eq('is_published', true)
         .order('display_order', { ascending: true });
 

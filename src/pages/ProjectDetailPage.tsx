@@ -120,6 +120,8 @@ export const ProjectDetailPage = () => {
                 <img
                   src={allImages[activeImageIndex]}
                   alt={project.title}
+                  fetchPriority="high"
+                  decoding="async"
                   className="w-full h-full object-cover transition-opacity duration-300"
                 />
               ) : (
@@ -158,7 +160,7 @@ export const ProjectDetailPage = () => {
                     }`}
                     style={{ aspectRatio: '4/3' }}
                   >
-                    <img src={img} alt={`View ${i + 1}`} className="w-full h-full object-cover" />
+                    <img src={img} alt={`View ${i + 1}`} loading="lazy" decoding="async" className="w-full h-full object-cover" />
                   </button>
                 ))}
               </div>
